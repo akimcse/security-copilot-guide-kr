@@ -42,7 +42,26 @@ flowchart LR
         D10["10 핸즈온 랩"] --> D99["99 부록"]
     end
     P1 --> P2 --> P3 --> P4
+
+    click A0 "./00-overview.md" "00 개요"
+    click A1 "./01-prerequisites.md" "01 사전 준비"
+    click A2 "./02-concepts.md" "02 핵심 개념"
+    click B3 "./03-standalone-portal.md" "03 Standalone 포털"
+    click B4 "./04-promptbooks.md" "04 프롬프트북"
+    click B5 "./05-plugins.md" "05 플러그인"
+    click B6 "./06-embedded-experiences.md" "06 임베디드 경험"
+    click B7 "./07-agents.md" "07 에이전트"
+    click C8 "./08-usage-monitoring.md" "08 사용량 모니터링"
+    click C9 "./09-responsible-ai.md" "09 책임 있는 AI"
+    click D10 "./10-handson-lab.md" "10 핸즈온 랩"
+    click D99 "./99-troubleshooting.md" "99 부록"
+
+    classDef node fill:#eef4ff,stroke:#2f6fd6,color:#123,stroke-width:1px;
+    class A0,A1,A2,B3,B4,B5,B6,B7,C8,C9,D10,D99 node;
 ```
+
+> [!TIP]
+> 위 다이어그램의 각 노드를 클릭하면 해당 페이지로 바로 이동합니다. *(GitHub의 Markdown 미리보기에서 동작합니다.)*
 
 ---
 
