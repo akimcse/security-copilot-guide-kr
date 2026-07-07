@@ -7,37 +7,39 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
 const OUT = join(ROOT, 'site');
 
-// 사이트 메타
 const SITE_TITLE = 'Microsoft Security Copilot 실전 가이드';
 const REPO_URL = 'https://github.com/akimcse/security-copilot-guide-kr';
 
-// 사이드바 순서 (Part 그룹)
+// 사이드바/순서 메타 (part, 소요시간, 아이콘)
 const NAV = [
-  { part: '홈', items: [ { file: 'README.md', out: 'index.html', label: '가이드 홈' } ] },
-  { part: 'Part 1 · 시작하기', items: [
-    { file: '00-overview.md', out: '00-overview.html', label: '00 · 개요' },
-    { file: '01-prerequisites.md', out: '01-prerequisites.html', label: '01 · 사전 준비' },
-    { file: '02-concepts.md', out: '02-concepts.html', label: '02 · 핵심 개념' },
+  { part: '홈', icon: '🏠', items: [
+    { file: 'README.md', out: 'index.html', label: '가이드 홈', time: '' },
   ]},
-  { part: 'Part 2 · 핵심 기능', items: [
-    { file: '03-standalone-portal.md', out: '03-standalone-portal.html', label: '03 · Standalone 포털' },
-    { file: '04-promptbooks.md', out: '04-promptbooks.html', label: '04 · 프롬프트북' },
-    { file: '05-plugins.md', out: '05-plugins.html', label: '05 · 플러그인' },
-    { file: '06-embedded-experiences.md', out: '06-embedded-experiences.html', label: '06 · 임베디드 경험' },
-    { file: '07-agents.md', out: '07-agents.html', label: '07 · 에이전트' },
+  { part: 'Part 1 · 시작하기', icon: '🚀', items: [
+    { file: '00-overview.md', out: '00-overview.html', label: '00 · 개요', time: '6분' },
+    { file: '01-prerequisites.md', out: '01-prerequisites.html', label: '01 · 사전 준비', time: '9분' },
+    { file: '02-concepts.md', out: '02-concepts.html', label: '02 · 핵심 개념', time: '7분' },
   ]},
-  { part: 'Part 3 · 운영·거버넌스', items: [
-    { file: '08-usage-monitoring.md', out: '08-usage-monitoring.html', label: '08 · 사용량 모니터링' },
-    { file: '09-responsible-ai.md', out: '09-responsible-ai.html', label: '09 · 책임 있는 AI' },
+  { part: 'Part 2 · 핵심 기능', icon: '🧩', items: [
+    { file: '03-standalone-portal.md', out: '03-standalone-portal.html', label: '03 · Standalone 포털', time: '7분' },
+    { file: '04-promptbooks.md', out: '04-promptbooks.html', label: '04 · 프롬프트북', time: '8분' },
+    { file: '05-plugins.md', out: '05-plugins.html', label: '05 · 플러그인', time: '7분' },
+    { file: '06-embedded-experiences.md', out: '06-embedded-experiences.html', label: '06 · 임베디드 경험', time: '9분' },
+    { file: '07-agents.md', out: '07-agents.html', label: '07 · 에이전트', time: '8분' },
   ]},
-  { part: 'Part 4 · 실습·참조', items: [
-    { file: '10-handson-lab.md', out: '10-handson-lab.html', label: '10 · 핸즈온 랩' },
-    { file: '99-troubleshooting.md', out: '99-troubleshooting.html', label: '99 · 부록' },
+  { part: 'Part 3 · 운영·거버넌스', icon: '🛡️', items: [
+    { file: '08-usage-monitoring.md', out: '08-usage-monitoring.html', label: '08 · 사용량 모니터링', time: '6분' },
+    { file: '09-responsible-ai.md', out: '09-responsible-ai.html', label: '09 · 책임 있는 AI', time: '8분' },
+  ]},
+  { part: 'Part 4 · 실습·참조', icon: '🧪', items: [
+    { file: '10-handson-lab.md', out: '10-handson-lab.html', label: '10 · 핸즈온 랩', time: '20분' },
+    { file: '99-troubleshooting.md', out: '99-troubleshooting.html', label: '99 · 부록', time: '참조' },
   ]},
 ];
 
-// GitHub 스타일 alert(콜아웃) 변환: > [!NOTE] ... 블록
 const ALERTS = { NOTE:'노트', TIP:'팁', IMPORTANT:'중요', WARNING:'주의', CAUTION:'경고' };
+const ALERT_ICON = { NOTE:'📝', TIP:'💡', IMPORTANT:'❗', WARNING:'⚠️', CAUTION:'🚫' };
+
 function transformAlerts(md) {
   const lines = md.split('\n');
   const out = [];
@@ -53,7 +55,7 @@ function transformAlerts(md) {
         i++;
       }
       const inner = marked.parse(body.join('\n'));
-      out.push(`<div class="callout callout-${kind.toLowerCase()}"><div class="callout-title">${ALERTS[kind]}</div>${inner}</div>`);
+      out.push(`<div class="callout callout-${kind.toLowerCase()}"><div class="callout-title"><span class="callout-ico">${ALERT_ICON[kind]}</span>${ALERTS[kind]}</div>${inner}</div>`);
     } else {
       out.push(lines[i]);
       i++;
@@ -62,74 +64,135 @@ function transformAlerts(md) {
   return out.join('\n');
 }
 
-// .md 링크를 .html로 (일반 링크 + mermaid click 지시문 모두)
 function rewriteLinks(md) {
   return md
-    .replace(/\(\.\/images\/README\.md\)/g, '(https://github.com/akimcse/security-copilot-guide-kr/blob/main/images/README.md)')
+    .replace(/\(\.\/images\/README\.md\)/g, `(${REPO_URL}/blob/main/images/README.md)`)
     .replace(/\(\.\/README\.md([^)]*)\)/g, '(./index.html$1)')
     .replace(/"\.\/README\.md"/g, '"./index.html"')
     .replace(/\(\.\/([0-9A-Za-z\-]+)\.md([^)]*)\)/g, '(./$1.html$2)')
     .replace(/"\.\/([0-9A-Za-z\-]+)\.md"/g, '"./$1.html"');
 }
 
-// 첫 H1을 페이지 제목으로 추출
+// 마크다운에 들어있던 브레드크럼 줄과 하단 "다음 읽을거리/코스를 마치며" 블록 제거 (사이트는 자체 크롬 생성)
+function stripInlineChrome(md) {
+  md = md.replace(/^\[🏠 전체 목차\][^\n]*\n+/, '');
+  md = md.replace(/\n---\s*\n+###\s*(다음 읽을거리|코스를 마치며)[\s\S]*$/, '\n');
+  return md;
+}
+
 function extractTitle(md, fallback) {
   const m = md.match(/^#\s+(.+)$/m);
-  return m ? m[1].replace(/[#*`]/g,'').trim() : fallback;
+  return m ? m[1].replace(/[#*`]/g, '').trim() : fallback;
+}
+
+// 렌더된 HTML의 h2/h3에 id 부여 + TOC 수집
+function injectHeadingIds(html) {
+  const toc = [];
+  let n = 0;
+  const out = html.replace(/<(h2|h3)>([\s\S]*?)<\/\1>/g, (full, tag, inner) => {
+    const id = 'sec-' + (++n);
+    const text = inner.replace(/<[^>]+>/g, '').trim();
+    toc.push({ level: tag === 'h2' ? 2 : 3, id, text });
+    return `<${tag} id="${id}"><a class="anchor" href="#${id}" aria-hidden="true">#</a>${inner}</${tag}>`;
+  });
+  return { html: out, toc };
+}
+
+function buildTocHtml(toc) {
+  if (!toc.length) return '';
+  let html = '<div class="toc-title">이 페이지</div><ul>';
+  for (const t of toc) {
+    html += `<li class="toc-l${t.level}"><a href="#${t.id}">${t.text}</a></li>`;
+  }
+  html += '</ul>';
+  return html;
 }
 
 function buildSidebar(currentOut) {
   let html = '';
   for (const group of NAV) {
-    html += `<div class="nav-group"><div class="nav-part">${group.part}</div><ul>`;
+    html += `<div class="nav-group"><div class="nav-part"><span class="nav-ico">${group.icon}</span>${group.part}</div><ul>`;
     for (const it of group.items) {
       const active = it.out === currentOut ? ' class="active"' : '';
-      html += `<li><a href="./${it.out}"${active}>${it.label}</a></li>`;
+      const t = it.time ? `<span class="nav-time">${it.time}</span>` : '';
+      html += `<li><a href="./${it.out}"${active}>${it.label}${t}</a></li>`;
     }
     html += `</ul></div>`;
   }
   return html;
 }
 
-// mermaid 코드펜스를 <pre class="mermaid">로 렌더되게 처리
+// 부위/이전-다음 계산
+const FLAT = [];
+for (const g of NAV) for (const it of g.items) FLAT.push({ ...it, part: g.part, icon: g.icon });
+function metaFor(out) {
+  const idx = FLAT.findIndex(x => x.out === out);
+  return { cur: FLAT[idx], prev: FLAT[idx-1], next: FLAT[idx+1], idx };
+}
+
+function buildBreadcrumb(cur) {
+  if (cur.out === 'index.html') return '';
+  return `<nav class="crumb"><a href="./index.html">홈</a><span class="sep">›</span><span class="crumb-part">${cur.part}</span>${cur.time ? `<span class="crumb-time">⏱️ ${cur.time}</span>` : ''}</nav>`;
+}
+
+function buildPrevNext(prev, next) {
+  if (!prev && !next) return '';
+  const p = prev ? `<a class="pn pn-prev" href="./${prev.out}"><span class="pn-dir">← 이전</span><span class="pn-label">${prev.label}</span></a>` : `<span class="pn pn-empty"></span>`;
+  const n = next ? `<a class="pn pn-next" href="./${next.out}"><span class="pn-dir">다음 →</span><span class="pn-label">${next.label}</span></a>` : `<span class="pn pn-empty"></span>`;
+  return `<nav class="prevnext">${p}${n}</nav>`;
+}
+
+// 홈: 헤더에 '소요'가 있는 코스 표에만 카드 스타일 클래스 부여
+function markCourseTables(html) {
+  return html.replace(/<table>([\s\S]*?)<\/table>/g, (full, inner) => {
+    return inner.includes('>소요<') ? `<table class="cards">${inner}</table>` : full;
+  });
+}
+
 marked.use({
   renderer: {
     code(token) {
       const text = typeof token === 'object' ? token.text : token;
       const lang = typeof token === 'object' ? token.lang : arguments[1];
       if (lang === 'mermaid') return `<pre class="mermaid">${text}</pre>`;
-      return false; // 기본 렌더러 사용
+      return false;
     }
   }
 });
 
 const template = readFileSync(join(ROOT, 'site-assets', 'template.html'), 'utf8');
 
-// 빌드
 if (existsSync(OUT)) rmSync(OUT, { recursive:true, force:true });
 mkdirSync(OUT, { recursive:true });
 
-const allItems = NAV.flatMap(g => g.items);
-for (const item of allItems) {
+for (const g of NAV) for (const item of g.items) {
+  const isHome = item.out === 'index.html';
   const raw = readFileSync(join(ROOT, item.file), 'utf8');
   const title = extractTitle(raw, item.label);
   let md = rewriteLinks(raw);
+  md = stripInlineChrome(md);
   md = transformAlerts(md);
-  const bodyHtml = marked.parse(md);
-  const sidebar = buildSidebar(item.out);
+  let bodyHtml = marked.parse(md);
+  let toc = [];
+  if (!isHome) { const r = injectHeadingIds(bodyHtml); bodyHtml = r.html; toc = r.toc; }
+  if (isHome) bodyHtml = markCourseTables(bodyHtml);
+
+  const { cur, prev, next } = metaFor(item.out);
   const page = template
     .replaceAll('{{SITE_TITLE}}', SITE_TITLE)
     .replaceAll('{{PAGE_TITLE}}', title)
     .replaceAll('{{REPO_URL}}', REPO_URL)
-    .replace('{{SIDEBAR}}', sidebar)
-    .replace('{{CONTENT}}', bodyHtml);
+    .replaceAll('{{BODY_CLASS}}', isHome ? 'is-home' : 'is-doc')
+    .replace('{{SIDEBAR}}', buildSidebar(item.out))
+    .replace('{{BREADCRUMB}}', buildBreadcrumb(cur))
+    .replace('{{TOC}}', isHome ? '' : buildTocHtml(toc))
+    .replace('{{CONTENT}}', bodyHtml)
+    .replace('{{PREVNEXT}}', isHome ? buildPrevNext(null, next) : buildPrevNext(prev, next));
   writeFileSync(join(OUT, item.out), page, 'utf8');
   console.log('built', item.out);
 }
 
-// 이미지 및 정적 자산 복사
 if (existsSync(join(ROOT, 'images'))) cpSync(join(ROOT, 'images'), join(OUT, 'images'), { recursive:true });
 cpSync(join(ROOT, 'site-assets', 'style.css'), join(OUT, 'style.css'));
-// GitHub Pages가 Jekyll 처리를 건너뛰도록
 writeFileSync(join(OUT, '.nojekyll'), '');
 console.log('done ->', OUT);

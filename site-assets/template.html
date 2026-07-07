@@ -4,33 +4,63 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{PAGE_TITLE}} · {{SITE_TITLE}}</title>
+<meta name="description" content="Microsoft Security Copilot 실전 가이드 — 공식 문서 기반 한국어 학습 코스">
 <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body class="{{BODY_CLASS}}">
 <header class="topbar">
   <button id="menuBtn" aria-label="메뉴 열기">☰</button>
-  <a class="brand" href="./index.html">🛡️ {{SITE_TITLE}}</a>
+  <a class="brand" href="./index.html">
+    <span class="brand-mark">🛡️</span>
+    <span class="brand-text">Security Copilot <b>실전 가이드</b></span>
+  </a>
   <a class="gh" href="{{REPO_URL}}" target="_blank" rel="noopener">GitHub ↗</a>
 </header>
+
 <div class="layout">
   <aside class="sidebar" id="sidebar">
     <nav>{{SIDEBAR}}</nav>
   </aside>
+
   <main class="content">
+    {{BREADCRUMB}}
     <article class="markdown-body">
       {{CONTENT}}
     </article>
+    {{PREVNEXT}}
     <footer class="pagefoot">
       <p>이 사이트는 학습용 비공식 자료입니다. 모든 내용은 <a href="https://learn.microsoft.com/security-copilot/" target="_blank" rel="noopener">Microsoft Learn</a> 공식 문서를 근거로 합니다.</p>
     </footer>
   </main>
+
+  <aside class="toc" id="toc">{{TOC}}</aside>
 </div>
+
 <script type="module">
 import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'default' });
+mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'base', themeVariables: {
+  primaryColor:'#f3ecff', primaryBorderColor:'#8661c5', primaryTextColor:'#20123a',
+  lineColor:'#8661c5', fontfamily:'Segoe UI'
+}});
 const btn = document.getElementById('menuBtn');
 const sb = document.getElementById('sidebar');
 btn && btn.addEventListener('click', () => sb.classList.toggle('open'));
+
+// TOC 활성 항목 하이라이트
+const links = [...document.querySelectorAll('.toc a')];
+if (links.length) {
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const obs = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = map.get(e.target.id);
+        a && a.classList.add('active');
+      }
+    }
+  }, { rootMargin: '-64px 0px -70% 0px' });
+  document.querySelectorAll('h2[id],h3[id]').forEach(h => obs.observe(h));
+}
 </script>
 </body>
 </html>
