@@ -38,7 +38,7 @@ a:hover{text-decoration:underline;}
 #menuBtn{display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--fg);}
 
 /* ---------- layout ---------- */
-.layout{display:flex; align-items:flex-start; max-width:1440px; margin:0 auto;}
+.layout{display:flex; align-items:flex-start; max-width:1680px; margin:0 auto;}
 .sidebar{
   width:var(--sidebar-w); flex:none; position:sticky; top:var(--topbar-h);
   height:calc(100vh - var(--topbar-h)); overflow-y:auto;
@@ -55,7 +55,7 @@ a:hover{text-decoration:underline;}
 .nav-time{font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums;}
 
 /* ---------- content ---------- */
-.content{flex:1; min-width:0; max-width:840px; margin:0; padding:26px 46px 60px;}
+.content{flex:1; min-width:0; max-width:1000px; margin:0; padding:26px 54px 60px;}
 .crumb{display:flex; align-items:center; gap:9px; font-size:13px; color:var(--muted); margin:2px 0 18px;}
 .crumb .sep{opacity:.6;}
 .crumb-part{font-weight:600; color:var(--accent-ink);}
@@ -125,11 +125,10 @@ a:hover{text-decoration:underline;}
 
 /* ---------- HOME hero & cards ---------- */
 .is-home .toc{display:none;}
-.is-home .content{max-width:960px;}
+.is-home .content{max-width:1240px;}
 /* 히어로: 보라 박스 없이 타이포 중심의 미니멀 배너 */
 .is-home .markdown-body > div[align="center"]:first-of-type{
-  text-align:left; padding:14px 0 26px; margin:4px 0 30px;
-  border-bottom:1px solid var(--border);
+  text-align:left; padding:14px 0 22px; margin:4px 0 26px;
   word-break:keep-all; overflow-wrap:break-word;
 }
 .is-home .markdown-body > div[align="center"]:first-of-type h1{
@@ -151,7 +150,7 @@ a:hover{text-decoration:underline;}
   color:var(--muted); font-size:15px; line-height:1.75; max-width:66ch; margin:12px 0 0;
   word-break:keep-all;
 }
-.is-home .markdown-body > div[align="center"]:first-of-type p:has(> strong:only-child){margin:0;}
+.is-home .markdown-body > div[align="center"]:first-of-type p:has(> strong:only-child){margin:0; max-width:none; white-space:nowrap;}
 .is-home .markdown-body > div[align="center"]:first-of-type em{color:var(--accent-ink); font-style:normal; font-weight:600;}
 .is-home .markdown-body > div[align="center"]:first-of-type a{color:var(--accent-ink); font-weight:700;}
 /* 하단 가운데 정렬 CTA(시작하기) */
@@ -185,4 +184,6 @@ a:hover{text-decoration:underline;}
   .sidebar.open{transform:translateX(0);}
   .content{padding:20px 18px 50px;}
   .prevnext{flex-direction:column;}
+  .is-home .markdown-body > div[align="center"]:first-of-type p:has(> strong:only-child){white-space:normal;}
+  .is-home .markdown-body > div[align="center"]:first-of-type h1{font-size:30px;}
 }
