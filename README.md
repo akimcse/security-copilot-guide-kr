@@ -4,9 +4,7 @@
 
 **생성형 AI로 보안 운영을 가속하는 방법을, 개념부터 실습까지 한 번에.**
 
-보안팀(SOC 분석가 · 위협 인텔리전스 · IT/보안 관리자 · CISO)이 Microsoft Security Copilot을
-*이해하고 → 준비하고 → 직접 써 보도록* 설계한 한국어 학습 코스입니다.
-모든 설명은 **Microsoft Learn 공식 문서**를 근거로 하며, 페이지마다 1차 출처를 링크로 남겼습니다.
+보안팀(SOC 분석가 · 위협 인텔리전스 · IT/보안 관리자 · CISO)이 Microsoft Security Copilot을 *이해하고 → 준비하고 → 직접 써 보도록* 설계한 한국어 학습 코스입니다. 모든 설명은 **Microsoft Learn 공식 문서**를 근거로 하며, 페이지마다 1차 출처를 링크로 남겼습니다.
 
 🌐 **웹사이트로 보기 → https://akimcse.github.io/security-copilot-guide-kr/**
 
