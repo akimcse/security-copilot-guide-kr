@@ -8,8 +8,6 @@
 *이해하고 → 준비하고 → 직접 써 보도록* 설계한 한국어 학습 코스입니다.
 모든 설명은 **Microsoft Learn 공식 문서**를 근거로 하며, 페이지마다 1차 출처를 링크로 남겼습니다.
 
-🌐 **웹사이트로 보기 → https://akimcse.github.io/security-copilot-guide-kr/**
-
 </div>
 
 ---
