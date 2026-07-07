@@ -55,7 +55,7 @@ a:hover{text-decoration:underline;}
 .nav-time{font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums;}
 
 /* ---------- content ---------- */
-.content{flex:1; min-width:0; max-width:820px; margin:0 auto; padding:26px 46px 60px;}
+.content{flex:1; min-width:0; max-width:840px; margin:0; padding:26px 46px 60px;}
 .crumb{display:flex; align-items:center; gap:9px; font-size:13px; color:var(--muted); margin:2px 0 18px;}
 .crumb .sep{opacity:.6;}
 .crumb-part{font-weight:600; color:var(--accent-ink);}
