@@ -77,6 +77,8 @@ function rewriteLinks(md) {
 function stripInlineChrome(md) {
   md = md.replace(/^\[🏠 전체 목차\][^\n]*\n+/, '');
   md = md.replace(/\n---\s*\n+###\s*(다음 읽을거리|코스를 마치며)[\s\S]*$/, '\n');
+  // 사이트 홈에서는 자기 자신을 가리키는 '웹사이트로 보기' 줄 제거 (README에는 유지)
+  md = md.replace(/^\s*🌐\s*\*\*웹사이트로 보기[^\n]*\n+/m, '');
   return md;
 }
 

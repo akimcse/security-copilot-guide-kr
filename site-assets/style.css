@@ -126,38 +126,31 @@ a:hover{text-decoration:underline;}
 /* ---------- HOME hero & cards ---------- */
 .is-home .toc{display:none;}
 .is-home .content{max-width:960px;}
-.is-home .markdown-body > div[align="center"]{
-  position:relative; overflow:hidden;
-  background:
-    radial-gradient(120% 140% at 12% -10%, rgba(255,255,255,.28) 0%, rgba(255,255,255,0) 42%),
-    radial-gradient(120% 160% at 100% 120%, rgba(79,142,247,.55) 0%, rgba(79,142,247,0) 45%),
-    linear-gradient(125deg,#7a52c0 0%,#6a5be0 48%,#4f8ef7 100%);
-  color:#fff; border-radius:22px; padding:50px 40px 46px; margin:8px 0 34px;
-  box-shadow:0 18px 44px rgba(90,63,160,.34), inset 0 1px 0 rgba(255,255,255,.22);
-  text-align:center;
+/* 히어로: 보라 박스 없이 타이포 중심의 미니멀 배너 */
+.is-home .markdown-body > div[align="center"]:first-of-type{
+  text-align:left; padding:14px 0 26px; margin:4px 0 30px;
+  border-bottom:1px solid var(--border);
 }
-.is-home .markdown-body > div[align="center"] h1{
-  border:none; color:#fff; font-size:34px; font-weight:750; line-height:1.28;
-  margin:0 0 .45em; padding:0; letter-spacing:-.01em; text-shadow:0 1px 12px rgba(40,20,90,.22);
+.is-home .markdown-body > div[align="center"]:first-of-type h1{
+  border:none; padding:0; margin:0 0 .35em;
+  font-size:38px; line-height:1.22; font-weight:750; letter-spacing:-.02em; color:var(--fg);
 }
-.is-home .markdown-body > div[align="center"] strong{
-  display:block; color:#fff; font-size:18px; font-weight:650; margin:0 auto 16px; max-width:44ch;
+.is-home .markdown-body > div[align="center"]:first-of-type strong{
+  display:block; font-size:20px; font-weight:700; margin:0 0 14px;
+  background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--accent-ink);
 }
-.is-home .markdown-body > div[align="center"] p{
-  color:rgba(255,255,255,.9); font-size:14.5px; line-height:1.7; max-width:60ch; margin:0 auto;
+.is-home .markdown-body > div[align="center"]:first-of-type p{
+  color:var(--muted); font-size:15px; line-height:1.75; max-width:66ch; margin:0;
 }
-.is-home .markdown-body > div[align="center"] strong,
-.is-home .markdown-body > div[align="center"] p{position:relative; z-index:1;}
-.is-home .markdown-body > div[align="center"] a{color:#fff; text-decoration:underline; text-underline-offset:3px; font-weight:700;}
-.is-home .markdown-body > div[align="center"] em{color:#fff; font-style:normal; font-weight:700; border-bottom:1px dashed rgba(255,255,255,.5);}
+.is-home .markdown-body > div[align="center"]:first-of-type em{color:var(--accent-ink); font-style:normal; font-weight:600;}
+.is-home .markdown-body > div[align="center"]:first-of-type a{color:var(--accent-ink); font-weight:700;}
 /* 하단 가운데 정렬 CTA(시작하기) */
 .is-home .markdown-body > div[align="center"]:last-of-type{
-  background:var(--grad-soft); color:var(--fg); box-shadow:var(--shadow);
-  padding:24px 26px; border:1px solid var(--border);
+  text-align:center; background:var(--grad-soft); color:var(--fg); box-shadow:var(--shadow);
+  padding:22px 26px; border:1px solid var(--border); border-radius:14px; margin-top:8px;
 }
-.is-home .markdown-body > div[align="center"]:last-of-type::before{display:none;}
 .is-home .markdown-body > div[align="center"]:last-of-type strong{color:var(--fg); font-size:16px;}
-.is-home .markdown-body > div[align="center"]:last-of-type a{color:var(--accent-ink);}
+.is-home .markdown-body > div[align="center"]:last-of-type a{color:var(--accent-ink); font-weight:700;}
 .is-home .markdown-body h2{border-bottom:none; font-size:21px; display:inline-block; padding:2px 0; background:none;}
 .is-home .markdown-body h2::after{content:''; display:block; height:3px; width:44px; margin-top:6px; background:var(--grad); border-radius:3px;}
 /* 홈 코스 표를 카드처럼 (헤더에 '소요' 있는 표만) */
