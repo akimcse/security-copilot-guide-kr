@@ -147,7 +147,7 @@ a:hover{text-decoration:underline;}
   font-weight:700; color:var(--fg);
 }
 .is-home .markdown-body > div[align="center"]:first-of-type p{
-  color:var(--muted); font-size:15px; line-height:1.75; max-width:66ch; margin:12px 0 0;
+  color:var(--muted); font-size:15px; line-height:1.75; max-width:none; margin:12px 0 0;
   word-break:keep-all;
 }
 .is-home .markdown-body > div[align="center"]:first-of-type p:has(> strong:only-child){margin:0; max-width:none; white-space:nowrap;}
