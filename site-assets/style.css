@@ -130,18 +130,28 @@ a:hover{text-decoration:underline;}
 .is-home .markdown-body > div[align="center"]:first-of-type{
   text-align:left; padding:14px 0 26px; margin:4px 0 30px;
   border-bottom:1px solid var(--border);
+  word-break:keep-all; overflow-wrap:break-word;
 }
 .is-home .markdown-body > div[align="center"]:first-of-type h1{
   border:none; padding:0; margin:0 0 .35em;
   font-size:38px; line-height:1.22; font-weight:750; letter-spacing:-.02em; color:var(--fg);
+  word-break:keep-all;
 }
-.is-home .markdown-body > div[align="center"]:first-of-type strong{
-  display:block; font-size:20px; font-weight:700; margin:0 0 14px;
+/* 서브타이틀 = 문단 전체가 굵은 글씨인 경우만(only-child) 큰 그라디언트 블록 */
+.is-home .markdown-body > div[align="center"]:first-of-type p > strong:only-child{
+  display:block; font-size:20px; font-weight:700; margin:0 0 4px;
   background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--accent-ink);
+  word-break:keep-all;
+}
+/* 본문 안 인라인 강조는 평범한 굵은 글씨로 */
+.is-home .markdown-body > div[align="center"]:first-of-type p strong{
+  font-weight:700; color:var(--fg);
 }
 .is-home .markdown-body > div[align="center"]:first-of-type p{
-  color:var(--muted); font-size:15px; line-height:1.75; max-width:66ch; margin:0;
+  color:var(--muted); font-size:15px; line-height:1.75; max-width:66ch; margin:12px 0 0;
+  word-break:keep-all;
 }
+.is-home .markdown-body > div[align="center"]:first-of-type p:has(> strong:only-child){margin:0;}
 .is-home .markdown-body > div[align="center"]:first-of-type em{color:var(--accent-ink); font-style:normal; font-weight:600;}
 .is-home .markdown-body > div[align="center"]:first-of-type a{color:var(--accent-ink); font-weight:700;}
 /* 하단 가운데 정렬 CTA(시작하기) */
