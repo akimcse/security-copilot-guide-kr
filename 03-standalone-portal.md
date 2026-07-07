@@ -1,8 +1,16 @@
-# Step 3 — Standalone 포털과 효과적인 프롬프트 작성
+[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 4 / 12
 
-[← 목차](./README.md) | [← Step 2: 핵심 개념](./02-concepts.md) | [다음: Step 4 프롬프트북 →](./04-promptbooks.md)
+# 03 · Standalone 포털과 효과적인 프롬프트 작성
 
-이 페이지는 **Standalone 포털(https://securitycopilot.microsoft.com)** 에서 세션을 시작하고, **효과적인 프롬프트를 작성**하는 방법을 다룹니다. 프롬프트 품질은 응답 품질을 직접 좌우하므로, 공식 가이드가 제시하는 프롬프트 4요소와 작성 팁을 중심으로 살펴봅니다.
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 세션을 시작하고 프롬프트를 입력하는 법
+> - 좋은 프롬프트의 4요소(목표·맥락·기대·출처)
+> - 프로세스 로그로 응답 근거를 검증하는 법
+>
+> ⏱️ 예상 소요 **7분**　·　🎯 대상: SOC 분석가, 위협 인텔 분석가
+
+이 페이지는**Standalone 포털(https://securitycopilot.microsoft.com)** 에서 세션을 시작하고, **효과적인 프롬프트를 작성**하는 방법을 다룹니다. 프롬프트 품질은 응답 품질을 직접 좌우하므로, 공식 가이드가 제시하는 프롬프트 4요소와 작성 팁을 중심으로 살펴봅니다.
 
 **접근:** https://securitycopilot.microsoft.com
 
@@ -102,4 +110,12 @@
 - [프롬프트 작성 팁](https://learn.microsoft.com/security-copilot/prompting-tips)
 - [Security Copilot 탐색(navigating)](https://learn.microsoft.com/security-copilot/navigating-security-copilot)
 
-[← 목차](./README.md) | [← Step 2: 핵심 개념](./02-concepts.md) | [다음: Step 4 프롬프트북 →](./04-promptbooks.md)
+---
+
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [02 · 핵심 개념](./02-concepts.md) | [04 · 프롬프트북](./04-promptbooks.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

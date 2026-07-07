@@ -1,8 +1,16 @@
-# Step 2 — 핵심 개념과 용어
+[🏠 전체 목차](./README.md)　·　**Part 1 · 시작하기**　·　페이지 3 / 12
 
-[← 목차](./README.md) | [← Step 1: 사전 준비](./01-prerequisites.md) | [다음: Step 3 Standalone 포털 →](./03-standalone-portal.md)
+# 02 · 핵심 개념과 용어
 
-Security Copilot을 제대로 다루려면 먼저 **공통 용어**를 정확히 이해해야 합니다. 이 페이지는 공식 문서(책임 있는 AI 개요의 용어집 포함)에 정의된 핵심 개념을 정리하고, 각 용어를 **정의 + 보안팀 관점의 짧은 설명**으로 함께 제시합니다. 이후 Step들(프롬프트 작성, 프롬프트북, 플러그인, 에이전트, 사용량)에서 반복적으로 사용되는 어휘이므로 여기서 한 번 정돈해 두면 좋습니다.
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 프롬프트·세션·프롬프트북·플러그인·에이전트의 정의
+> - SCU·용량·그라운딩이 서로 어떻게 얽히는지
+> - 지식 소스(파일 업로드)의 범위와 한계
+>
+> ⏱️ 예상 소요 **7분**　·　🎯 대상: 모든 독자
+
+Security Copilot을 제대로 다루려면먼저 **공통 용어**를 정확히 이해해야 합니다. 이 페이지는 공식 문서(책임 있는 AI 개요의 용어집 포함)에 정의된 핵심 개념을 정리하고, 각 용어를 **정의 + 보안팀 관점의 짧은 설명**으로 함께 제시합니다. 이후 Step들(프롬프트 작성, 프롬프트북, 플러그인, 에이전트, 사용량)에서 반복적으로 사용되는 어휘이므로 여기서 한 번 정돈해 두면 좋습니다.
 
 참고: [책임 있는 AI 개요(공식 용어집)](https://learn.microsoft.com/security-copilot/responsible-ai-overview-security-copilot)
 
@@ -115,4 +123,12 @@ Security Copilot을 제대로 다루려면 먼저 **공통 용어**를 정확히
 - [플러그인 개요(플러그인/스킬)](https://learn.microsoft.com/security-copilot/plugin-overview)
 - [에이전트 개요(트리거·ID·권한)](https://learn.microsoft.com/security-copilot/agents-overview)
 
-[← 목차](./README.md) | [← Step 1: 사전 준비](./01-prerequisites.md) | [다음: Step 3 Standalone 포털 →](./03-standalone-portal.md)
+---
+
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [01 · 사전 준비](./01-prerequisites.md) | [03 · Standalone 포털](./03-standalone-portal.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

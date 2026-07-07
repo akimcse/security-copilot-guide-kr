@@ -1,6 +1,14 @@
-# Step 9 — 책임 있는 AI · 개인정보 · 데이터 보안
+[🏠 전체 목차](./README.md)　·　**Part 3 · 운영과 거버넌스**　·　페이지 10 / 12
 
-[← 목차](./README.md) | [← Step 8: 사용량 모니터링](./08-usage-monitoring.md) | [다음: Step 10 핸즈온 랩 →](./10-handson-lab.md)
+# 09 · 책임 있는 AI · 개인정보 · 데이터 보안
+
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 고객 데이터가 모델 학습에 쓰이지 않는다는 보장
+> - 데이터 저장 지역(레지던시)과 보존 기간
+> - 데이터 공유 옵션과 6대 책임 있는 AI 원칙
+>
+> ⏱️ 예상 소요 **8분**　·　🎯 대상: 컴플라이언스, CISO, 데이터 보호
 
 Security Copilot을 조직에 도입할 때 보안팀이 가장 자주 받는 질문은 "우리 데이터가 어떻게 처리되고, 모델 학습에 쓰이는가?"입니다. 이 페이지는 데이터 처리, 데이터 레지던시, 보존, 보안 안전장치, 그리고 Microsoft의 책임 있는 AI 원칙을 정리합니다.
 
@@ -91,4 +99,10 @@ Security Copilot은 다음 원칙에 부합하도록 구축되었습니다.
 - [Security Copilot 책임 있는 AI 개요](https://learn.microsoft.com/en-us/security-copilot/responsible-ai-overview-security-copilot)
 - [Security Copilot 책임 있는 AI FAQ](https://learn.microsoft.com/en-us/security-copilot/rai-faqs-security-copilot)
 
-[← 목차](./README.md) | [← Step 8: 사용량 모니터링](./08-usage-monitoring.md) | [다음: Step 10 핸즈온 랩 →](./10-handson-lab.md)
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [08 · 사용량 모니터링](./08-usage-monitoring.md) | [10 · 핸즈온 랩](./10-handson-lab.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

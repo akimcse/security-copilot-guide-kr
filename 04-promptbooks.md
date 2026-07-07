@@ -1,6 +1,14 @@
-# Step 4 — 프롬프트북 (기본 제공 + 커스텀)
+[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 5 / 12
 
-[← 목차](./README.md) | [← Step 3: Standalone 포털](./03-standalone-portal.md) | [다음: Step 5 플러그인 →](./05-plugins.md)
+# 04 · 프롬프트북 (기본 제공 + 커스텀)
+
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 프롬프트북이 무엇이고 언제 쓰는지
+> - 기본 제공 프롬프트북 8종과 각각의 용도
+> - 나만의 커스텀 프롬프트북 만드는 법
+>
+> ⏱️ 예상 소요 **8분**　·　🎯 대상: SOC 분석가, 위협 인텔 분석가
 
 프롬프트북(Promptbook)은 여러 프롬프트를 **순차적으로 실행**하여 특정 보안 작업을 자동화하는 기능입니다. 이 페이지에서는 프롬프트북의 개념, 접근 방법, 기본 제공 프롬프트북 8종, 그리고 커스텀 프롬프트북 생성 절차를 정리합니다.
 
@@ -60,4 +68,12 @@
 - [프롬프트북 사용](https://learn.microsoft.com/en-us/security-copilot/using-promptbooks)
 - [프롬프트북 만들기](https://learn.microsoft.com/en-us/security-copilot/build-promptbooks)
 
-[← 목차](./README.md) | [← Step 3: Standalone 포털](./03-standalone-portal.md) | [다음: Step 5 플러그인 →](./05-plugins.md)
+---
+
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [03 · Standalone 포털](./03-standalone-portal.md) | [05 · 플러그인](./05-plugins.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

@@ -1,8 +1,14 @@
-# Step 7 — Security Copilot 에이전트
+[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 8 / 12
 
-[← 목차](./README.md) | [← Step 6: 임베디드 경험](./06-embedded-experiences.md) | [다음: Step 8 사용량 모니터링 →](./08-usage-monitoring.md)
+# 07 · Security Copilot 에이전트
 
----
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 에이전트의 개념과 감독 모델, ID 요건
+> - Defender/Entra/Intune/Purview 제품군별 에이전트
+> - 각 에이전트의 GA/프리뷰 상태와 용도
+>
+> ⏱️ 예상 소요 **8분**　·　🎯 대상: 보안/IT 관리자, CISO
 
 Security Copilot **에이전트(agent)**는 사람의 감독 하에 반자동으로 보안 업무를 수행하는 AI 워커입니다. 다른 모든 기능과 마찬가지로 에이전트도 **SCU(Security Compute Unit)를 소비**합니다.
 
@@ -80,4 +86,10 @@ Security Copilot **에이전트(agent)**는 사람의 감독 하에 반자동으
 
 ---
 
-[← 목차](./README.md) | [← Step 6: 임베디드 경험](./06-embedded-experiences.md) | [다음: Step 8 사용량 모니터링 →](./08-usage-monitoring.md)
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [06 · 임베디드 경험](./06-embedded-experiences.md) | [08 · 사용량 모니터링](./08-usage-monitoring.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

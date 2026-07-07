@@ -1,6 +1,14 @@
-# Step 8 — 사용량 모니터링과 용량(SCU) 관리
+[🏠 전체 목차](./README.md)　·　**Part 3 · 운영과 거버넌스**　·　페이지 9 / 12
 
-[← 목차](./README.md) | [← Step 7: 에이전트](./07-agents.md) | [다음: Step 9 책임 있는 AI · 데이터 보안 →](./09-responsible-ai.md)
+# 08 · 사용량 모니터링과 용량(SCU) 관리
+
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 사용량 대시보드에서 무엇을 볼 수 있는지
+> - SCU가 소비·갱신·만료되는 방식
+> - 한도 근접 시 동작과 용량 조정 방법
+>
+> ⏱️ 예상 소요 **6분**　·　🎯 대상: 보안/IT 관리자, 비용 담당
 
 Security Copilot의 소비량은 **Security Compute Unit(SCU)** 단위로 측정됩니다. 이 페이지는 소유자가 사용량을 모니터링하고, 용량을 조정하며, 한도 근접 시 동작을 이해하는 방법을 정리합니다.
 
@@ -90,4 +98,10 @@ SCU 수는 두 경로로 변경할 수 있습니다.
 - [사용량 관리](https://learn.microsoft.com/en-us/security-copilot/manage-usage)
 - [SCU와 용량](https://learn.microsoft.com/en-us/security-copilot/security-compute-units-capacity)
 
-[← 목차](./README.md) | [← Step 7: 에이전트](./07-agents.md) | [다음: Step 9 책임 있는 AI · 데이터 보안 →](./09-responsible-ai.md)
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [07 · 에이전트](./07-agents.md) | [09 · 책임 있는 AI](./09-responsible-ai.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

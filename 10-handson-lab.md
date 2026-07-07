@@ -1,6 +1,14 @@
-# Step 10 — 핸즈온 랩 (6단계 실습)
+[🏠 전체 목차](./README.md)　·　**Part 4 · 실습과 참조**　·　페이지 11 / 12
 
-[← 목차](./README.md) | [← Step 9: 책임 있는 AI · 데이터 보안](./09-responsible-ai.md) | [다음: 부록 →](./99-troubleshooting.md)
+# 10 · 핸즈온 랩 (6단계 실습)
+
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 첫 프롬프트부터 에이전트까지 6단계 직접 실습
+> - 각 단계에서 관찰할 화면과 포인트
+> - 실제 SCU 소비를 확인하는 법
+>
+> ⏱️ 예상 소요 **20분**　·　🎯 대상: 실습을 원하는 모든 독자
 
 이 랩은 **공식 문서에 기반한 초보자용 단계별 실습**입니다. 앞선 Step에서 다룬 개념(첫 프롬프트 → 프롬프트북 → 플러그인 → 임베디드 경험 → 커스텀 프롬프트북 → 에이전트)을 실제 포털에서 순서대로 경험합니다. 각 단계에는 **화면에서 관찰할 점**과 **공식 how-to URL**을 함께 표기했습니다.
 
@@ -145,4 +153,10 @@
 - [에이전트 검색(Discover agents)](https://learn.microsoft.com/en-us/security-copilot/discover-agents)
 - [에이전트 설정·관리(Agents manage)](https://learn.microsoft.com/en-us/security-copilot/agents-manage)
 
-[← 목차](./README.md) | [← Step 9: 책임 있는 AI · 데이터 보안](./09-responsible-ai.md) | [다음: 부록 →](./99-troubleshooting.md)
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [09 · 책임 있는 AI](./09-responsible-ai.md) | [99 · 부록](./99-troubleshooting.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

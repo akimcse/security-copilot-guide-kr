@@ -1,8 +1,14 @@
-# Step 6 — 임베디드 경험 (제품 내장 Security Copilot)
+[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 7 / 12
 
-[← 목차](./README.md) | [← Step 5: 플러그인](./05-plugins.md) | [다음: Step 7 에이전트 →](./07-agents.md)
+# 06 · 임베디드 경험 (제품 내장 Security Copilot)
 
----
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 어떤 제품에 Security Copilot이 내장돼 있는지
+> - Defender XDR 인시던트 요약·유도된 대응·KQL 생성
+> - 임베디드에서 독립형 포털로 이어가는 조사 흐름
+>
+> ⏱️ 예상 소요 **9분**　·　🎯 대상: SOC 분석가, 위협 헌터
 
 Security Copilot은 독립형 포털뿐 아니라 다른 Microsoft 보안 제품 안에 **사이드카 패널**로 내장되어 제공됩니다. 이 임베디드(embedded) 경험은 분석가가 제품을 벗어나지 않고 각 제품의 컨텍스트에서 Security Copilot 역량을 사용할 수 있게 합니다. 패널이 숨겨져 있든 보이든 동작(및 SCU 소비)은 동일합니다.
 
@@ -101,4 +107,10 @@ Advanced Hunting에서 Security Copilot은 자연어를 KQL 쿼리로 변환해 
 
 ---
 
-[← 목차](./README.md) | [← Step 5: 플러그인](./05-plugins.md) | [다음: Step 7 에이전트 →](./07-agents.md)
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [05 · 플러그인](./05-plugins.md) | [07 · 에이전트](./07-agents.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

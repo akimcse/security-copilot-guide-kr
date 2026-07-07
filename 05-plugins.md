@@ -1,6 +1,14 @@
-# Step 5 — 플러그인 (Microsoft · 비-Microsoft · 커스텀)
+[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 6 / 12
 
-[← 목차](./README.md) | [← Step 4: 프롬프트북](./04-promptbooks.md) | [다음: Step 6 임베디드 경험 →](./06-embedded-experiences.md)
+# 05 · 플러그인 (Microsoft · 비-Microsoft · 커스텀)
+
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - Microsoft·비-Microsoft·커스텀 플러그인의 차이
+> - 플러그인이 응답 품질에 미치는 영향(그라운딩)
+> - 조직 단위 접근 제어와 관리 방법
+>
+> ⏱️ 예상 소요 **7분**　·　🎯 대상: 보안/IT 관리자
 
 플러그인(plugin)은 API를 통해 Microsoft·비-Microsoft 서비스 및 공개 웹의 리소스에 접근하게 하여 Security Copilot의 기능을 확장하는 **관련 도구(tool)의 모음**입니다. 플러그인은 응답에 컨텍스트를 추가하며, 에이전트의 경우 LLM 범위를 넘어 에이전트가 수행할 수 있는 작업을 확장합니다.
 
@@ -69,4 +77,12 @@
 - [플러그인 관리](https://learn.microsoft.com/en-us/security-copilot/manage-plugins)
 - [비-Microsoft 플러그인](https://learn.microsoft.com/en-us/security-copilot/plugin-other)
 
-[← 목차](./README.md) | [← Step 4: 프롬프트북](./04-promptbooks.md) | [다음: Step 6 임베디드 경험 →](./06-embedded-experiences.md)
+---
+
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [04 · 프롬프트북](./04-promptbooks.md) | [06 · 임베디드 경험](./06-embedded-experiences.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

@@ -1,91 +1,131 @@
-# Microsoft Security Copilot 핸즈온 워크숍
+<div align="center">
 
-이 워크숍은 **Microsoft Security Copilot을 이해하고 직접 사용해 보는 것**을 목표로 합니다. 소개 → 사전 준비 → 핵심 개념 → 주요 기능 → 핸즈온 랩 순서로, 보안팀(SOC 분석가 · 위협 인텔리전스 · IT 관리자 · 컴플라이언스 · CISO) 관점에서 학습합니다.
-페이지를 번호 순서대로 읽으면 그대로 진행됩니다.
+# 🛡️ Microsoft Security Copilot 실전 가이드
 
-> **처음이라면 [00 개요](./00-overview.md)부터 읽으세요.**
+**생성형 AI로 보안 운영을 가속하는 방법을, 개념부터 실습까지 한 번에.**
+
+보안팀(SOC 분석가 · 위협 인텔리전스 · IT/보안 관리자 · CISO)이 Microsoft Security Copilot을
+*이해하고 → 준비하고 → 직접 써 보도록* 설계한 한국어 학습 코스입니다.
+모든 설명은 **Microsoft Learn 공식 문서**를 근거로 하며, 페이지마다 1차 출처를 링크로 남겼습니다.
+
+</div>
+
+---
+
+## 🚀 어디부터 시작할까요?
+
+읽는 목적에 따라 세 갈래 중 하나로 들어오세요.
+
+- **"Security Copilot이 뭔지 빠르게 감 잡고 싶어요"** → [개요 한 장 보기](./00-overview.md) *(약 6분)*
+- **"우리 조직에 도입하려면 뭐가 필요하죠?"** → [사전 준비 · 라이선스 · 권한](./01-prerequisites.md) *(약 9분)*
+- **"일단 손으로 만져 보고 싶어요"** → [6단계 핸즈온 랩으로 바로 가기](./10-handson-lab.md) *(약 20분)*
+
+> [!TIP]
+> 처음이라면 위에서 아래로 순서대로 읽는 것을 권장합니다. 각 페이지 상단에 **학습 목표·예상 소요 시간·대상 독자**가 표시되어, 필요한 부분만 골라 읽기에도 좋습니다.
+
+---
+
+## 🗺️ 학습 여정
+
+```mermaid
+flowchart LR
+    subgraph P1["Part 1 · 시작하기"]
+        A0["00 개요"] --> A1["01 사전 준비"] --> A2["02 핵심 개념"]
+    end
+    subgraph P2["Part 2 · 핵심 기능"]
+        B3["03 포털·프롬프트"] --> B4["04 프롬프트북"] --> B5["05 플러그인"] --> B6["06 임베디드"] --> B7["07 에이전트"]
+    end
+    subgraph P3["Part 3 · 운영·거버넌스"]
+        C8["08 사용량·SCU"] --> C9["09 책임 있는 AI"]
+    end
+    subgraph P4["Part 4 · 실습·참조"]
+        D10["10 핸즈온 랩"] --> D99["99 부록"]
+    end
+    P1 --> P2 --> P3 --> P4
+```
+
+---
+
+## 📚 전체 코스
+
+### Part 1 · 시작하기 — *무엇이고, 무엇이 필요한가*
+
+| 페이지 | 이 페이지의 핵심 | 소요 |
+| :-- | :-- | :--: |
+| [**00 · 개요**](./00-overview.md) | Security Copilot의 정의, standalone/embedded 두 경험, 동작 파이프라인, 활용 사례 | 6분 |
+| [**01 · 사전 준비**](./01-prerequisites.md) | 라이선스(E5/E7 vs SCU), 프로비저닝, Azure 요건, **역할·RBAC 3계층**, 데이터 지역 | 9분 |
+| [**02 · 핵심 개념**](./02-concepts.md) | 프롬프트·세션·프롬프트북·플러그인·에이전트·SCU·그라운딩 등 필수 용어 | 7분 |
+
+### Part 2 · 핵심 기능 — *실제로 무엇을 할 수 있는가*
+
+| 페이지 | 이 페이지의 핵심 | 소요 |
+| :-- | :-- | :--: |
+| [**03 · Standalone 포털**](./03-standalone-portal.md) | 독립형 포털 사용법과 **효과적인 프롬프트 작성 4요소** | 7분 |
+| [**04 · 프롬프트북**](./04-promptbooks.md) | 기본 제공 8종 + 나만의 커스텀 프롬프트북 만들기 | 8분 |
+| [**05 · 플러그인**](./05-plugins.md) | Microsoft·비-Microsoft·커스텀 플러그인과 접근 제어 | 7분 |
+| [**06 · 임베디드 경험**](./06-embedded-experiences.md) | Defender XDR·Entra·Intune·Purview·Sentinel 내장 기능 | 9분 |
+| [**07 · 에이전트**](./07-agents.md) | 제품군별 Security Copilot 에이전트 (GA/프리뷰) | 8분 |
+
+### Part 3 · 운영과 거버넌스 — *안전하게 굴리려면*
+
+| 페이지 | 이 페이지의 핵심 | 소요 |
+| :-- | :-- | :--: |
+| [**08 · 사용량 모니터링**](./08-usage-monitoring.md) | 용량 대시보드, SCU 소비·갱신·한도 동작 | 6분 |
+| [**09 · 책임 있는 AI · 데이터 보안**](./09-responsible-ai.md) | 데이터 학습 미사용 보장, 레지던시, 보존, 6대 RAI 원칙 | 8분 |
+
+### Part 4 · 실습과 참조 — *직접 해보고, 막히면 찾아보기*
+
+| 페이지 | 이 페이지의 핵심 | 소요 |
+| :-- | :-- | :--: |
+| [**10 · 핸즈온 랩**](./10-handson-lab.md) | 첫 프롬프트 → 프롬프트북 → 플러그인 → 임베디드 → 커스텀 → 에이전트 **6단계 실습** | 20분 |
+| [**99 · 부록**](./99-troubleshooting.md) | 문제 해결 · FAQ · 알려진 제한 사항 | 참조 |
+
+---
+
+## 🧭 역할별 추천 경로
+
+바쁜 분들을 위해, 역할에 맞춰 꼭 볼 페이지만 골랐습니다.
+
+| 역할 | 추천 순서 | 왜 |
+| :-- | :-- | :-- |
+| **SOC 분석가 / 위협 헌터** | 00 → 03 → 04 → 06 → 10 | 프롬프트·프롬프트북·임베디드 조사 흐름과 실습에 집중 |
+| **보안/IT 관리자** | 01 → 05 → 07 → 08 → 99 | 도입 요건·플러그인·에이전트·용량 관리·트러블슈팅 |
+| **컴플라이언스 / 데이터 보호** | 00 → 09 → 06 → 01 | 데이터 처리·레지던시와 Purview 임베디드 관점 |
+| **CISO / 의사결정자** | 00 → 09 → 07 → 08 | 가치·거버넌스·자동화·비용(SCU)을 큰 그림으로 |
+
+---
+
+## 🔑 자주 쓰는 포털
+
+| 포털 | URL | 용도 |
+| :-- | :-- | :-- |
+| Security Copilot 포털 | https://securitycopilot.microsoft.com/ | 독립형 경험(프롬프트·프롬프트북·에이전트·플러그인) |
+| Security Store | https://securitystore.microsoft.com/ | 에이전트·솔루션 검색·설치 |
+| Microsoft Defender 포털 | https://security.microsoft.com/ | Defender XDR 임베디드(인시던트 요약·유도된 대응·KQL) |
+| Microsoft Entra 관리 센터 | https://entra.microsoft.com/ | Entra 임베디드·조건부 액세스 최적화 에이전트 |
+| Microsoft Intune 관리 센터 | https://intune.microsoft.com/ | Intune 임베디드·에이전트 |
+| Microsoft Purview 포털 | https://purview.microsoft.com/ | Purview 임베디드(DLP·IRM) |
+| Azure 포털 | https://portal.azure.com/ | SCU 용량 프로비저닝·관리 |
+
+---
+
+## ❓ 시작 전 짚고 갈 3가지
 
 > [!IMPORTANT]
-> - 이 자료는 Microsoft 공식 문서가 아니라 **이해와 실습을 돕기 위한 비공식 핸즈온 가이드**입니다. 다만 **모든 내용은 Microsoft Learn 공식 문서를 근거**로 작성했으며, 각 페이지 하단에 참고한 1차 출처(Learn URL)를 명시했습니다.
-> - Security Copilot에는 **프리뷰(preview) 상태의 기능이 다수** 포함되며, UI·명령어·사양·제공 조건은 향후 변경될 수 있습니다. 여기의 내용은 작성 시점(2026년 기준)을 반영하며 실제 화면과 다를 수 있습니다.
-> - **Security Copilot은 상용 클라우드 전용**이며 GCC / GCC High / DoD / Azure Government 환경용으로 설계되지 않았습니다.
-> - 시작 전에 각 페이지의 "참고 링크"에서 최신 사양을 확인하세요.
+> - **라이선스부터 확인하세요.** Microsoft 365 E5/E7 보유 여부에 따라 온보딩 절차와 SCU 구매 필요성이 달라집니다. → [01 사전 준비](./01-prerequisites.md)
+> - **프리뷰 기능이 많습니다.** UI·사양·제공 조건이 바뀔 수 있으니, 실습 전 각 페이지의 **참고 링크**에서 최신 상태를 확인하세요. (공개 프리뷰 기능도 SCU가 과금됩니다.)
+> - **상용 클라우드 전용입니다.** GCC / GCC High / DoD / Azure Government 환경에서는 사용하도록 설계되지 않았습니다.
 
 ---
 
-## 목차
+## 📎 이 코스에 대하여
 
-| # | 페이지 | 내용 |
-| --- | --- | --- |
-| 00 | [개요](./00-overview.md) | **Security Copilot이란?** · 2가지 경험(standalone / embedded) · 동작 원리 · 활용 사례 |
-| 01 | [Step 1: 사전 준비](./01-prerequisites.md) | 라이선스(E5/E7 vs SCU) · SCU 프로비저닝 · Azure 요건 · **역할/RBAC 3계층** · 데이터 지역(geo) |
-| 02 | [Step 2: 핵심 개념](./02-concepts.md) | 프롬프트 · 세션 · 프롬프트북 · 플러그인 · 스킬 · 에이전트 · SCU · 용량 · 그라운딩 · 지식 소스 · 워크스페이스 |
-| 03 | [Step 3: Standalone 포털](./03-standalone-portal.md) | 독립형 포털 경험 · **효과적인 프롬프트 작성법** · 프로세스 로그 · 세션 공유 |
-| 04 | [Step 4: 프롬프트북](./04-promptbooks.md) | 기본 제공 프롬프트북 8종 · **커스텀 프롬프트북 만들기** |
-| 05 | [Step 5: 플러그인](./05-plugins.md) | Microsoft / 비-Microsoft / 커스텀 플러그인 · 관리 및 접근 제어 |
-| 06 | [Step 6: 임베디드 경험](./06-embedded-experiences.md) | Defender XDR · Entra · Intune · Purview · Sentinel 내장 기능 |
-| 07 | [Step 7: 에이전트](./07-agents.md) | Security Copilot 에이전트(Defender / Entra / Intune / Purview) |
-| 08 | [Step 8: 사용량 모니터링](./08-usage-monitoring.md) | 용량/사용량 대시보드 · SCU 소비 · 근접 한도 동작 |
-| 09 | [Step 9: 책임 있는 AI · 데이터 보안](./09-responsible-ai.md) | 데이터 처리 · 학습 미사용 보장 · 데이터 레지던시 · 보존 기간 |
-| 10 | [Step 10: 핸즈온 랩](./10-handson-lab.md) | **6단계 실습**: 첫 프롬프트 → 프롬프트북 → 플러그인 → 임베디드 → 커스텀 프롬프트북 → 에이전트 |
-| 99 | [부록](./99-troubleshooting.md) | 문제 해결 · FAQ · 알려진 제한 사항 |
+- **근거:** 모든 내용은 [Microsoft Learn](https://learn.microsoft.com/security-copilot/) 공식 문서를 기반으로 하며, 각 페이지 하단 **참고 링크**에 1차 출처를 명시했습니다.
+- **스크린샷:** 실습 화면 캡처를 채워 넣는 방법은 [`images/README.md`](./images/README.md)를 참고하세요.
+- **성격:** 학습용 비공식 자료입니다. Microsoft, Microsoft Security Copilot 및 관련 제품명은 Microsoft Corporation의 상표입니다.
 
----
+<div align="center">
 
-## 이 워크숍의 지도
+**준비됐나요? → [00 · 개요부터 시작하기](./00-overview.md)**
 
-```
-00 개요 ─▶ 01 사전 준비 ─▶ 02 핵심 개념 ─▶ 03 Standalone 포털 ─▶ 04 프롬프트북 ─▶ 05 플러그인 ─▶ 06 임베디드 경험 ─▶ 07 에이전트 ─▶ 08 사용량 모니터링 ─▶ 09 책임 있는 AI ─▶ 10 핸즈온 랩 ─▶ 99 부록
- (무엇인가?)   (라이선스/역할)   (용어)           (프롬프트 작성)       (프롬프트북)      (데이터 소스)    (제품 내장)          (자동화)       (SCU 관리)              (데이터 보안)        (직접 실습)
-```
-
-## 사전 요구사항 요약 (라이선스, 역할, 도구)
-
-| 구분 | 내용 |
-| --- | --- |
-| **라이선스/용량** | **Microsoft 365 E5 또는 E7** 고객은 자동 프로비저닝 대상일 수 있음. 그 외 고객은 Azure에서 **Security Compute Unit(SCU)**를 수동 프로비저닝(최소 1 SCU). 자세한 내용은 [Step 1](./01-prerequisites.md) |
-| **Azure** | SCU 구매 시 Azure 구독 필요 · 용량 프로비저닝에 **Contributor 또는 Owner** 역할 |
-| **역할** | 온보딩 대상 테넌트에서 **Security Administrator 이상** · Security Copilot 플랫폼 역할(**Copilot 소유자 / 기여자**) |
-| **접근 도구** | 웹 브라우저(standalone 포털 `securitycopilot.microsoft.com`), 각 보안 제품 포털(embedded) |
-
-> [!IMPORTANT]
-> **온보딩 전에 조직이 Microsoft 365 E5 또는 E7 라이선스를 보유했는지 반드시 먼저 확인하세요.** 따라야 할 단계와 용량 구매 필요 여부가 이 판단에 따라 달라집니다.
-
----
-
-## 사용하는 사이트(포털)
-
-| 공식 명칭 | URL | 용도 |
-| --- | --- | --- |
-| **Microsoft Security Copilot 포털** | https://securitycopilot.microsoft.com/ | 독립형(standalone) 경험 — 프롬프트 · 프롬프트북 · 에이전트 · 플러그인 관리 |
-| **Security Store** | https://securitystore.microsoft.com/ | 에이전트 및 솔루션 검색·설치 |
-| **Microsoft Defender 포털** | https://security.microsoft.com/ | Defender XDR 임베디드 경험(인시던트 요약, 유도된 대응, KQL 생성) |
-| **Microsoft Entra 관리 센터** | https://entra.microsoft.com/ | Entra 임베디드 경험, 조건부 액세스 최적화 에이전트 |
-| **Microsoft Intune 관리 센터** | https://intune.microsoft.com/ | Intune 임베디드 경험 및 에이전트 |
-| **Microsoft Purview 포털** | https://purview.microsoft.com/ | Purview 임베디드 경험(DLP · IRM) |
-| **Azure 포털** | https://portal.azure.com/ | SCU 용량 프로비저닝 및 관리 |
-
----
-
-## 스크린샷 삽입 방법
-
-각 페이지의 이미지 프레임(`![...](./images/*.png)`)에 대응하는 PNG를 `images/` 폴더에 **동일한 이름으로 덮어쓰기**하면 표시됩니다(마크다운 편집 불필요). 본 레포는 실습 환경에서 직접 캡처한 이미지를 채워 넣도록 자리 표시자를 제공합니다.
-
----
-
-## 참고 링크 (Microsoft Learn 공식 문서)
-
-- [Microsoft Security Copilot 개요](https://learn.microsoft.com/security-copilot/microsoft-security-copilot)
-- [시작하기 / 온보딩](https://learn.microsoft.com/security-copilot/get-started-security-copilot)
-- [Standalone vs Embedded 경험](https://learn.microsoft.com/security-copilot/experiences-security-copilot)
-- [Security Compute Unit(SCU)와 용량](https://learn.microsoft.com/security-copilot/security-compute-units-capacity)
-- [역할 및 인증](https://learn.microsoft.com/security-copilot/authentication)
-- [프롬프트 작성 모범 사례](https://learn.microsoft.com/security-copilot/prompting-tips)
-- [프롬프트북 사용](https://learn.microsoft.com/security-copilot/using-promptbooks)
-- [플러그인 개요](https://learn.microsoft.com/security-copilot/plugin-overview)
-- [에이전트 개요](https://learn.microsoft.com/security-copilot/agents-overview)
-- [개인정보 및 데이터 보안](https://learn.microsoft.com/security-copilot/privacy-data-security)
-- [책임 있는 AI 개요](https://learn.microsoft.com/security-copilot/responsible-ai-overview-security-copilot)
-
-> [!NOTE]
-> 이 레포는 학습용 비공식 자료입니다. Microsoft, Microsoft Security Copilot 및 관련 제품명은 Microsoft Corporation의 상표입니다.
+</div>

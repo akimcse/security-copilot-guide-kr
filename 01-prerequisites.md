@@ -1,8 +1,16 @@
-# Step 1 — 사전 준비: 라이선스 · SCU · 역할/RBAC
+[🏠 전체 목차](./README.md)　·　**Part 1 · 시작하기**　·　페이지 2 / 12
 
-[← 목차](./README.md) | [← 00 개요](./00-overview.md) | [다음: Step 2 핵심 개념 →](./02-concepts.md)
+# 01 · 사전 준비 — 라이선스 · SCU · 역할/RBAC
 
-Security Copilot을 사용하려면 **① 용량(SCU) 확보 → ② Azure/역할 요건 충족 → ③ 워크스페이스 및 데이터 지역 설정**이 필요합니다. 이 페이지는 온보딩 사전 준비를 정리합니다.
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - E5/E7와 SCU 중 우리 조직에 맞는 온보딩 경로
+> - SCU 프로비저닝 단계와 과금 방식
+> - Copilot 소유자/기여자와 RBAC 3계층
+>
+> ⏱️ 예상 소요 **9분**　·　🎯 대상: 보안/IT 관리자, 도입 담당자
+
+Security Copilot을 사용하려면**① 용량(SCU) 확보 → ② Azure/역할 요건 충족 → ③ 워크스페이스 및 데이터 지역 설정**이 필요합니다. 이 페이지는 온보딩 사전 준비를 정리합니다.
 
 > [!IMPORTANT]
 > **온보딩을 시작하기 전에 조직이 Microsoft 365 E5 또는 E7 라이선스를 보유했는지 반드시 먼저 확인하세요.** 따라야 할 단계와 용량 구매 필요 여부가 이 판단에 따라 완전히 달라집니다.
@@ -146,4 +154,12 @@ Entra 역할이 아닌, 플랫폼 고유의 두 역할입니다.
 - [역할 및 인증](https://learn.microsoft.com/security-copilot/authentication)
 - [개인정보 및 데이터 보안](https://learn.microsoft.com/security-copilot/privacy-data-security)
 
-[← 00 개요](./00-overview.md) | [다음: Step 2 핵심 개념 →](./02-concepts.md)
+---
+
+### 다음 읽을거리
+
+| ◀ 이전 | ▶ 다음 |
+| :-- | --: |
+| [00 · 개요](./00-overview.md) | [02 · 핵심 개념](./02-concepts.md) |
+
+[🏠 전체 목차로 돌아가기](./README.md)

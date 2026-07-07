@@ -1,6 +1,14 @@
-# 부록 — 문제 해결 · FAQ · 알려진 제한
+[🏠 전체 목차](./README.md)　·　**Part 4 · 실습과 참조**　·　페이지 12 / 12
 
-[← 목차](./README.md) | [← Step 10: 핸즈온 랩](./10-handson-lab.md)
+# 99 · 부록 — 문제 해결 · FAQ · 알려진 제한
+
+> [!NOTE]
+> **이 페이지에서 얻는 것**
+> - 증상별 문제 해결 빠른 참조
+> - 알려진 제한과 프리뷰 유의사항
+> - 지원 요청 경로와 시작 전 체크리스트
+>
+> ⏱️ 참조용　·　🎯 대상: 전체
 
 이 부록은 Security Copilot의 **지원 액세스 방법, 공식 알려진 제한, SCU 용량 동작, 기능별 제한**을 정리합니다. 온보딩 전후로 참고하세요.
 
@@ -114,4 +122,10 @@
 - [고급 헌팅 + KQL 생성(Advanced hunting)](https://learn.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-security-copilot)
 - [역할 및 인증(Authentication)](https://learn.microsoft.com/en-us/security-copilot/authentication)
 
-[← 목차](./README.md) | [← Step 10: 핸즈온 랩](./10-handson-lab.md)
+### 코스를 마치며
+
+수고하셨습니다. 실제 환경에 적용하기 전, 각 페이지의 **참고 링크**에서 최신 사양을 다시 확인하세요.
+
+| ◀ 이전 | 🏠 |
+| :-- | --: |
+| [10 · 핸즈온 랩](./10-handson-lab.md) | [전체 목차](./README.md) |
