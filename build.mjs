@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { marked } from 'marked';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -163,6 +164,8 @@ marked.use({
 });
 
 const template = readFileSync(join(ROOT, 'site-assets', 'template.html'), 'utf8');
+const styleCss = readFileSync(join(ROOT, 'site-assets', 'style.css'), 'utf8');
+const CSS_VER = createHash('sha256').update(styleCss).digest('hex').slice(0, 8);
 
 if (existsSync(OUT)) rmSync(OUT, { recursive:true, force:true });
 mkdirSync(OUT, { recursive:true });
@@ -184,6 +187,7 @@ for (const g of NAV) for (const item of g.items) {
     .replaceAll('{{SITE_TITLE}}', SITE_TITLE)
     .replaceAll('{{PAGE_TITLE}}', title)
     .replaceAll('{{REPO_URL}}', REPO_URL)
+    .replaceAll('{{CSS_VER}}', CSS_VER)
     .replaceAll('{{BODY_CLASS}}', isHome ? 'is-home' : 'is-doc')
     .replace('{{SIDEBAR}}', buildSidebar(item.out))
     .replace('{{BREADCRUMB}}', buildBreadcrumb(cur))
