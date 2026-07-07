@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{PAGE_TITLE}} · {{SITE_TITLE}}</title>
 <meta name="description" content="Microsoft Security Copilot 실전 가이드 — 공식 문서 기반 한국어 학습 코스">
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('theme');
+    var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (sysDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch(e){}
+})();
+</script>
 <link rel="stylesheet" href="./style.css?v={{CSS_VER}}">
 </head>
 <body class="{{BODY_CLASS}}">
@@ -15,6 +25,7 @@
     <span class="brand-text">Security Copilot <b>실전 가이드</b></span>
   </a>
   <a class="gh" href="{{REPO_URL}}" target="_blank" rel="noopener">GitHub ↗</a>
+  <button id="themeBtn" class="theme-btn" aria-label="테마 전환" title="라이트/다크 전환"><span class="theme-ico">🌙</span></button>
 </header>
 
 <div class="layout">
@@ -38,13 +49,41 @@
 
 <script type="module">
 import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'base', themeVariables: {
-  primaryColor:'#f3ecff', primaryBorderColor:'#8661c5', primaryTextColor:'#20123a',
-  lineColor:'#8661c5', fontfamily:'Segoe UI'
-}});
+// 원본 다이어그램 소스를 렌더 전에 보관 (테마 전환 시 재렌더용)
+document.querySelectorAll('.mermaid').forEach(n => { n.dataset.src = n.textContent; });
+function mermaidTheme(){
+  return document.documentElement.getAttribute('data-theme') === 'dark'
+    ? { theme:'base', themeVariables:{ primaryColor:'#2a2340', primaryBorderColor:'#a98ce0', primaryTextColor:'#ece8f7', lineColor:'#a98ce0', fontFamily:'Segoe UI' } }
+    : { theme:'base', themeVariables:{ primaryColor:'#f3ecff', primaryBorderColor:'#8661c5', primaryTextColor:'#20123a', lineColor:'#8661c5', fontFamily:'Segoe UI' } };
+}
+mermaid.initialize(Object.assign({ startOnLoad:true, securityLevel:'loose' }, mermaidTheme()));
+
 const btn = document.getElementById('menuBtn');
 const sb = document.getElementById('sidebar');
 btn && btn.addEventListener('click', () => sb.classList.toggle('open'));
+
+// 테마 토글
+const themeBtn = document.getElementById('themeBtn');
+function syncThemeIcon(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const ico = themeBtn && themeBtn.querySelector('.theme-ico');
+  if (ico) ico.textContent = dark ? '☀️' : '🌙';
+}
+syncThemeIcon();
+themeBtn && themeBtn.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch(e){}
+  syncThemeIcon();
+  // Mermaid 다이어그램을 원본 소스로 되돌린 뒤 새 테마로 재렌더
+  const nodes = document.querySelectorAll('.mermaid');
+  if (nodes.length) {
+    nodes.forEach(n => { n.innerHTML = n.dataset.src || n.textContent; n.removeAttribute('data-processed'); });
+    mermaid.initialize(Object.assign({ startOnLoad:false, securityLevel:'loose' }, mermaidTheme()));
+    mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+  }
+});
 
 // TOC 활성 항목 하이라이트
 const links = [...document.querySelectorAll('.toc a')];
