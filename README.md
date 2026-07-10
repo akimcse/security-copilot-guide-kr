@@ -140,7 +140,6 @@ flowchart LR
 ## 📎 이 코스에 대하여
 
 - **근거:** 모든 내용은 [Microsoft Learn](https://learn.microsoft.com/security-copilot/) 공식 문서를 기반으로 하며, 각 페이지 하단 **참고 링크**에 1차 출처를 명시했습니다.
-- **스크린샷:** 실습 화면 캡처를 채워 넣는 방법은 [`images/README.md`](./images/README.md)를 참고하세요.
 - **성격:** 학습용 비공식 자료입니다. Microsoft, Microsoft Security Copilot 및 관련 제품명은 Microsoft Corporation의 상표입니다.
 
 <div align="center">
