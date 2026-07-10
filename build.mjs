@@ -83,6 +83,13 @@ function stripInlineChrome(md) {
   return md;
 }
 
+// HTML 주석(<!-- ... -->)을 파싱 전에 통째로 제거.
+// (marked가 리스트/인라인 문맥에서 닫는 -->를 --&gt;로 이스케이프해 주석이 안 닫히고
+//  이후 전체 내용이 사라지는 문제를 방지. 주석 내용은 의도대로 출력에서 제외됨.)
+function stripHtmlComments(md) {
+  return md.replace(/<!--[\s\S]*?-->/g, '');
+}
+
 function extractTitle(md, fallback) {
   const m = md.match(/^#\s+(.+)$/m);
   return m ? m[1].replace(/[#*`]/g, '').trim() : fallback;
@@ -175,6 +182,7 @@ for (const g of NAV) for (const item of g.items) {
   const raw = readFileSync(join(ROOT, item.file), 'utf8');
   const title = extractTitle(raw, item.label);
   let md = rewriteLinks(raw);
+  md = stripHtmlComments(md);
   md = stripInlineChrome(md);
   md = transformAlerts(md);
   let bodyHtml = marked.parse(md);

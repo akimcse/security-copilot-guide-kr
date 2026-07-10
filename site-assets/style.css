@@ -86,7 +86,7 @@ a:hover{text-decoration:underline;}
 .markdown-body li{margin:.28em 0;}
 .markdown-body li::marker{color:var(--accent);}
 .markdown-body hr{border:none; border-top:1px solid var(--border); margin:1.9em 0;}
-.markdown-body img{max-width:100%; border-radius:10px; border:1px solid var(--border); margin:.6em 0; box-shadow:var(--shadow);}
+.markdown-body img{max-width:100%; height:auto; border-radius:10px; border:1px solid var(--border); margin:.6em 0; box-shadow:var(--shadow);}
 .markdown-body blockquote{margin:.8em 0; padding:.3em 1.1em; border-left:4px solid var(--accent); background:var(--accent-weak); border-radius:0 8px 8px 0; color:var(--fg);}
 .markdown-body blockquote p{margin:.35em 0;}
 .markdown-body code{background:var(--code-bg); padding:.14em .42em; border-radius:6px; font-size:.87em; font-family:'Cascadia Code',Consolas,monospace; color:var(--accent-ink);}
