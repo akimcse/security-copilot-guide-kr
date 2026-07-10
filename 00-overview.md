@@ -10,14 +10,14 @@
 >
 > ⏱️ 예상 소요 **6분**　·　🎯 대상: 모든 독자(입문)
 
-처음 읽는 분을 위해,이 페이지는 **Security Copilot이 무엇이고, 어떻게 동작하며, 무엇을 할 수 있는지**를 개관합니다.
+처음 읽는 분을 위해,이 페이지는 **Security Copilot이 무엇이고, 어떻게 동작하며, 무엇을 할 수 있는지**를 설명합니다.
 (각 용어의 실체는 [Step 2: 핵심 개념](./02-concepts.md)부터 깊이 있게 다룹니다.)
 
 ---
 
 ## 한 문장으로
 
-Microsoft Security Copilot은 **생성형 AI 기반 보안 솔루션**으로, 방어자(defender)가 **기계 속도와 규모(machine speed and scale)로 보안 성과를 개선**하도록 효율과 역량을 높여 줍니다. 자연어로 대화하는 보조(assistive) 코파일럿 경험을 제공합니다.
+Microsoft Security Copilot은 **생성형 AI 기반 보안 솔루션**으로, **AI와 같은 머신의 자동화된 속도와 규모(machine speed and scale)로 보안 업무 성과를 개선**하도록 효율과 역량을 높여 줍니다.
 
 > "Microsoft Security Copilot is a generative AI-powered security solution that helps increase the efficiency and capabilities of defenders to improve security outcomes at machine speed and scale."
 > — [Microsoft Learn](https://learn.microsoft.com/security-copilot/microsoft-security-copilot)
@@ -39,11 +39,8 @@ Security Copilot은 두 가지 방식으로 제공됩니다.
 
 | 경험 | 설명 | 접근 |
 | --- | --- | --- |
-| **Standalone(독립형/포털)** | 몰입형 기본 경험. 전체 프롬프트 바, 세션 기록, 프롬프트북 라이브러리, 에이전트 라이브러리, 플러그인 관리를 제공. | https://securitycopilot.microsoft.com |
-| **Embedded(임베디드/내장)** | 다른 Microsoft 보안 제품(Defender XDR, Sentinel, Entra, Intune, Purview, Azure Firewall, Defender for Cloud) 안에 **사이드카 패널**로 노출. 패널이 숨겨져 있든 보이든 동작(및 SCU 소비)은 동일. | 각 제품 포털 내부 |
-
-> [!NOTE]
-> **랜딩 화면 변화:** 신규 Microsoft 365 E5/E7 고객 및 최근 롤아웃에서는 **에이전트 우선(agents-first) 홈페이지**가 기본 진입점으로 표시되고, 채팅 세션은 **All history → New session**으로 접근합니다. 기존 고객은 전통적인 채팅 우선(chat-first) 홈페이지를 계속 볼 수 있습니다. 두 경험은 단계적 롤아웃 기간 동안 공존합니다.
+| **Standalone(독립형/포털)** | 기본 채팅 경험, 프롬프트북, 에이전트, 플러그인 관리를 제공. | https://securitycopilot.microsoft.com |
+| **Embedded(임베디드/내장)** | 다른 Microsoft 보안 제품(Defender XDR, Sentinel, Entra, Intune, Purview 등) 안에 **사이드카 패널**로 노출. 동작(및 SCU 소비)은 동일. | 각 제품 포털 내부 |
 
 참고: [Standalone vs Embedded 경험](https://learn.microsoft.com/security-copilot/experiences-security-copilot)
 
@@ -63,11 +60,11 @@ Security Copilot의 내부 처리 파이프라인은 다음과 같습니다.
 ⑤ 응답 반환 — 어떤 단계·플러그인이 사용됐는지 보여주는 "프로세스 로그"와 함께 반환
 ```
 
-보안 특화 보강은 **플러그인(Microsoft 및 비-Microsoft)**, **위협 인텔리전스(MDTI 아티클, intel 프로파일, 위협 분석 리포트, CVE 데이터)**, **조직 고유 지식(업로드 파일, 연결된 Microsoft 365 서비스)**에서 옵니다. 즉 조직 데이터는 **모델 학습이 아니라 추론 시점의 그라운딩**으로 반영됩니다(→ [Step 9](./09-responsible-ai.md)).
+**플러그인(Microsoft 및 비-Microsoft)**, **위협 인텔리전스(MDTI 아티클, intel 프로파일, 위협 분석 리포트, CVE 데이터)**, **조직 고유 지식(업로드 파일, 연결된 Microsoft 365 서비스)** 등을 통해 보안에 특화된 답변을 생성합니다. 즉 조직 데이터는 **모델 학습이 아니라 추론 시점의 그라운딩**으로 반영됩니다(→ [Step 9](./09-responsible-ai.md)).
 
 참고: [Security Copilot 개요](https://learn.microsoft.com/security-copilot/microsoft-security-copilot)
 
-## 주요 활용 사례 (공식 목록)
+## 주요 활용 사례 
 
 | 활용 사례 | 설명 |
 | --- | --- |
