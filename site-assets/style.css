@@ -46,7 +46,7 @@ a:hover{text-decoration:underline;}
 .brand-text{font-weight:600;}
 .topbar .gh{margin-left:auto; font-size:13.5px; color:var(--muted); border:1px solid var(--border); padding:5px 12px; border-radius:20px;}
 .topbar .gh:hover{border-color:var(--accent); color:var(--accent-ink); text-decoration:none;}
-.theme-btn{margin-left:2px; background:none; border:1px solid var(--border); border-radius:20px; width:36px; height:32px; cursor:pointer; font-size:15px; line-height:1; display:inline-flex; align-items:center; justify-content:center; transition:border-color .12s, background .12s;}
+.theme-btn{margin-left:auto; background:none; border:1px solid var(--border); border-radius:20px; width:36px; height:32px; cursor:pointer; font-size:15px; line-height:1; display:inline-flex; align-items:center; justify-content:center; transition:border-color .12s, background .12s;}
 .theme-btn:hover{border-color:var(--accent); background:var(--accent-weak);}
 #menuBtn{display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--fg);}
 

@@ -32,8 +32,9 @@ const NAV = [
     { file: '08-usage-monitoring.md', out: '08-usage-monitoring.html', label: '08 · 사용량 모니터링', time: '6분' },
     { file: '09-responsible-ai.md', out: '09-responsible-ai.html', label: '09 · 책임 있는 AI', time: '8분' },
   ]},
-  { part: 'Part 4 · 실습·참조', icon: '🧪', items: [
+  { part: 'Part 4 · 실습·활용·참조', icon: '🧪', items: [
     { file: '10-handson-lab.md', out: '10-handson-lab.html', label: '10 · 핸즈온 랩', time: '20분' },
+    { file: '11-use-cases.md', out: '11-use-cases.html', label: '11 · 실무 활용', time: '30분+' },
     { file: '99-troubleshooting.md', out: '99-troubleshooting.html', label: '99 · 부록', time: '참조' },
   ]},
 ];
@@ -88,6 +89,22 @@ function stripInlineChrome(md) {
 //  이후 전체 내용이 사라지는 문제를 방지. 주석 내용은 의도대로 출력에서 제외됨.)
 function stripHtmlComments(md) {
   return md.replace(/<!--[\s\S]*?-->/g, '');
+}
+
+// 굵은 글씨(**...**)를 파싱 전에 <strong>...</strong>로 변환.
+// (CommonMark의 flanking 규칙상 닫는 **가 ')' 등 구두점 뒤 + 한글 앞에 오면
+//  볼드로 인식되지 않아 **가 그대로 노출되는 문제를 방지. 한국어 문서에서 흔함.)
+// 코드 펜스(```)와 인라인 코드(`...`)는 건드리지 않는다.
+function fixBold(md) {
+  const parts = md.split(/(```[\s\S]*?```)/g); // 코드펜스 보존
+  return parts.map(seg => {
+    if (seg.startsWith('```')) return seg;
+    // 인라인 코드 보존하며 나머지에서만 ** 변환
+    return seg.split(/(`[^`]*`)/g).map(s => {
+      if (s.startsWith('`')) return s;
+      return s.replace(/\*\*(?=\S)([\s\S]+?)(?<=\S)\*\*/g, '<strong>$1</strong>');
+    }).join('');
+  }).join('');
 }
 
 function extractTitle(md, fallback) {
@@ -183,6 +200,7 @@ for (const g of NAV) for (const item of g.items) {
   const title = extractTitle(raw, item.label);
   let md = rewriteLinks(raw);
   md = stripHtmlComments(md);
+  md = fixBold(md);
   md = stripInlineChrome(md);
   md = transformAlerts(md);
   let bodyHtml = marked.parse(md);
