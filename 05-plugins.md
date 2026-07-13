@@ -15,6 +15,7 @@
 ---
 
 ## 1. 플러그인 유형 (4종)
+<img width="2295" height="1216" alt="image" src="https://github.com/user-attachments/assets/43c42a0d-3742-4ee9-a4bd-29b6eb298064" />
 
 | 유형 | 설명 |
 | --- | --- |
@@ -37,11 +38,11 @@
 - Microsoft Defender External Attack Surface Management (EASM)
 
 > [!IMPORTANT]
-> 플러그인으로 Security Copilot과 통합되는 제품은 **별도로 구매해야** 합니다.
+> 플러그인으로 Security Copilot과 통합되는 제품은 **별도로 구매하여 라이선스를 보유한 상태** 여야만 사용 가능합니다.
 
 ## 3. 비-Microsoft 플러그인
 
-비-Microsoft(3rd-party) 플러그인은 **다수가 사전 설치**되어 제공되며, 위협 인텔리전스·네트워크·엔드포인트·IT 서비스 관리 등 다양한 영역을 아우릅니다. 전체 목록은 공식 문서를 참고하세요. 대표 예시는 다음과 같습니다.
+비-Microsoft(3rd-party) 플러그인은 **다수가 사전 설치**되어 제공되며, 위협 인텔리전스·네트워크·엔드포인트·IT 서비스 관리 등 다양한 영역을 아우릅니다. 전체 목록은 [공식 문서](https://learn.microsoft.com/en-us/copilot/security/plugin-other)를 참고하세요. 대표 예시는 다음과 같습니다.
 
 - AbuseIPDB
 - GreyNoise
