@@ -56,37 +56,63 @@
 
 ## 4. 커스텀 플러그인
 
+사전 제공되는 플러그인만으로 부족할 때, 조직 고유의 워크플로나 내부 시스템에 맞춰 **직접 만들어 등록하는 플러그인**입니다. 매니페스트 파일 하나(스킬의 이름·입력값·동작 방식을 정의)를 작성해 업로드하면 되며, 외부 API를 호출하는 유형부터 모델에게 지시만 내리는 GPT 유형까지 다양하게 구성할 수 있습니다.
+
 - **파일 형식:** `.yaml` 또는 `.json`
 - **지원 형식:** Security Copilot 플러그인 형식 또는 OpenAI 플러그인 형식
 - **생성 주체:** 소유자(owner) 또는 기여자(contributor)
 - **범위:** 개인 사용자 또는 조직 전체
 
-### 실전 예시 — Redact PII (커뮤니티 GPT 플러그인)
+### 매니페스트 파일 형식
 
-커스텀 플러그인이 꼭 외부 API를 호출해야 하는 것은 아닙니다. **`Redact PII`** 는 Microsoft가 공개한 [Security Copilot 커뮤니티 플러그인](https://github.com/Azure/Security-Copilot/tree/main/Plugins/Community%20Based%20Plugins/Redact%20PII) 중 하나로, **외부 소스·인증이 전혀 필요 없는 순수 GPT 플러그인**입니다. 모델에게 "이런 값을 이렇게 가려라"라고 지시하는 프롬프트 템플릿 하나만으로 동작하므로, 커스텀 플러그인 입문용으로 이해하기 좋습니다.
+커스텀 플러그인은 아래처럼 **스킬의 이름·설명·입력값·동작**을 정의하는 매니페스트로 구성됩니다. 다음은 Microsoft 커뮤니티 샘플인 [Redact PII](https://github.com/Azure/Security-Copilot/tree/main/Plugins/Community%20Based%20Plugins/Redact%20PII)의 매니페스트를 축약한 예시입니다.
 
-- **유형:** GPT (SOURCE 없음 · REQUIREMENTS 없음)
-- **스킬:** `RedactPII(text)` — 입력한 텍스트에서 개인식별정보(PII)를 찾아 가림
-- **가리는 대상:** 이메일 주소, 전화번호, 주민등록번호·SSN, 우편 주소, IP 주소, 그리고 GUID 형식의 식별자
-- **동작 예:** `john.doe@woodgrove.ms` → `[REDACTED]@woodgrove.ms` · `173.66.245.129` → `173.***.***.***` · `fc780465-2017-40d4-...` → `xxxx-yyyy-zzzz-...`
+```yaml
+Descriptor:
+  Name: RedactPIIGPT
+  DisplayName: Redact PII Skillset
+  Description: A GPT-based skillset for redacting PII from text/prompt output
 
-**설치·사용**: `Manifest_RedactPIIGPT.yaml`을 내려받아 **Sources(플러그인) → Add plugin → Custom → 파일 업로드**로 등록한 뒤, 프롬프트에서 호출합니다.
+SkillGroups:
+  - Format: GPT                      # 외부 소스·인증 없이 모델만으로 동작
+    Skills:
+      - Name: RedactPII
+        DisplayName: Redact PII
+        Description: Redacts Personally Identifiable Information (PII) from the provided text
+        Inputs:
+          - Name: text               # 프롬프트에서 넘겨받는 입력값
+            Description: The text that may contain PII to be redacted
+        Settings:
+          ModelName: gpt-4o
+          Template: |-               # 모델에게 내리는 지시 프롬프트
+            ... 이메일·전화번호·SSN·주소·IP 등 PII를 찾아 가려라 ...
+            {{text}}
+```
 
-> 🇰🇷 "다음 텍스트에서 개인식별정보(PII)를 가려줘: {붙여넣은_텍스트}"
->
-> 🇺🇸 *`Redact Personally Identifiable Information (PII) from the provided text: <YOUR-TEXT>`*
+작성한 매니페스트는 **Sources(플러그인) → Add plugin → Custom → 파일 업로드**로 등록하면 프롬프트에서 바로 호출할 수 있습니다.
 
-> [!TIP]
-> 조사 결과를 티켓·리포트로 외부에 공유하기 전 **PII를 일괄 마스킹**하는 마무리 단계로 활용하면 좋습니다. GPT 기반이라 결정론적이지 않으므로, 규정 준수가 중요한 데이터는 **가림 결과를 사람이 최종 확인**하세요. 커뮤니티 플러그인은 Microsoft 공식 지원 대상이 아니므로 도입 전 내용을 검토하는 것이 좋습니다.
+### 이런 것들을 만들어 볼 수 있습니다
+
+- **Redact PII** — 텍스트에서 이메일·전화번호·IP 등 개인식별정보를 가림 (위 예시, 외부 연동 불필요)
+- 내부 위협 인텔·자산 DB 등 **사내 시스템 조회**를 자연어로 감싸는 플러그인
+- 사내 표준 양식에 맞춘 **리포트·티켓 자동 생성** 플러그인
+
+> [!NOTE]
+> 커뮤니티 플러그인은 Microsoft 공식 지원 대상이 아니므로 도입 전 내용을 검토하세요. GPT 유형은 결정론적이지 않으므로, 규정 준수가 중요한 결과는 사람이 최종 확인하는 것이 좋습니다.
 
 ## 5. 플러그인 관리
 
-![플러그인 관리](./images/05-manage-plugins.png)
-*플러그인 관리 — 사전 설치 플러그인 접근 제어, 커스텀 플러그인 추가 권한, 에이전트용 자동 활성화를 구성합니다.*
+![플러그인 설정](./images/05-manage-plugins.png)
+*Owner → Plugin settings — 커스텀 플러그인 관리 권한과 플러그인 가용성/접근 제한을 구성합니다.*
 
-- **사전 설치 플러그인 접근 제어:** 소유자는 사전 설치된 플러그인을 **"Owners only"(소유자 전용)** 로 제한할 수 있으며, 이 설정은 **standalone과 embedded 경험 모두**의 전체 사용자에게 **즉시 적용**됩니다.
-- **커스텀 플러그인 관리:** 소유자가 커스텀 플러그인을 추가할 수 있는 대상을 설정합니다(소유자만, 또는 기여자도 포함).
-- **에이전트용 자동 활성화:** Security Copilot 에이전트를 설정하면 필요한 플러그인이 **해당 에이전트에만** 자동 활성화되며, 조직 전체의 플러그인 상태는 변경하지 않습니다.
+소유자(Owner)는 **Owner → Plugin settings** 에서 플러그인 권한을 관리합니다. 기본적으로 Security Copilot은 소유자·기여자가 standalone·embedded 어느 경험에서든 사용 가능한 모든 플러그인에 접근할 수 있으며, 이를 소유자 전용으로 제한할 수 있습니다.
+
+- **내 커스텀 플러그인 관리 권한:** 자신의 커스텀 플러그인을 추가·관리할 수 있는 대상을 지정합니다(*Contributors and Owners* 또는 *Owners only*).
+- **워크스페이스 사용자용 커스텀 플러그인 관리 권한:** 이 워크스페이스 사용자 전체를 위한 커스텀 플러그인을 관리할 수 있는 대상을 지정합니다(기본 *Owners only*).
+- **플러그인 가용성/접근 제한(토글):** 어떤 플러그인을 전체 사용자에게 열고 어떤 것을 소유자 전용으로 제한할지 결정합니다.
+
+> [!NOTE]
+> 이 접근 제한은 **Security Copilot 에이전트에는 적용되지 않습니다.** 에이전트를 설정하면 필요한 플러그인이 해당 에이전트 사용 시 모든 사용자에게 자동 제공되며, 이를 막으려면 에이전트를 비활성화(deactivate)해야 합니다.
 
 ---
 
