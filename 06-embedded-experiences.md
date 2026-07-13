@@ -10,32 +10,48 @@
 >
 > ⏱️ 예상 소요 **9분**　·　🎯 대상: SOC 분석가, 위협 헌터
 
-Security Copilot은 독립형 포털뿐 아니라 다른 Microsoft 보안 제품 안에 **사이드카 패널**로 내장되어 제공됩니다. 이 임베디드(embedded) 경험은 분석가가 제품을 벗어나지 않고 각 제품의 컨텍스트에서 Security Copilot 역량을 사용할 수 있게 합니다. 패널이 숨겨져 있든 보이든 동작(및 SCU 소비)은 동일합니다.
+Security Copilot은 독립형 포털뿐 아니라 다른 Microsoft 보안 제품 안에 **사이드카 패널**로 내장되어 제공됩니다. 이 임베디드(embedded) 경험은 분석가가 제품을 벗어나지 않고 각 제품의 컨텍스트에서 Security Copilot 기을 사용할 수 있게 합니다. 패널이 숨겨져 있든 보이든 동작(및 SCU 소비)은 동일합니다.
 
 참고: [Standalone vs Embedded 경험](https://learn.microsoft.com/security-copilot/experiences-security-copilot)
 
-## 제품별 임베디드 기능 (공식 목록)
+
+## 1. 임베디드 기능 사용하기
+테넌트에 Security Copilot capacity(SCU)가 프로비저닝되어 있고 사용자가 적절한 역할(Security Copilot 역할 + 해당 제품 RBAC)을 보유한 경우, 임베디드 경험을 지원하는 보안 솔루션 포털에서 Copilot 버튼이 자동으로 생겨 사이드카 패널로 기능을 활용할 수 있습니다.
+
+<img width="2295" height="470" alt="image" src="https://github.com/user-attachments/assets/d96f5758-e486-4bba-9ba1-dfc07578a071" />
+
+*SCU가 프로비저닝 되어 있지 않은 경우*
+
+<img width="2297" height="378" alt="image" src="https://github.com/user-attachments/assets/0e2d5174-6362-4460-8984-1b5c3dbcafb9" />
+
+*SCU가 프로비저닝 되어 있는 경우*
+
+---
+
+## 2. 제품별 임베디드 기능 (공식 목록)
 
 | 제품 | 임베디드 기능 |
 | --- | --- |
-| **Azure Firewall** | IDPS 시그니처 위협 프로파일 보강, IDPS 보안 권장 사항 생성, 테넌트 전반의 IDPS 시그니처 조회, 상위 IDPS 시그니처 히트 조회 |
+| **Azure Firewall** | IDPS 시그니처 위협 프로파일 보강, IDPS 보안 권장 사항 생성, 테넌트 전반의 IDPS 시그니처 조회, Azrue 방화벽에 대한 상위 IDPS 시그니처 일치 항목 조회 |
 | **Microsoft Defender for Cloud** | 권장 사항 분석, 권장 사항 위임, 코드 개선(remediate), 권장 사항 개선, 권장 사항 요약 |
 | **Microsoft Defender Threat Intelligence (MDTI)** | 위협 인텔리전스를 위한 Security Copilot 활용 |
-| **Microsoft Defender XDR** | 파일 분석, 스크립트·코드 분석, 인시던트 보고서 작성, 헌팅용 KQL 쿼리 생성, 디바이스 정보 요약, **인시던트 요약**, ID 요약, **유도된 대응(guided response) 사용** |
-| **Microsoft Entra** | 앱 위험 조사, 인시던트 조사, 위험 사용자 조사, 수명 주기 워크플로 관리 |
+| **Microsoft Defender XDR** | 파일 분석, 스크립트·코드 분석, 인시던트 보고서 작성, 헌팅용 KQL 쿼리 생성, 디바이스 정보 요약, **인시던트 요약**, ID 요약, **단계별 대응(guided response) 사용** |
+| **Microsoft Entra** | 앱 위험 조사, 인시던트 조사, 위험 사용자 조사, 라이프사이클 워크플로 관리 |
 | **Microsoft Intune** | 디바이스 쿼리, 정책·설정 관리, 디바이스 문제 해결 |
-| **Microsoft Purview** | DLP 경보 조사, 내부자 위험 관리 활동 조사, 커뮤니케이션 컴플라이언스 메시지 요약, eDiscovery 메시지 요약(preview) |
+| **Microsoft Purview** | DLP 경고 조사, 내부자 위험 관리 활동 조사, 커뮤니케이션 컴플라이언스 메시지 요약, eDiscovery 메시지 요약(preview) |
 | **Microsoft Sentinel** | Microsoft Sentinel 인시던트 요약 |
 
 참고: [Standalone vs Embedded 경험](https://learn.microsoft.com/security-copilot/experiences-security-copilot)
 
 ---
 
-## Defender XDR 3대 핵심 임베디드 기능 심화
+## 3. 임베디드 기능 예시: Defender XDR 3대 핵심 기능
 
-Defender XDR에 내장된 Security Copilot 중에서도 **인시던트 요약**, **유도된 대응**, **Advanced Hunting KQL 생성**은 SOC 분석가가 가장 자주 사용하는 세 가지 핵심 기능입니다.
+각 포털에에 내장된 Security Copilot 중에서도 Defender XDR의 **인시던트 요약**, **단계별 대응**, **Advanced Hunting KQL 생성**은 SOC 분석가가 가장 자주 사용하는 세 가지 핵심 기능입니다.
 
 ### 1) 인시던트 요약 (Incident Summary)
+
+![Defender XDR 인시던트 요약](./images/06-defender-incident-summary.png)
 
 인시던트 페이지를 열면 **자동으로 요약이 생성**됩니다. 요약은 다음 내용을 다룹니다.
 
@@ -52,14 +68,11 @@ Defender XDR에 내장된 Security Copilot 중에서도 **인시던트 요약**,
 - 설정에서 요약 생성 방식을 선택할 수 있습니다: 항상 자동 생성 / 심각도(severity)에 따라 생성 / 필요 시 온디맨드 생성.
 - 인시던트가 변경되지 않았다면 캐시된 요약을 **1주 동안 재사용**하며, 재사용 시에는 **SCU 비용이 발생하지 않습니다**.
 
-![Defender XDR 인시던트 요약](./images/06-defender-incident-summary.png)
-*Defender XDR 인시던트 페이지에서 자동 생성된 Security Copilot 인시던트 요약*
-
 참고: [Defender XDR 인시던트 요약](https://learn.microsoft.com/microsoft-365/security/defender/security-copilot-m365d-incident-summary)
 
-### 2) 유도된 대응 (Guided Response)
+### 2) 단계별 대응 (Guided Response)
 
-인시던트 페이지가 열리면 유도된 대응도 **자동으로 표시**됩니다. 다음 네 가지 범주의 **액션 카드**를 생성합니다.
+인시던트 페이지가 열리면 단계별 대응도 **자동으로 표시**됩니다. 다음 네 가지 범주의 **액션 카드**를 생성합니다.
 
 | 범주 | 설명 |
 | --- | --- |
@@ -73,9 +86,6 @@ Defender XDR에 내장된 Security Copilot 중에서도 **인시던트 요약**,
 - **Teams로 사용자 연락(Contact user in Teams)** — 사용자에게 보낼 제안 텍스트를 생성합니다.
 - **유사 인시던트 보기(View similar incidents)** — 머신러닝(ML)으로 매칭된 유사 인시던트를 보여줍니다.
 - **유사 이메일 보기(View similar emails)** — 헌팅용 KQL을 자동 생성합니다.
-
-![유도된 대응](./images/06-guided-response.png)
-*분류·격리·조사·개선 액션 카드로 구성된 유도된 대응*
 
 참고: [Defender XDR 유도된 대응](https://learn.microsoft.com/microsoft-365/security/defender/security-copilot-m365d-guided-response)
 
