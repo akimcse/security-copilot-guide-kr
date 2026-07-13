@@ -61,6 +61,24 @@
 - **생성 주체:** 소유자(owner) 또는 기여자(contributor)
 - **범위:** 개인 사용자 또는 조직 전체
 
+### 실전 예시 — Redact PII (커뮤니티 GPT 플러그인)
+
+커스텀 플러그인이 꼭 외부 API를 호출해야 하는 것은 아닙니다. **`Redact PII`** 는 Microsoft가 공개한 [Security Copilot 커뮤니티 플러그인](https://github.com/Azure/Security-Copilot/tree/main/Plugins/Community%20Based%20Plugins/Redact%20PII) 중 하나로, **외부 소스·인증이 전혀 필요 없는 순수 GPT 플러그인**입니다. 모델에게 "이런 값을 이렇게 가려라"라고 지시하는 프롬프트 템플릿 하나만으로 동작하므로, 커스텀 플러그인 입문용으로 이해하기 좋습니다.
+
+- **유형:** GPT (SOURCE 없음 · REQUIREMENTS 없음)
+- **스킬:** `RedactPII(text)` — 입력한 텍스트에서 개인식별정보(PII)를 찾아 가림
+- **가리는 대상:** 이메일 주소, 전화번호, 주민등록번호·SSN, 우편 주소, IP 주소, 그리고 GUID 형식의 식별자
+- **동작 예:** `john.doe@woodgrove.ms` → `[REDACTED]@woodgrove.ms` · `173.66.245.129` → `173.***.***.***` · `fc780465-2017-40d4-...` → `xxxx-yyyy-zzzz-...`
+
+**설치·사용**: `Manifest_RedactPIIGPT.yaml`을 내려받아 **Sources(플러그인) → Add plugin → Custom → 파일 업로드**로 등록한 뒤, 프롬프트에서 호출합니다.
+
+> 🇰🇷 "다음 텍스트에서 개인식별정보(PII)를 가려줘: {붙여넣은_텍스트}"
+>
+> 🇺🇸 *`Redact Personally Identifiable Information (PII) from the provided text: <YOUR-TEXT>`*
+
+> [!TIP]
+> 조사 결과를 티켓·리포트로 외부에 공유하기 전 **PII를 일괄 마스킹**하는 마무리 단계로 활용하면 좋습니다. GPT 기반이라 결정론적이지 않으므로, 규정 준수가 중요한 데이터는 **가림 결과를 사람이 최종 확인**하세요. 커뮤니티 플러그인은 Microsoft 공식 지원 대상이 아니므로 도입 전 내용을 검토하는 것이 좋습니다.
+
 ## 5. 플러그인 관리
 
 ![플러그인 관리](./images/05-manage-plugins.png)
@@ -77,6 +95,7 @@
 - [플러그인 개요](https://learn.microsoft.com/en-us/security-copilot/plugin-overview)
 - [플러그인 관리](https://learn.microsoft.com/en-us/security-copilot/manage-plugins)
 - [비-Microsoft 플러그인](https://learn.microsoft.com/en-us/security-copilot/plugin-other)
+- [Security Copilot 커뮤니티·샘플 플러그인 (GitHub: Azure/Security-Copilot)](https://github.com/Azure/Security-Copilot/tree/main/Plugins)
 
 ---
 
