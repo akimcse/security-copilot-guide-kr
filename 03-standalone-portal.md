@@ -16,6 +16,8 @@
 
 ## 1. 세션 시작하기
 
+포털에 진입하여 보이는 하단 프롬프트 바에 자연어로 무엇이든 물어볼 수 있고, 위쪽 Prompts to try / Promptbooks에서 검증된 예시를 골라 시작할 수도 있습니다.
+
 <img width="2295" height="1161" alt="image" src="https://github.com/user-attachments/assets/ac4ac325-4dac-4de2-89e5-c8373ab930aa" />
 
 *Standalone 포털의 프롬프트 바 — 자연어 프롬프트를 입력하는 기본 진입점입니다.*
