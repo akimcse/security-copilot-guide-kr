@@ -78,7 +78,7 @@ function rewriteLinks(md) {
 // 마크다운에 들어있던 브레드크럼 줄과 하단 "다음 읽을거리/코스를 마치며" 블록 제거 (사이트는 자체 크롬 생성)
 function stripInlineChrome(md) {
   md = md.replace(/^\[🏠 전체 목차\][^\n]*\n+/, '');
-  md = md.replace(/\n---\s*\n+###\s*(다음 읽을거리|코스를 마치며)[\s\S]*$/, '\n');
+  md = md.replace(/\n(?:---\s*\n+)?###\s*(다음 읽을거리|코스를 마치며)[\s\S]*$/, '\n');
   // 사이트 홈에서는 자기 자신을 가리키는 '웹사이트로 보기' 줄 제거 (README에는 유지)
   md = md.replace(/^\s*🌐\s*\*\*웹사이트로 보기[^\n]*\n+/m, '');
   return md;
@@ -200,8 +200,8 @@ for (const g of NAV) for (const item of g.items) {
   const title = extractTitle(raw, item.label);
   let md = rewriteLinks(raw);
   md = stripHtmlComments(md);
-  md = fixBold(md);
   md = stripInlineChrome(md);
+  md = fixBold(md);
   md = transformAlerts(md);
   let bodyHtml = marked.parse(md);
   let toc = [];
