@@ -1,4 +1,4 @@
-<img width="1085" height="819" alt="image" src="https://github.com/user-attachments/assets/0cf27f59-2b86-4f55-8f5f-dfc7d9c338f3" />[🏠 전체 목차](./README.md)　·　**Part 4 · 실습·활용·참조**　·　페이지 12 / 13
+[🏠 전체 목차](./README.md)　·　**Part 4 · 실습·활용·참조**　·　페이지 12 / 13
 
 # 11 · 실무 활용 — 데모 시나리오
 

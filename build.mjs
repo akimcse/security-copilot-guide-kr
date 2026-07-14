@@ -22,14 +22,14 @@ const NAV = [
     { file: '02-concepts.md', out: '02-concepts.html', label: '02 · 핵심 개념', time: '7분' },
   ]},
   { part: 'Part 2 · 핵심 기능', icon: '🧩', items: [
-    { file: '03-standalone-portal.md', out: '03-standalone-portal.html', label: '03 · Standalone 포털', time: '7분' },
-    { file: '04-promptbooks.md', out: '04-promptbooks.html', label: '04 · 프롬프트북', time: '8분' },
+    { file: '03-standalone-portal.md', out: '03-standalone-portal.html', label: '03 · Standalone 포털', time: '5분' },
+    { file: '04-promptbooks.md', out: '04-promptbooks.html', label: '04 · 프롬프트북', time: '6분' },
     { file: '05-plugins.md', out: '05-plugins.html', label: '05 · 플러그인', time: '7분' },
-    { file: '06-embedded-experiences.md', out: '06-embedded-experiences.html', label: '06 · 임베디드 경험', time: '9분' },
+    { file: '06-embedded-experiences.md', out: '06-embedded-experiences.html', label: '06 · 임베디드 경험', time: '5분' },
     { file: '07-agents.md', out: '07-agents.html', label: '07 · 에이전트', time: '8분' },
   ]},
   { part: 'Part 3 · 운영·거버넌스', icon: '🛡️', items: [
-    { file: '08-usage-monitoring.md', out: '08-usage-monitoring.html', label: '08 · 사용량 모니터링', time: '6분' },
+    { file: '08-usage-monitoring.md', out: '08-usage-monitoring.html', label: '08 · 사용량 모니터링', time: '5분' },
     { file: '09-responsible-ai.md', out: '09-responsible-ai.html', label: '09 · 책임 있는 AI', time: '8분' },
   ]},
   { part: 'Part 4 · 실습·활용·참조', icon: '🧪', items: [

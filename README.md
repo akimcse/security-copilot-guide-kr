@@ -81,17 +81,17 @@ flowchart LR
 
 | 페이지 | 이 페이지의 핵심 | 소요 |
 | :-- | :-- | :--: |
-| [**03 · Standalone 포털**](./03-standalone-portal.md) | 독립형 포털 사용법과 **효과적인 프롬프트 작성 4요소** | 7분 |
-| [**04 · 프롬프트북**](./04-promptbooks.md) | 기본 제공 8종 + 나만의 커스텀 프롬프트북 만들기 | 8분 |
+| [**03 · Standalone 포털**](./03-standalone-portal.md) | 독립형 포털 사용법과 **효과적인 프롬프트 작성 4요소** | 5분 |
+| [**04 · 프롬프트북**](./04-promptbooks.md) | 기본 제공 8종 + 나만의 커스텀 프롬프트북 만들기 | 6분 |
 | [**05 · 플러그인**](./05-plugins.md) | Microsoft·비-Microsoft·커스텀 플러그인과 접근 제어 | 7분 |
-| [**06 · 임베디드 경험**](./06-embedded-experiences.md) | Defender XDR·Entra·Intune·Purview·Sentinel 내장 기능 | 9분 |
+| [**06 · 임베디드 경험**](./06-embedded-experiences.md) | Defender XDR·Entra·Intune·Purview·Sentinel 내장 기능 | 5분 |
 | [**07 · 에이전트**](./07-agents.md) | 제품군별 Security Copilot 에이전트 (GA/프리뷰) | 8분 |
 
 ### Part 3 · 운영과 거버넌스 — *안전하게 굴리려면*
 
 | 페이지 | 이 페이지의 핵심 | 소요 |
 | :-- | :-- | :--: |
-| [**08 · 사용량 모니터링**](./08-usage-monitoring.md) | 용량 대시보드, SCU 소비·갱신·한도 동작 | 6분 |
+| [**08 · 사용량 모니터링**](./08-usage-monitoring.md) | 용량 대시보드, SCU 소비·갱신·한도 동작 | 5분 |
 | [**09 · 책임 있는 AI · 데이터 보안**](./09-responsible-ai.md) | 데이터 학습 미사용 보장, 레지던시, 보존, 6대 RAI 원칙 | 8분 |
 
 ### Part 4 · 실습과 활용 — *직접 해보고, 현업에 적용하고, 막히면 찾아보기*
