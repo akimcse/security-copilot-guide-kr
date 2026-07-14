@@ -37,41 +37,41 @@
 
 ---
 
-## 시나리오 1 — Threat Protection: 피싱 인시던트 풀 사이클 대응
+## 시나리오 1 — Threat Protection: 다단계 랜섬웨어 인시던트 풀 사이클 대응
 
 > **👤 페르소나 — SOC Tier-1 분석가**
 >
-> 야간 당직 중 Defender 포털에서 심각도 높은 인시던트를 받았습니다. 임원 계정을 노린 피싱으로 보이며, 악성 스크립트까지 포함되어 있습니다. KQL이 서툴러도, Security Copilot과 함께 **분류 → 스크립트 분석 → 헌팅 → 대응 → 사후 보고서**까지 한 사이클을 끝내야 합니다.
+> 야간 당직 중 Defender 포털에서 심각도 높은 **다단계 인시던트**를 받았습니다. 피싱으로 시작된 초기 침투가 위험한 M365 Copilot 사용·민감 데이터 반출을 거쳐 **사람이 조작하는 랜섬웨어(human-operated ransomware)**로 번진 정황입니다. KQL이 서툴러도, Security Copilot과 함께 **분류 → 페이로드 분석 → 헌팅 → 대응 → 사후 보고서**까지 한 사이클을 끝내야 합니다.
 
-- **상황**: 인시던트 `15134` — 100개 가까운 경보가 묶여 있고, 디바이스 타임라인에 난독화된 PowerShell이 보인다.
-- **목표**: 무슨 일인지 파악 → 스크립트 정체 규명 → 유사 피해 헌팅 → 봉쇄·대응 → 사후 보고서 산출.
+- **상황**: 인시던트 `34669` — "Multi-stage incident involving Initial access & Exfiltration including Ransomware". **9개 경보가 7개 범주(초기 액세스·실행·발견·횡적 이동·반출·랜섬웨어·의심 활동)에 걸쳐** 묶여 있다. Purview IRM의 위험한 M365 Copilot 사용, DLP의 민감 문서(`Project Obsidian FAQ.docx`) 공유 차단·레이블 기반 Copilot 제한 경보가 뒤섞여 있고, OneDrive for Business·**36명 사용자**가 얽혀 있다.
+- **목표**: 다단계 공격 전모 파악 → 악성 페이로드 정체 규명 → 영향 자산 확인 → 유사 피해·반출 헌팅 → 봉쇄·대응 → 사후 보고서 산출.
 
 ### 1단계 — 인시던트 자동 요약으로 큰 그림 잡기 (GA)
-인시던트 페이지를 열면 Tasks 창에 **인시던트 요약**이 자동 생성됩니다(최대 100개 경보). 공격 시작 시각·시작 자산·타임라인·관련 자산·IoC·위협 행위자 이름이 한눈에 들어옵니다.
+초기 침투부터 랜섬웨어까지 이어지는 다단계 공격은 경보가 여러 범주에 흩어져 전체 흐름을 잡기 어렵습니다. 인시던트 페이지를 열면 Tasks 창에 **인시던트 요약**이 자동 생성됩니다(최대 100개 경보). 공격 시작 시각·시작 자산·타임라인·관련 자산(OneDrive·36명 사용자)·IoC·위협 프로필(Human-operated ransomware)이 한눈에 들어옵니다.
 
-> 🇰🇷 "Defender 인시던트 15134의 요약을 제공해 줘."
+> 🇰🇷 "Defender 인시던트 34669의 요약을 제공해 줘."
 >
-> 🇺🇸 *`Provide a summary for Defender incident 15134.`*
+> 🇺🇸 *`Provide a summary for Defender incident 34669.`*
 
 > [!TIP]
 > 프롬프트에 **Defender**라는 단어를 포함해야 요약·리포트 기능이 결과를 냅니다.
 
-### 2단계 — 악성 스크립트 분석 (GA)
-타임라인의 난독화된 스크립트는 직접 해독하기 어렵습니다. 공격 스토리(attack story)나 디바이스 타임라인에서 해당 이벤트를 선택해 **Analyze**를 누르면, Copilot이 **스크립트가 하는 일을 자연어로 설명**하고 **MITRE ATT&CK 기법 매핑**까지 펼쳐 보여줍니다(코드 표시/숨김 토글 제공).
+### 2단계 — 초기 침투 경로·악성 엔티티 분석 (GA)
+이 인시던트의 시작점은 피싱을 통한 초기 접근입니다. 공격 스토리(attack story)에서 의심 이메일·URL·파일 등 엔티티를 선택하면, Copilot이 **해당 엔티티가 왜 위험한지 자연어로 설명**하고 위협 인텔리전스 평판·**MITRE ATT&CK 기법 매핑**을 함께 보여줍니다. 페이로드나 첨부에 스크립트가 포함된 경우 **스크립트가 하는 일도 자연어로 해설**합니다(코드 표시/숨김 토글 제공).
 
-> 🇰🇷 "Defender 인시던트 15134의 스크립트를 식별해 줘. 이 스크립트들은 악성이야?"
+> 🇰🇷 "Defender 인시던트 34669의 초기 접근에 사용된 악성 이메일·URL·파일을 식별하고, 왜 악성으로 판정됐는지 설명해 줘."
 >
-> 🇺🇸 *`Identify the scripts in Defender incident 15134. Are these malicious scripts?`*
+> 🇺🇸 *`Identify the malicious emails, URLs, and files used for initial access in Defender incident 34669, and explain why they are considered malicious.`*
 
 ### 3단계 — 영향 받은 디바이스 요약 (GA)
-공격 시작 디바이스의 상태를 빠르게 봅니다. **디바이스 요약**은 Defender 보호 상태(변조 방지 등)·주목할 사용자 활동·**설치된 취약 소프트웨어 목록**·마지막 활성 시각·Intune 기반 정보(주 사용자, 디바이스 그룹)를 포함합니다.
+랜섬웨어가 번진 엔드포인트(51개 영향 자산 중)의 상태를 빠르게 봅니다. **디바이스 요약**은 Defender 보호 상태(변조 방지 등)·주목할 사용자 활동·**설치된 취약 소프트웨어 목록**·마지막 활성 시각·Intune 기반 정보(주 사용자, 디바이스 그룹)를 포함합니다.
 
-> 🇰🇷 "Defender 인시던트 15134의 디바이스 정보를 요약해 줘."
+> 🇰🇷 "Defender 인시던트 34669의 디바이스 정보를 요약해 줘."
 >
-> 🇺🇸 *`Summarize device information in Defender incident 15134.`*
+> 🇺🇸 *`Summarize device information in Defender incident 34669.`*
 
-### 4단계 — 유사 피해 헌팅 (자연어 → KQL) (GA / Preview)
-같은 피싱에 당한 다른 사용자가 있는지 찾습니다. Advanced Hunting의 **Query Assistant(NL-to-KQL, GA)**로 개별 쿼리를 만들거나, **Threat Hunting Agent(Preview)**로 대화형 헌팅을 합니다.
+### 4단계 — 유사 피해·반출 헌팅 (자연어 → KQL) (GA / Preview)
+같은 피싱에 당했거나 민감 데이터를 반출당한 다른 사용자가 있는지 찾습니다. Advanced Hunting의 **Query Assistant(NL-to-KQL, GA)**로 개별 쿼리를 만들거나, **Threat Hunting Agent(Preview)**로 대화형 헌팅을 합니다.
 
 > 🇰🇷 "이번 주 관리자 계정의 모든 로그인 실패 시도를 보여줘."
 >
@@ -87,20 +87,20 @@
 > Threat Hunting Agent는 **프리뷰**입니다. 헌팅 프롬프트는 ① 모호하지 않게(로그인이 디바이스인지 클라우드인지 명시), ② 한 번에 하나씩, ③ 아는 정보(시간·사용자·디바이스)를 넣어 구체적으로. **조인이 포함된 복잡한 KQL은 반드시 검증**하세요.
 
 ### 5단계 — 유도된 대응으로 봉쇄·조치 (GA)
-**유도된 대응(Guided Response)**은 **분류(Triage)·격리(Containment)·조사(Investigation)·개선(Remediation)** 네 범주의 조치 카드를 생성합니다. 임원에게 연락이 필요하면 **Teams 메시지 초안**을 제안합니다.
+**유도된 대응(Guided Response)**은 **분류(Triage)·격리(Containment)·조사(Investigation)·개선(Remediation)** 네 범주의 조치 카드를 생성합니다. 랜섬웨어 확산을 막기 위해 영향 사용자·디바이스 봉쇄가 필요하고, 사용자에게 연락이 필요하면 **Teams 메시지 초안**을 제안합니다.
 
-> 🇰🇷 "Defender 인시던트 15134에 대한 유도된 대응과 권장 조치를 생성해 줘."
+> 🇰🇷 "Defender 인시던트 34669에 대한 유도된 대응과 권장 조치를 생성해 줘."
 >
-> 🇺🇸 *`Generate guided responses and recommendations for Defender incident 15134.`*
+> 🇺🇸 *`Generate guided responses and recommendations for Defender incident 34669.`*
 
 ### 6단계 — 사후 인시던트 리포트 생성 (GA)
 요약(무슨 일)과 달리, **인시던트 리포트**는 **종합 사후 문서**입니다. 생성·종료 시각, 참여 분석가 전원, 분류와 그 근거, 수행된 모든 조사·개선 조치(디바이스 격리, 사용자 비활성화 등), 실행된 Sentinel 플레이북, 분석가 코멘트, 후속 항목을 담습니다.
 
-> 🇰🇷 "Defender 인시던트 15134의 인시던트 리포트를 생성해 줘."
+> 🇰🇷 "Defender 인시던트 34669의 인시던트 리포트를 생성해 줘."
 >
-> 🇺🇸 *`Generate the incident report for Defender incident 15134.`*
+> 🇺🇸 *`Generate the incident report for Defender incident 34669.`*
 
-**결과**: 몇 분 만에 스크립트 정체 규명부터 유사 피해 헌팅, 봉쇄, 사후 보고서까지 마쳤습니다.
+**결과**: 몇 분 만에 다단계 공격의 전모 파악부터 페이로드 규명, 유사 피해·반출 헌팅, 봉쇄, 사후 보고서까지 마쳤습니다.
 
 > [!TIP]
 > **고급 활용 팁 — 잘 모르는 사용법**

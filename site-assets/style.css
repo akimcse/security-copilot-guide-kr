@@ -117,6 +117,20 @@ a:hover{text-decoration:underline;}
 .callout-warning{border-left-color:var(--warning);} .callout-warning .callout-title{color:var(--warning);}
 .callout-caution{border-left-color:var(--caution);} .callout-caution .callout-title{color:var(--caution);}
 
+/* prompt box */
+.prompt-box{margin:1.1em 0; border:1px solid var(--border); border-radius:11px; overflow:hidden; background:var(--code-bg); box-shadow:var(--shadow);}
+.prompt-row{display:flex; align-items:flex-start; gap:10px; padding:11px 13px;}
+.prompt-row + .prompt-row{border-top:1px dashed var(--border);}
+.prompt-row-en{background:color-mix(in srgb, var(--accent) 6%, transparent);}
+.prompt-lang{flex:0 0 auto; font-size:15px; line-height:1.5; user-select:none;}
+.prompt-text{flex:1 1 auto; min-width:0; line-height:1.6; word-break:break-word;}
+code.prompt-text{font-family:'Cascadia Code',ui-monospace,SFMono-Regular,Consolas,monospace; font-size:13.5px; color:var(--accent-ink); background:transparent; padding:0;}
+.prompt-note{color:var(--muted); font-size:13px; font-style:italic;}
+.prompt-copy{flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; padding:0; border:1px solid var(--border); border-radius:7px; background:var(--card-bg); color:var(--muted); cursor:pointer; transition:all .12s;}
+.prompt-copy:hover{color:var(--accent); border-color:var(--accent); background:var(--accent-weak);}
+.prompt-copy.copied{color:var(--tip); border-color:var(--tip);}
+.prompt-copy svg{display:block;}
+
 /* prev/next */
 .prevnext{display:flex; gap:16px; margin:34px 0 0;}
 .pn{flex:1; display:flex; flex-direction:column; gap:3px; padding:14px 18px; border:1px solid var(--border); border-radius:12px; background:var(--card-bg); box-shadow:var(--shadow); transition:transform .12s,border-color .12s;}

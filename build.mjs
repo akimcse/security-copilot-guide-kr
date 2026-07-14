@@ -66,6 +66,50 @@ function transformAlerts(md) {
   return out.join('\n');
 }
 
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// 프롬프트 블록(> 🇰🇷 "..." / > 🇺🇸 *`...`*)을 복사 버튼이 있는 전용 박스로 변환
+function transformPrompts(md) {
+  const lines = md.split('\n').map(l => l.replace(/\r$/, ''));
+  const out = [];
+  let i = 0;
+  const COPY_SVG = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  while (i < lines.length) {
+    const kr = lines[i].match(/^>\s*\u{1F1F0}\u{1F1F7}\s*(.*)$/u);
+    if (kr) {
+      const block = [];
+      let j = i;
+      while (j < lines.length && lines[j].startsWith('>')) { block.push(lines[j]); j++; }
+      const krLine = block.find(l => /\u{1F1F0}\u{1F1F7}/u.test(l)) || '';
+      const usLine = block.find(l => /\u{1F1FA}\u{1F1F8}/u.test(l)) || '';
+      const krRaw = (krLine.match(/\u{1F1F0}\u{1F1F7}\s*(.*)$/u) || [,''])[1].trim();
+      const usRaw = (usLine.match(/\u{1F1FA}\u{1F1F8}\s*(.*)$/u) || [,''])[1].trim();
+      const krM = krRaw.match(/^"([\s\S]*?)"\s*(.*)$/);
+      const krText = krM ? krM[1] : krRaw.replace(/^"|"$/g,'');
+      const krNote = krM ? krM[2].trim() : '';
+      const usM = usRaw.match(/`([^`]*)`/);
+      const usText = usM ? usM[1] : usRaw.replace(/^[*_`]+|[*_`]+$/g,'').trim();
+      const rows = [];
+      rows.push(
+        `<div class="prompt-row"><span class="prompt-lang">🇰🇷</span>` +
+        `<span class="prompt-text">${esc(krText)}${krNote ? ` <span class="prompt-note">${esc(krNote)}</span>` : ''}</span>` +
+        `<button class="prompt-copy" type="button" data-copy="${esc(krText)}" aria-label="한국어 프롬프트 복사" title="복사">${COPY_SVG}</button></div>`
+      );
+      if (usText) rows.push(
+        `<div class="prompt-row prompt-row-en"><span class="prompt-lang">🇺🇸</span>` +
+        `<code class="prompt-text">${esc(usText)}</code>` +
+        `<button class="prompt-copy" type="button" data-copy="${esc(usText)}" aria-label="Copy English prompt" title="복사">${COPY_SVG}</button></div>`
+      );
+      out.push(`<div class="prompt-box">${rows.join('')}</div>`);
+      i = j;
+    } else {
+      out.push(lines[i]);
+      i++;
+    }
+  }
+  return out.join('\n');
+}
+
 function rewriteLinks(md) {
   return md
     .replace(/\(\.\/images\/README\.md\)/g, `(${REPO_URL}/blob/main/images/README.md)`)
@@ -209,6 +253,7 @@ for (const g of NAV) for (const item of g.items) {
   md = stripInlineChrome(md);
   md = fixBold(md);
   md = transformAlerts(md);
+  md = transformPrompts(md);
   let bodyHtml = marked.parse(md);
   let toc = [];
   if (!isHome) { const r = injectHeadingIds(bodyHtml); bodyHtml = r.html; toc = r.toc; }

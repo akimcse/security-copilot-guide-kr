@@ -99,6 +99,33 @@ if (links.length) {
   }, { rootMargin: '-64px 0px -70% 0px' });
   document.querySelectorAll('h2[id],h3[id]').forEach(h => obs.observe(h));
 }
+
+// 프롬프트 복사 버튼
+const CHECK_SVG = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+document.querySelectorAll('.prompt-copy').forEach(btn => {
+  const original = btn.innerHTML;
+  btn.addEventListener('click', async () => {
+    const text = btn.getAttribute('data-copy') || '';
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+      }
+      btn.classList.add('copied');
+      btn.innerHTML = CHECK_SVG;
+      btn.setAttribute('title', '복사됨');
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = original;
+        btn.setAttribute('title', '복사');
+      }, 1400);
+    } catch (e) {}
+  });
+});
 </script>
 </body>
 </html>
