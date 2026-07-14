@@ -19,21 +19,20 @@
 
 ## Step 1 — Standalone 포털에서 첫 프롬프트 실행
 
-**무엇을 하나요:** https://securitycopilot.microsoft.com 에 로그인합니다. **에이전트 우선(agents-first) 경험**이 표시되면 **All history → New session**으로 이동해 채팅 세션을 시작합니다. 그런 다음 첫 프롬프트를 입력합니다.
+**무엇을 하나요:** 
+https://securitycopilot.microsoft.com 에 로그인합니다. 채팅 세션을 시작하여 첫 프롬프트를 입력합니다.
 
 **예시 시작 프롬프트(공식 문서 예시):**
 
-> *"Can you give me information about Pearl Sleet activity, including a list of known indicators of compromise and tools, tactics, and procedures (TTPs)?"*
-> (Pearl Sleet 활동에 대한 정보를, 알려진 침해 지표(IoC)와 도구·전술·기법·절차(TTP) 목록을 포함해 알려줄 수 있나요?)
+> *"Can you give me information about Pearl Sleet activity, including a list of known indicators of compromise and tools, tactics, and procedures (TTPs)?"* <br>
+> (Pearl Sleet 활동에 대한 정보를, 알려진 침해 지표(IoC)와 도구·전술·기법·절차(TTP) 목록을 포함해 알려주세요.)
+
+<img width="2292" height="1162" alt="image" src="https://github.com/user-attachments/assets/a04ed106-c9e1-48c6-a8cf-40f8eaa88247" />
 
 **화면에서 관찰할 점:**
-- **프로세스 로그(process log)** — 응답이 어떤 단계를 거쳐 생성되었는지
-- **어떤 플러그인이 사용되었는지**
+- 프로세스 로그(process log) — 응답이 어떤 단계를 거쳐 생성되었는지
 - 응답 서식(response format)
-- 각 응답 하단의 **피드백 아이콘(feedback icons)**
-
-![Step 1 first prompt in the standalone portal](./images/10-lab-step1-first-prompt.png)
-*그림: Standalone 포털에서 첫 프롬프트를 실행하고 프로세스 로그를 확인하는 화면*
+- 각 응답 하단의 피드백 아이콘(feedback icons)
 
 참고: [프롬프트 작성](https://learn.microsoft.com/en-us/security-copilot/prompting-security-copilot) · [프롬프트 팁](https://learn.microsoft.com/en-us/security-copilot/prompting-tips)
 
@@ -41,18 +40,17 @@
 
 ## Step 2 — 기본 제공 프롬프트북 실행
 
-**무엇을 하나요:** 활성 세션에서 **✨ Prompts** 아이콘을 클릭 → **Promptbooks**로 필터 → **"Vulnerability impact assessment"**(또는 다른 기본 제공 프롬프트북)를 선택합니다.
+**무엇을 하나요:** 
+새 세션을 열어 **✨ Prompts** 아이콘 선택 → **Promptbooks**로 필터 → **"Vulnerability impact assessment"**(또는 다른 기본 제공 프롬프트북) 선택 → CVE 번호를 입력합니다(예: 최근 공개된 CVE).
 
-**입력:** CVE 번호를 입력합니다(예: 최근 공개된 CVE).
+<img width="2288" height="1235" alt="image" src="https://github.com/user-attachments/assets/5584a1e1-c154-4af4-a36b-72408cf546d0" />
+<img width="1845" height="571" alt="image" src="https://github.com/user-attachments/assets/2111baa8-f74f-48be-9549-382e43f4cce0" />
 
 **화면에서 관찰할 점:**
-- 프롬프트가 **순차적으로 실행(sequential execution)**되는 과정
+- 프롬프트가 순차적으로 실행(sequential execution)되는 과정
 - 각 응답이 이전 응답 위에 어떻게 쌓이는지
-- 마지막 프롬프트가 생성하는 **최종 요약 보고서(executive summary)**
-- 실행 후 **대시보드의 SCU 사용량**
-
-![Step 2 running a built-in promptbook](./images/10-lab-step2-builtin-promptbook.png)
-*그림: 기본 제공 프롬프트북 "Vulnerability impact assessment"를 실행하고 순차 결과를 확인하는 화면*
+- 마지막 프롬프트가 생성하는 최종 요약 보고서(executive summary)
+- 실행 후 대시보드의 SCU 사용량
 
 참고: [프롬프트북 사용](https://learn.microsoft.com/en-us/security-copilot/using-promptbooks)
 
@@ -60,16 +58,16 @@
 
 ## Step 3 — 플러그인 활성화 및 사용
 
-**무엇을 하나요:** 프롬프트 바에서 **Sources** 아이콘 선택 → **Manage plugins**로 이동합니다. 이미 활성화된 Microsoft 플러그인을 검토하고, **Microsoft Threat Intelligence**가 활성화되어 있는지 확인합니다. 그런 다음 다음 프롬프트를 실행합니다.
+**무엇을 하나요:** 
+프롬프트 바에서 **Sources** 아이콘 선택 → **Manage plugins**로 이동합니다. 이미 활성화된 Microsoft 플러그인을 검토하고, **Microsoft Threat Intelligence**가 활성화되어 있는지 확인합니다. 그런 다음 다음 프롬프트를 실행합니다.
 
-> *"Provide a threat actor profile for Midnight Blizzard."*
+> *"Provide a threat actor profile for Midnight Blizzard."* <br>
 > (Midnight Blizzard에 대한 위협 행위자 프로파일을 제공해 주세요.)
 
-**화면에서 관찰할 점:**
-- **프로세스 로그**에서 **어떤 플러그인이 사용되었는지** 확인
+<img width="2289" height="1151" alt="image" src="https://github.com/user-attachments/assets/c5859dd1-7ce3-4753-9fc9-3ac6fe1e0eca" />
 
-![Step 3 enabling and using a plugin](./images/10-lab-step3-plugin.png)
-*그림: Manage plugins에서 Microsoft Threat Intelligence를 확인하고 위협 행위자 프로파일을 실행하는 화면*
+**화면에서 관찰할 점:**
+- 프로세스 로그에서 Microsoft Threat Intelligence 플러그인이 사용되었는지 확인
 
 참고: [플러그인 관리](https://learn.microsoft.com/en-us/security-copilot/manage-plugins) · [플러그인 개요](https://learn.microsoft.com/en-us/security-copilot/plugin-overview)
 
@@ -77,20 +75,18 @@
 
 ## Step 4 — Defender XDR 임베디드 경험: 인시던트 요약
 
-**무엇을 하나요:** Microsoft Defender 포털(https://security.microsoft.com)에서 아무 **인시던트(incident)**나 엽니다. **Copilot 사이드카(sidecar) 패널**이 자동으로 나타나며 **인시던트 요약(Incident Summary)**이 생성됩니다.
+**무엇을 하나요:**
+Microsoft Defender 포털(https://security.microsoft.com)에서 아무 인시던트(incident)나 엽니다. **Copilot** 사이드카(sidecar) 패널이 자동으로 나타나며 인시던트 요약(Incident Summary)이 생성됩니다.
+
+<img width="2303" height="1147" alt="image" src="https://github.com/user-attachments/assets/c5fb8c20-b7ac-4319-9d5c-7b973ecb5c58" />
 
 **화면에서 관찰할 점:**
 - 공격 시점 및 대상 엔터티(time/entity of attack)
-- **공격 타임라인(attack timeline)**
+- 공격 타임라인(attack timeline)
 - 관련 자산(assets involved)
-- **IoC(침해 지표)**
+- IoC(침해 지표)
 - 위협 행위자 이름(threat actor names)
-- **See prompts** — 제안된 후속 프롬프트 확인
-- **Open in Security Copilot** — Standalone 포털에서 조사를 이어가기
-- (선택) **유도된 대응(Guided Response)** 탭 — Triage/Containment/Investigation/Remediation 액션 카드 관찰
-
-![Step 4 embedded incident summary in Defender XDR](./images/10-lab-step4-embedded-incident.png)
-*그림: Defender XDR에서 Copilot 사이드카 패널이 인시던트를 자동 요약하는 화면*
+- See prompts — 제안된 후속 프롬프트 확인
 
 참고: [인시던트 요약](https://learn.microsoft.com/en-us/microsoft-365/security/defender/security-copilot-m365d-incident-summary) · [유도된 대응](https://learn.microsoft.com/en-us/microsoft-365/security/defender/security-copilot-m365d-guided-response)
 
@@ -98,18 +94,22 @@
 
 ## Step 5 — 커스텀 프롬프트북 생성
 
-**무엇을 하나요:** 여러 단계로 진행한 조사 세션이 끝난 뒤, 재사용하고 싶은 **3~5개 프롬프트 옆의 체크박스**를 선택합니다. **Create promptbook**를 클릭하고 다음을 입력합니다.
+**무엇을 하나요:** 
+여러 단계로 진행한 조사 세션이 끝난 뒤, 재사용하고 싶은 프롬프트 옆의 체크박스를 선택합니다. 상단의 **Create promptbook**를 클릭하고 내용을 입력하여 프롬프트북을 생성합니다.
 
-- **이름(Name):** 예) "My Incident Investigation Flow"
-- **태그(Tags):** 예) "SOC", "incident"
+> 일주일 동안 Data Security Demo Users 그룹 관련 DLP 경보를 요약하고 유출 채널·데이터 유형을 정리해주세요. <br>
+> 같은 그룹의 로그인/디바이스 이상 징후를 Defender·Entra에서 교차 확인해주세요. <br>
+> 우발적 유출 vs 의도적 유출 가능성 평가와 다음 조사 단계를 제시해주세요.
+
+<img width="2278" height="1075" alt="image" src="https://github.com/user-attachments/assets/ca89470d-072d-44ab-8c05-195699ea0bc8" />
+
+- **이름(Name):** 예) "데이터 유출 조사 프롬프트북"
+- **태그(Tags):** 예) "Data", "DLP", "Sign-in", "Device"
 - **설명(Description):** 프롬프트북의 목적
-- 특정 **인시던트 ID를 `<IncidentID>` 매개변수 구문으로 치환**
-- **가시성(Visibility):** **Just me**(테스트용) 또는 **Anyone in my organization**(공유)
+- **매개변수**: 특정 조사 그룹을 `<group_name>` 구문으로 치환하는 등 매번 달라지는 입 값을 매개변수로 지정
+- **가시성(Visibility):** Just me(테스트용) 또는 Anyone in my organization(공유 및 배포용)
 
-그런 다음 **프롬프트북 라이브러리**로 이동 → 새로 만든 프롬프트북을 **실행(Run)** → 매개변수 값을 입력합니다.
-
-![Step 5 creating a custom promptbook](./images/10-lab-step5-custom-promptbook.png)
-*그림: 세션의 프롬프트를 선택해 매개변수화된 커스텀 프롬프트북을 생성하는 화면*
+그런 다음 **프롬프트북 라이브러리**로 이동 → 새로 만든 프롬프트북을 실행(Run) → 매개변수 값을 입력하여 재사용할 수 있습니다.
 
 참고: [프롬프트북 빌드](https://learn.microsoft.com/en-us/security-copilot/build-promptbooks)
 
@@ -117,13 +117,14 @@
 
 ## Step 6 (선택/고급) — 에이전트 검색 및 설정
 
-**무엇을 하나요:** 홈 메뉴 → **Agents** → 에이전트 라이브러리를 탐색합니다. **Threat Intelligence Briefing Agent**를 선택 → **Set up** → **ID 할당**(새 에이전트 ID 생성 또는 기존 계정 사용) → **트리거(스케줄) 구성** → **Run**을 실행합니다.
+**무엇을 하나요:** 
+홈 메뉴 → **Agents** → 에이전트 라이브러리를 탐색합니다. 
+**Threat Intelligence Briefing Agent**를 선택 → Set up → ID 할당(새 에이전트 ID 생성 또는 기존 계정 사용) → 에이전트 역할 할당 → 컨텍스트 제공 → 트리거(스케줄) 구성 → Run을 실행합니다.
+
+<img width="2127" height="1111" alt="image" src="https://github.com/user-attachments/assets/2e10c8f2-a46a-4b43-8fc7-d42c13553b72" />
 
 **화면에서 관찰할 점:**
-- 에이전트 출력 — **구조화된 보고서(structured report)** 형태로 전달되는 위협 인텔리전스 브리핑
-
-![Step 6 discover and set up an agent](./images/10-lab-step6-agent-setup.png)
-*그림: Threat Intelligence Briefing Agent를 설정하고 구조화된 브리핑 결과를 확인하는 화면*
+- 에이전트 출력: 구조화된 보고서(structured report) 형태로 전달되는 위협 인텔리전스 브리핑
 
 참고: [에이전트 검색](https://learn.microsoft.com/en-us/security-copilot/discover-agents) · [에이전트 설정·관리](https://learn.microsoft.com/en-us/security-copilot/agents-manage)
 
@@ -134,7 +135,7 @@
 - [ ] Step 1 — Standalone 포털에서 첫 프롬프트를 실행하고 프로세스 로그·플러그인·피드백 아이콘을 관찰함
 - [ ] Step 2 — 기본 제공 프롬프트북("Vulnerability impact assessment")을 CVE로 실행하고 순차 실행·최종 요약·SCU 사용량을 확인함
 - [ ] Step 3 — Microsoft Threat Intelligence 플러그인을 확인하고 위협 행위자 프로파일 프롬프트를 실행함
-- [ ] Step 4 — Defender XDR에서 인시던트 요약(사이드카)을 확인하고 See prompts / Open in Security Copilot를 사용함
+- [ ] Step 4 — Defender XDR에서 인시던트 요약(사이드카)을 확인하고 See prompts를 사용함
 - [ ] Step 5 — 세션 프롬프트를 매개변수화한 커스텀 프롬프트북을 생성하고 라이브러리에서 실행함
 - [ ] Step 6 (선택) — Threat Intelligence Briefing Agent를 설정하고 구조화된 브리핑을 확인함
 
@@ -148,7 +149,6 @@
 - [플러그인 관리(Manage plugins)](https://learn.microsoft.com/en-us/security-copilot/manage-plugins)
 - [플러그인 개요(Plugin overview)](https://learn.microsoft.com/en-us/security-copilot/plugin-overview)
 - [Defender XDR 인시던트 요약](https://learn.microsoft.com/en-us/microsoft-365/security/defender/security-copilot-m365d-incident-summary)
-- [Defender XDR 유도된 대응](https://learn.microsoft.com/en-us/microsoft-365/security/defender/security-copilot-m365d-guided-response)
 - [커스텀 프롬프트북 빌드(Build promptbooks)](https://learn.microsoft.com/en-us/security-copilot/build-promptbooks)
 - [에이전트 검색(Discover agents)](https://learn.microsoft.com/en-us/security-copilot/discover-agents)
 - [에이전트 설정·관리(Agents manage)](https://learn.microsoft.com/en-us/security-copilot/agents-manage)
