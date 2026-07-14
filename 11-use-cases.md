@@ -41,23 +41,31 @@
 
 > **👤 페르소나 — SOC Tier-1 분석가**
 >
-> 야간 당직 중 Defender 포털에서 심각도 높은 **다단계 인시던트**를 받았습니다. 피싱으로 시작된 초기 침투가 위험한 M365 Copilot 사용·민감 데이터 반출을 거쳐 **사람이 조작하는 랜섬웨어(human-operated ransomware)**로 번진 정황입니다. KQL이 서툴러도, Security Copilot과 함께 **분류 → 페이로드 분석 → 헌팅 → 대응 → 사후 보고서**까지 한 사이클을 끝내야 합니다.
+> 야간 당직 중 Defender 포털에서 심각도 높은 **다단계 인시던트**를 받았습니다. 피싱으로 시작된 초기 침투가 위험한 M365 Copilot 사용·민감 데이터 반출을 거쳐 **랜섬웨어(human-operated ransomware)**로 번진 정황입니다. KQL이 서툴러도, Security Copilot과 함께 **분류 → 페이로드 분석 → 헌팅 → 대응 → 사후 보고서**까지 한 사이클을 끝내야 합니다.
 
-- **상황**: 인시던트 `34669` — "Multi-stage incident involving Initial access & Exfiltration including Ransomware". **9개 경보가 7개 범주(초기 액세스·실행·발견·횡적 이동·반출·랜섬웨어·의심 활동)에 걸쳐** 묶여 있다. Purview IRM의 위험한 M365 Copilot 사용, DLP의 민감 문서(`Project Obsidian FAQ.docx`) 공유 차단·레이블 기반 Copilot 제한 경보가 뒤섞여 있고, OneDrive for Business·**36명 사용자**가 얽혀 있다.
-- **목표**: 다단계 공격 전모 파악 → 악성 페이로드 정체 규명 → 영향 자산 확인 → 유사 피해·반출 헌팅 → 봉쇄·대응 → 사후 보고서 산출.
+**상황**: 인시던트 `34669` — "Multi-stage incident involving Initial access & Exfiltration including Ransomware"
+- **9개 경보가 7개 범주(초기 액세스·실행·발견·횡적 이동·반출·랜섬웨어·의심 활동)에 걸쳐** 묶여 있다.
+- Purview IRM의 위험한 M365 Copilot 사용, DLP의 민감 문서(`Project Obsidian FAQ.docx`) 공유 차단·레이블 기반 Copilot 제한 경고가 함께 묶여 있다.
+- 이밖에도 OneDrive for Business, **36명의 사용자**가 얽혀 있다.
+
+**목표**: 다단계 공격 전모 파악 → 악성 페이로드 정체 규명 → 영향 자산 확인 → 유사 피해·반출 헌팅 → 봉쇄·대응 → 사후 보고서 산출
 
 ### 1단계 — 인시던트 자동 요약으로 큰 그림 잡기 (GA)
 초기 침투부터 랜섬웨어까지 이어지는 다단계 공격은 경보가 여러 범주에 흩어져 전체 흐름을 잡기 어렵습니다. 인시던트 페이지를 열면 Tasks 창에 **인시던트 요약**이 자동 생성됩니다(최대 100개 경보). 공격 시작 시각·시작 자산·타임라인·관련 자산(OneDrive·36명 사용자)·IoC·위협 프로필(Human-operated ransomware)이 한눈에 들어옵니다.
+
+
 
 > 🇰🇷 "Defender 인시던트 34669의 요약을 제공해 줘."
 >
 > 🇺🇸 *`Provide a summary for Defender incident 34669.`*
 
 > [!TIP]
-> 프롬프트에 **Defender**라는 단어를 포함해야 요약·리포트 기능이 결과를 냅니다.
+> 프롬프트에 **Defender**라는 단어를 포함하면 요약·리포트 기능이 더 원활하게 결과를 냅니다.
 
 ### 2단계 — 초기 침투 경로·악성 엔티티 분석 (GA)
-이 인시던트의 시작점은 피싱을 통한 초기 접근입니다. 공격 스토리(attack story)에서 의심 이메일·URL·파일 등 엔티티를 선택하면, Copilot이 **해당 엔티티가 왜 위험한지 자연어로 설명**하고 위협 인텔리전스 평판·**MITRE ATT&CK 기법 매핑**을 함께 보여줍니다. 페이로드나 첨부에 스크립트가 포함된 경우 **스크립트가 하는 일도 자연어로 해설**합니다(코드 표시/숨김 토글 제공).
+이 인시던트의 시작점은 피싱을 통한 초기 접근입니다. 공격 스토리(attack story)에서 의심 이메일·URL·파일 등 엔티티를 선택하면, Copilot이 해당 엔티티가 왜 위험한지 자연어로 설명하고 위협 인텔리전스 평판·MITRE ATT&CK 기법 매핑을 함께 보여줍니다. 페이로드나 첨부에 스크립트가 포함된 경우 스크립트가 하는 일도 자연어로 해설합니다.
+
+<img width="2151" height="1138" alt="image" src="https://github.com/user-attachments/assets/a68f79af-480e-466e-9917-d438869d1b75" />
 
 > 🇰🇷 "Defender 인시던트 34669의 초기 접근에 사용된 악성 이메일·URL·파일을 식별하고, 왜 악성으로 판정됐는지 설명해 줘."
 >
