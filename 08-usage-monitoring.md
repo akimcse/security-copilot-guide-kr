@@ -10,21 +10,22 @@
 >
 > ⏱️ 예상 소요 **6분**　·　🎯 대상: 보안/IT 관리자, 비용 담당
 
-Security Copilot의 소비량은 **Security Compute Unit(SCU)** 단위로 측정됩니다. 이 페이지는 소유자가 사용량을 모니터링하고, 용량을 조정하며, 한도 근접 시 동작을 이해하는 방법을 정리합니다.
-
-![사용량 모니터링 대시보드](./images/08-usage-dashboard.png)
-
-*그림: 홈 메뉴 → Owner settings → Usage monitoring 대시보드. 세션별 SCU 소비량과 필터, Excel 내보내기, 용량 탭을 제공합니다.*
+Security Copilot의 소비량은 **Security Compute Unit(SCU)** 단위로 측정됩니다. 이 페이지는 Owner가 사용량을 모니터링하고, 용량을 조정하며, 한도 근접 시 동작을 이해하는 방법을 정리합니다.
 
 ---
 
 ## 1. 접근 경로
 
-**홈 메뉴 → Owner settings → Usage monitoring**
+<img width="2293" height="1131" alt="image" src="https://github.com/user-attachments/assets/12a76ac1-5114-4c3a-8bb1-818d891aeb5c" />
 
-사용량 모니터링 대시보드는 소유자 설정(Owner settings) 아래에 있으며, Copilot 소유자만 조회할 수 있습니다.
+**홈 메뉴 → Owner → Usage monitoring**
+
+- 사용량 모니터링 대시보드는 Owner 메뉴 아래에 있으며, Owner 권한을 가진 사용자만 조회할 수 있습니다.
+- 세션별 SCU 소비량과 필터, Excel 내보내기, 용량 탭을 제공합니다.
 
 ## 2. 대시보드 표시 항목
+
+<img width="2280" height="1164" alt="image" src="https://github.com/user-attachments/assets/f21c098b-bbf4-44f8-8ba0-f6f884c44552" />
 
 대시보드는 **최근 90일 데이터**를 표시하며, 각 세션에 대해 다음 항목을 보여 줍니다.
 
@@ -38,13 +39,10 @@ Security Copilot의 소비량은 **Security Compute Unit(SCU)** 단위로 측정
 | **Type** | Manual(수동) / Automated(자동) |
 | **Copilot experience** | standalone(독립형) / embedded(임베디드) / Azure Logic Apps |
 | **Plugin** | 사용된 플러그인 |
-| **Status** | 상태 |
 
-**필터:** Copilot experience, Users, Plugins used, Type, Category, Date range로 필터링할 수 있습니다.
-
-**Excel 내보내기:** 대시보드 데이터는 Excel로 내보낼 수 있습니다.
-
-**용량 탭:** 상단의 용량(capacity) 탭을 통해 여러 용량 리소스 간을 전환하며 각각의 사용량을 확인할 수 있습니다.
+- **필터:** Copilot experience, Users, Plugins used, Type, Category, Date range로 필터링할 수 있습니다.
+- **Excel 내보내기:** 대시보드 데이터는 Excel로 내보낼 수 있습니다.
+- **capacity 탭:** 상단의 capacity 탭을 통해 여러 용량 리소스 간을 전환하며 각각의 사용량을 확인할 수 있습니다.
 
 참고: [사용량 관리](https://learn.microsoft.com/en-us/security-copilot/manage-usage)
 
@@ -64,13 +62,13 @@ Security Copilot의 소비량은 **Security Compute Unit(SCU)** 단위로 측정
 
 ## 5. SCU 업데이트 방법
 
-SCU 수는 두 경로로 변경할 수 있습니다.
+Security Copilot 포털 내에서 SCU 수는 두 경로로 변경할 수 있습니다.
 
 - **Owner Settings → Security compute units → Change**
 - **Usage 대시보드 → Change units**
 
 > [!IMPORTANT]
-> SCU를 변경하려면 **Azure 용량 소유자(owner) 또는 기여자(contributor)이면서 동시에 Security Copilot 소유자**여야 합니다. Azure RBAC와 Security Copilot 플랫폼 역할이 모두 필요합니다.
+> SCU를 변경하려면 **Azure owner 또는 contributor이면서 동시에 Security Copilot owner**여야 합니다. Azure RBAC와 Security Copilot 플랫폼 역할이 모두 필요합니다.
 
 참고: [사용량 관리](https://learn.microsoft.com/en-us/security-copilot/manage-usage)
 
@@ -78,16 +76,8 @@ SCU 수는 두 경로로 변경할 수 있습니다.
 
 사전 준비(Step 1)에서 다룬 과금 모델을 요약하면 다음과 같습니다.
 
-- **프로비저닝된 SCU:** **시간당(per hour)** 과금
-- **오버리지(overage) SCU:** **정확한 사용량**(소수점 첫째 자리)으로 과금
-
-**기능 단계별 과금 여부**
-
-| 단계 | 과금 |
-| --- | --- |
-| 정식 출시(GA) | 예 |
-| 공개 프리뷰(Public Preview) | 예 |
-| 비공개 프리뷰(Private Preview) | 아니오 |
+- **프로비저닝된 SCU:** **1 SCU당 $4씩 시간당** 과금
+- **오버리지(overage) SCU:** **1 SCU당 $6씩 사용량 만큼**(소수점 첫째 자리) 과금
 
 참고: [SCU와 용량](https://learn.microsoft.com/en-us/security-copilot/security-compute-units-capacity)
 
