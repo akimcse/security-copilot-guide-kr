@@ -81,7 +81,7 @@
 - Microsoft Defender 포털(https://security.microsoft.com)에서 아무 인시던트(incident)나 엽니다.
 - **Copilot** 사이드카(sidecar) 패널이 자동으로 나타나며 인시던트 요약(Incident Summary)이 생성됩니다.
 
-<img width="2303" height="1147" alt="image" src="https://github.com/user-attachments/assets/c5fb8c20-b7ac-4319-9d5c-7b973ecb5c58" />
+<img width="2298" height="1139" alt="image" src="https://github.com/user-attachments/assets/3235ca09-0ab7-4ae8-afb1-2700eba76c48" />
 
 **화면에서 관찰할 점:**
 - 공격 시점 및 대상 엔터티(time/entity of attack)
@@ -91,8 +91,7 @@
 - 위협 행위자 이름(threat actor names)
 - See prompts — 제안된 후속 프롬프트 확인
 
-참고: [인시던트 요약](https://learn.microsoft.com/en-us/microsoft-365/security/defender/security-copilot-m365d-incident-summary) · [유도된 대응](https://learn.microsoft.com/en-us/microsoft-365/security/defender/security-copilot-m365d-guided-response)
-
+참고: [인시던트 요약](https://learn.microsoft.com/en-us/microsoft-365/security/defender/security-copilot-m365d-incident-summary)
 ---
 
 ## Step 5 — 커스텀 프롬프트북 생성
