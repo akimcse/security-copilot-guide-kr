@@ -176,6 +176,12 @@ function markCourseTables(html) {
   });
 }
 
+// 표를 가로 스크롤 래퍼로 감싸 셀이 전체 폭을 채우도록 함
+function wrapTables(html) {
+  return html.replace(/<table(\s[^>]*)?>([\s\S]*?)<\/table>/g,
+    (full) => `<div class="table-wrap">${full}</div>`);
+}
+
 marked.use({
   renderer: {
     code(token) {
@@ -207,6 +213,7 @@ for (const g of NAV) for (const item of g.items) {
   let toc = [];
   if (!isHome) { const r = injectHeadingIds(bodyHtml); bodyHtml = r.html; toc = r.toc; }
   if (isHome) bodyHtml = markCourseTables(bodyHtml);
+  bodyHtml = wrapTables(bodyHtml);
 
   const { cur, prev, next } = metaFor(item.out);
   const page = template

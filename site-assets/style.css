@@ -95,7 +95,9 @@ a:hover{text-decoration:underline;}
 .markdown-body pre.mermaid{background:var(--mermaid-bg); text-align:center; padding:20px;}
 
 /* tables */
-.markdown-body table{border-collapse:separate; border-spacing:0; width:100%; margin:1.1em 0; font-size:14.5px; display:block; overflow-x:auto; border:1px solid var(--border); border-radius:10px;}
+.markdown-body .table-wrap{margin:1.1em 0; overflow-x:auto; border:1px solid var(--border); border-radius:10px;}
+.markdown-body table{border-collapse:separate; border-spacing:0; width:100%; font-size:14.5px; display:table; table-layout:auto;}
+.markdown-body .table-wrap table{margin:0;}
 .markdown-body th,.markdown-body td{border-bottom:1px solid var(--border); border-right:1px solid var(--border); padding:9px 13px; text-align:left; vertical-align:top;}
 .markdown-body tr td:last-child,.markdown-body tr th:last-child{border-right:none;}
 .markdown-body tbody tr:last-child td{border-bottom:none;}
