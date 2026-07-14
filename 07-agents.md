@@ -43,12 +43,11 @@ Security Copilot **에이전트(agent)**는 사람의 감독 하에 반자동으
 
 ### Microsoft Intune 에이전트
 
-| 에이전트 | 요약 |
-| --- | --- |
-| **Change Review Agent** | Intune 승인 요청의 영향을 평가하고 조치를 권장. |
-| **Device Offboarding Agent** | Intune과 Entra ID 전반에서 오래되었거나 정렬되지 않은 디바이스를 식별하고 실행 가능한 인사이트 제공. |
-| **Policy Configuration Agent** | 문서 또는 자연어 지침을 기반으로 일치하는 Intune 설정 카탈로그 설정을 찾아 값을 권장하고 정책을 생성. |
-| **Vulnerability Remediation Agent** | Defender 데이터를 사용해 취약점을 모니터링하고, AI 기반 위험 평가로 개선 우선순위를 지정. |
+| 에이전트 | 상태 | 요약 |
+| --- | --- | --- |
+| **Change Review Agent** | Preview | Intune 승인 요청의 영향을 평가하고 조치를 권장. |
+| **Policy Configuration Agent** | GA | 문서 또는 자연어 지침을 기반으로 일치하는 Intune 설정 카탈로그 설정을 찾아 값을 권장하고 정책을 생성. |
+| **Vulnerability Remediation Agent** | GA | Defender 데이터를 사용해 취약점을 모니터링하고, AI 기반 위험 평가로 개선 우선순위를 지정. |
 
 참고: [Intune 에이전트](https://learn.microsoft.com/intune/agents/)
 
@@ -72,12 +71,12 @@ Purview는 경보를 자동으로 분류·우선순위화하는 **분류(Triage)
 
 | 에이전트 | 상태 | 요약 |
 | --- | --- | --- |
-| **Phishing Triage Agent** | GA(이메일/협업); 더 넓은 범위를 위해 Security Alert Triage Agent로 대체되는 중 | LLM 기반 분석으로 사용자가 신고한 피싱 이메일을 자율 분류(triage)·분류(classification). 투명한 근거를 제시하고 분석가 피드백에서 학습. Defender for Office 365 Plan 2 필요. |
-| **Security Alert Triage Agent** | Preview(더 넓은 경보 범위) | Phishing Triage Agent를 확장 — 이메일/협업 경보(GA), 클라우드 경보(preview), ID 경보(preview)를 포괄. Defender XDR, Microsoft Threat Intelligence 플러그인 사용. |
+| **Phishing Triage Agent** | GA | LLM 기반 분석으로 사용자가 신고한 피싱 이메일을 자율 분류(triage)·분류(classification). 투명한 근거를 제시하고 분석가 피드백에서 학습. Defender for Office 365 Plan 2 필요. |
+| **Security Alert Triage Agent** | Preview | Phishing Triage Agent를 확장 — 이메일/협업 경보(GA), 클라우드 경보(preview), ID 경보(preview)를 포괄. Defender XDR, Microsoft Threat Intelligence 플러그인 사용. |
 | **Threat Intelligence Briefing Agent** | GA | 위협 인텔리전스를 자율적으로 수집·종합해 일정에 따라 맞춤형 브리핑 제공. Microsoft Threat Intelligence 플러그인 사용, EASM 플러그인은 선택. 설정한 주기 또는 수동 실행. |
 | **Threat Hunting Agent** | Preview | Advanced Hunting에서 대화형 AI 위협 헌팅 수행 — KQL 생성, 결과 해석, 인사이트 도출, 자연어로 전체 헌팅 세션 안내. |
 | **Security Analyst Agent** | GA | Defender XDR, Sentinel Log Analytics, Sentinel Data Lake 데이터에 대해 즉시 사용 가능하거나 맞춤형 분석 수행. 이상 탐지·클러스터링·위험 점수화·예측 지원 — 코드/KQL 불필요. |
-| **Dynamic Threat Detection Agent** | (Defender에서 사용 가능으로 표기) | 경보·이벤트·이상 징후·위협 인텔리전스를 상시 상관 분석해 숨겨진 위협과 미탐(false negative)을 발견하는 백엔드 서비스. MITRE ATT&CK 매핑과 개선 단계를 포함한 동적 경보 생성. |
+| **Dynamic Threat Detection Agent** | Preview | 경보·이벤트·이상 징후·위협 인텔리전스를 상시 상관 분석해 숨겨진 위협과 미탐(false negative)을 발견하는 백엔드 서비스. MITRE ATT&CK 매핑과 개선 단계를 포함한 동적 경보 생성. |
 
 참고: [Defender XDR 에이전트](https://learn.microsoft.com/defender-xdr/security-copilot-agents-defender)
 
