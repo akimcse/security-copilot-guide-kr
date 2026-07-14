@@ -45,35 +45,9 @@ Security Copilot은 독립형 포털뿐 아니라 다른 Microsoft 보안 제품
 
 ---
 
-## 3. 임베디드 기능 예시: Defender XDR 핵심 기능
-
-각 포털에에 내장된 Security Copilot 중에서도 Defender XDR의 **인시던트 요약**, **단계별 대응**, **Advanced Hunting KQL 생성**은 SOC 분석가가 가장 자주 사용하는 세 가지 핵심 기능입니다.
-
-### 1) 인시던트 요약 (Incident Summary)
-
-<img width="2303" height="1147" alt="image" src="https://github.com/user-attachments/assets/c5fb8c20-b7ac-4319-9d5c-7b973ecb5c58" />
-
-인시던트 페이지를 열면 우측 패널에 **자동으로 요약이 생성**됩니다. (요약당 평균 비용: 0.12 SCU) 요약은 다음 내용을 다룹니다.
-
-- 공격 시작 시각/엔티티
-- 타임라인
-- 관련 자산
-- 침해 지표(IoC)
-- 위협 행위자(threat actor) 이름
-- 후속 조치를 위한 제안 프롬프트
-
-동작 특성은 다음과 같습니다.
-
-- **최대 100개 alert**까지 포함된 인시던트를 요약할 수 있습니다.
-- 설정에서 요약 생성 방식을 선택할 수 있습니다: 항상 자동 생성 / 심각도(severity)에 따라 생성 / 필요 시 온디맨드 생성.
-- 인시던트가 변경되지 않았다면 캐시된 요약을 **1주 동안 재사용**하며, 재사용 시에는 **SCU 비용이 발생하지 않습니다**.
-
-참고: [Defender XDR 인시던트 요약](https://learn.microsoft.com/microsoft-365/security/defender/security-copilot-m365d-incident-summary)
-
-### 2) Advanced Hunting용 KQL 생성
+## 3. 임베디드 기능 예시: Advanced Hunting용 KQL 생성
 
 <img width="2296" height="1163" alt="image" src="https://github.com/user-attachments/assets/032bad4e-eafa-4975-95d8-404a85872d12" />
-
 
 Advanced Hunting에서 Security Copilot은 자연어를 KQL 쿼리로 변환해 줍니다. (NL→KQL)
 
@@ -92,8 +66,6 @@ Defender와 Sentinel의 광범위한 테이블을 지원합니다.
 ## 참고 링크
 
 - [Standalone vs Embedded 경험](https://learn.microsoft.com/security-copilot/experiences-security-copilot)
-- [Defender XDR 인시던트 요약](https://learn.microsoft.com/microsoft-365/security/defender/security-copilot-m365d-incident-summary)
-- [Defender XDR 유도된 대응](https://learn.microsoft.com/microsoft-365/security/defender/security-copilot-m365d-guided-response)
 - [Advanced Hunting용 Security Copilot](https://learn.microsoft.com/microsoft-365/security/defender/advanced-hunting-security-copilot)
 
 ---
