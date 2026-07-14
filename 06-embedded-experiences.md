@@ -45,15 +45,15 @@ Security Copilot은 독립형 포털뿐 아니라 다른 Microsoft 보안 제품
 
 ---
 
-## 3. 임베디드 기능 예시: Defender XDR 3대 핵심 기능
+## 3. 임베디드 기능 예시: Defender XDR 핵심 기능
 
 각 포털에에 내장된 Security Copilot 중에서도 Defender XDR의 **인시던트 요약**, **단계별 대응**, **Advanced Hunting KQL 생성**은 SOC 분석가가 가장 자주 사용하는 세 가지 핵심 기능입니다.
 
 ### 1) 인시던트 요약 (Incident Summary)
 
-![Defender XDR 인시던트 요약](./images/06-defender-incident-summary.png)
+<img width="2303" height="1147" alt="image" src="https://github.com/user-attachments/assets/c5fb8c20-b7ac-4319-9d5c-7b973ecb5c58" />
 
-인시던트 페이지를 열면 **자동으로 요약이 생성**됩니다. 요약은 다음 내용을 다룹니다.
+인시던트 페이지를 열면 우측 패널에 **자동으로 요약이 생성**됩니다. (요약당 평균 비용: 0.12 SCU) 요약은 다음 내용을 다룹니다.
 
 - 공격 시작 시각/엔티티
 - 타임라인
@@ -70,39 +70,20 @@ Security Copilot은 독립형 포털뿐 아니라 다른 Microsoft 보안 제품
 
 참고: [Defender XDR 인시던트 요약](https://learn.microsoft.com/microsoft-365/security/defender/security-copilot-m365d-incident-summary)
 
-### 2) 단계별 대응 (Guided Response)
+### 2) Advanced Hunting용 KQL 생성
 
-인시던트 페이지가 열리면 단계별 대응도 **자동으로 표시**됩니다. 다음 네 가지 범주의 **액션 카드**를 생성합니다.
+<img width="2296" height="1163" alt="image" src="https://github.com/user-attachments/assets/032bad4e-eafa-4975-95d8-404a85872d12" />
 
-| 범주 | 설명 |
-| --- | --- |
-| **분류(Triage)** | 인시던트를 우선순위화하고 판단하기 위한 조치 |
-| **격리(Containment)** | 위협 확산을 막기 위한 봉쇄 조치 |
-| **조사(Investigation)** | 심층 조사를 위한 조치 |
-| **개선(Remediation)** | 위협 제거 및 복구 조치 |
 
-각 카드는 **어떤 조치를, 어떤 엔티티에, 왜** 수행해야 하는지 설명합니다. 또한 다음 기능을 포함합니다.
+Advanced Hunting에서 Security Copilot은 자연어를 KQL 쿼리로 변환해 줍니다. (NL→KQL)
 
-- **Teams로 사용자 연락(Contact user in Teams)** — 사용자에게 보낼 제안 텍스트를 생성합니다.
-- **유사 인시던트 보기(View similar incidents)** — 머신러닝(ML)으로 매칭된 유사 인시던트를 보여줍니다.
-- **유사 이메일 보기(View similar emails)** — 헌팅용 KQL을 자동 생성합니다.
+Defender와 Sentinel의 광범위한 테이블을 지원합니다.
 
-참고: [Defender XDR 유도된 대응](https://learn.microsoft.com/microsoft-365/security/defender/security-copilot-m365d-guided-response)
+- **Defender 테이블 40개 이상**
+- **Sentinel 테이블 70개 이상**
 
-### 3) Advanced Hunting용 KQL 생성
-
-Advanced Hunting에서 Security Copilot은 자연어를 KQL 쿼리로 변환해 줍니다. 두 가지 모드를 제공합니다.
-
-| 모드 | 설명 |
-| --- | --- |
-| **Threat Hunting Agent** *(preview)* | 대화형으로 전체 조사를 수행하는 헌팅 에이전트 |
-| **Query assistant** | 자연어를 KQL 쿼리로 생성(NL→KQL) |
-
-- Defender와 Sentinel의 광범위한 테이블을 지원합니다: **Defender 테이블 40개 이상**, **Sentinel 테이블 70개 이상**.
-- 모범 사례: 모호하지 않게 표현하기, 한 번에 하나의 질문하기, 구체적으로 작성하기.
-
-> [!NOTE]
-> Advanced Hunting의 Security Copilot 기능 문서 및 Threat Hunting Agent는 **preview** 상태입니다.
+> [!TIP]
+> 모호하지 않게 표현하기, 한 번에 하나의 질문하기, 구체적으로 작성하기.
 
 참고: [Advanced Hunting용 Security Copilot](https://learn.microsoft.com/microsoft-365/security/defender/advanced-hunting-security-copilot)
 
