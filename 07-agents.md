@@ -54,15 +54,34 @@ Security Copilot **에이전트(agent)**는 사람의 감독 하에 반자동으
 
 ### Microsoft Purview 에이전트
 
-| 에이전트 | 요약 |
-| --- | --- |
-| **Triage Agent in Insider Risk Management (IRM)** | 사용자 위험·파일 위험·활동 위험을 기준으로 IRM 경보를 평가해 네 가지 분류 범주로 정렬. 일정 또는 경보별 실행. 에이전트 인증은 **90일마다 만료되어 갱신**해야 함. |
-| **Alert Triage Agent in Data Loss Prevention (DLP)** | 민감도 위험·유출 위험·정책 위험을 기준으로 DLP 경보를 평가해 네 가지 분류 범주로 정렬. Preview. |
+Purview는 두 종류의 에이전트를 제공합니다 — 경보를 자동으로 분류·우선순위화하는 **분류(Triage) 에이전트**와, 민감 데이터를 탐지·평가하는 **포스처(Posture) 에이전트**. 모두 SCU를 소비하며 Purview 임베디드 경험에서 제공됩니다.
 
-> [!NOTE]
-> Purview 에이전트는 **preview** 상태입니다.
+#### 분류(Triage) 에이전트
 
-참고: [Purview 에이전트](https://learn.microsoft.com/purview/copilot-in-purview-agents)
+관리형 경보 큐에서 위험도가 가장 높은 활동을 식별·우선순위화하고, 분류 근거를 함께 제시합니다. 분류에 걸리는 시간을 줄여 분석가가 중요한 경보에 집중하도록 돕습니다.
+
+| 에이전트 | 상태 | 요약 |
+| --- | --- | --- |
+| **Triage Agent in Data Loss Prevention (DLP)** | GA | 민감도 위험·유출 위험·정책 위험을 기준으로 DLP 경보를 평가해 네 가지 범주로 정렬. **사용자 지정 지침**을 지원. |
+| **Triage Agent in Insider Risk Management (IRM)** | GA | 사용자 위험·파일 위험·활동 위험을 기준으로 IRM 경보를 평가해 네 가지 범주로 정렬. |
+
+**분류 에이전트 공통 동작**
+
+- **실행 방식:** 배포·트리거 설정 시 **일정 기반 자동 실행** 또는 **경보 단위 수동 실행** 중 선택.
+- **경보 대상 기간(timeframe):** 신규 경보만 / 최근 24·48·72시간 / 7·14·21·30일 중 선택. 기준 시점은 **에이전트 활성화 순간에 고정**되며 rolling(이동식) 방식이 아닙니다.
+- **사용자 지정 지침(custom instructions):** 자연어로 우선순위 로직을 정의하면 분류 로직으로 변환해 적용(예: "세금·재무 관련 콘텐츠 중 신용카드번호나 SSN이 5개 이상 포함된 경보에 집중"). **DLP 분류 에이전트 전용**이며 메타데이터가 아닌 **문서 콘텐츠**만 분석.
+- **에이전트 ID:** 전용 **Microsoft Entra Agent ID**(권장) 또는 에이전트를 설정한 사용자·관리자 본인 ID로 실행.
+
+#### 포스처(Posture) 에이전트 *(preview)*
+
+키워드·필터 대신 **자연어 검색(LLM 기반)**으로 M365 데이터 자산(문서·이메일·메시지·Copilot 상호작용) 전반의 민감 데이터를 발견하고, 요약과 위험 분석을 함께 제공합니다.
+
+| 에이전트 | 상태 | 요약 |
+| --- | --- | --- |
+| **Posture Agent in Data Security Posture Management (DSPM)** | Preview | 자연어 검색으로 데이터 자산 전반의 민감 데이터를 발견하고 LLM이 생성한 요약·위험 분석 제공. |
+| **Posture Agent in Data Security Investigations (DSI)** | Preview | 테넌트 전반에서 노출된 자격 증명을 대규모로 탐지 — M365 데이터 위치의 자격 증명 스캔을 자동화하고, AI 위험 평가를 생성하며, **칸반(Kanban) 보드**로 검토·개선 작업을 추적. |
+
+참고: [Purview 에이전트 개요](https://learn.microsoft.com/purview/copilot-in-purview-agents-overview)
 
 ### Microsoft Defender 에이전트
 
@@ -87,7 +106,7 @@ Security Copilot **에이전트(agent)**는 사람의 감독 하에 반자동으
 - [Defender XDR 에이전트](https://learn.microsoft.com/defender-xdr/security-copilot-agents-defender)
 - [Entra 에이전트](https://learn.microsoft.com/entra/security-copilot/entra-agents)
 - [Intune 에이전트](https://learn.microsoft.com/intune/agents/)
-- [Purview 에이전트](https://learn.microsoft.com/purview/copilot-in-purview-agents)
+- [Purview 에이전트 개요](https://learn.microsoft.com/purview/copilot-in-purview-agents-overview)
 
 ---
 
