@@ -75,9 +75,9 @@ Security Copilot을 사용하려면**① 용량(SCU) 확보 → ② Azure/역할
 > [!NOTE]
 > **지역(region) 설정 3가지 구분**
 > Security Copilot에서 다뤄지는 지역 관련 값은 세 가지이며, 성격이 서로 다릅니다.
-> - **프롬프트 평가 위치(Prompt evaluation location)**: 프롬프트가 추론·처리되는 위치로, 온보딩 화면에서 **직접 선택**하는 유일한 지역 항목입니다. 트래픽이 많으면 "전 세계 어디서나 평가" 옵션도 선택할 수 있습니다.
+> - **데이터 저장 위치(Data storage location)**: Customer Data가 저장되는 곳으로, 워크스페이스 생성 시 선택할 수 있습니다.
+> - **프롬프트 평가 위치(Prompt evaluation location)**: 프롬프트가 추론·처리되는 위치로, Security capacity 생성 시 선택할 수 있습니다.
 > - **용량 리전(Capacity region)**: SCU 컴퓨트 리소스의 실제 Azure 리전으로, **프롬프트 평가 위치에 따라 자동으로 결정**됩니다.
-> - **데이터 저장 위치(Data storage location)**: Customer Data가 저장되는 곳으로, Microsoft 365 data가 저장되는 테넌트 지역(home tenant geo)을 따릅니다.
 
 참고: [수동 온보딩](https://learn.microsoft.com/security-copilot/manual-onboarding)
 
