@@ -1,4 +1,4 @@
-[🏠 전체 목차](./README.md)　·　**Part 4 · 실습·활용·참조**　·　페이지 12 / 13
+<img width="1085" height="819" alt="image" src="https://github.com/user-attachments/assets/0cf27f59-2b86-4f55-8f5f-dfc7d9c338f3" />[🏠 전체 목차](./README.md)　·　**Part 4 · 실습·활용·참조**　·　페이지 12 / 13
 
 # 11 · 실무 활용 — 데모 시나리오
 
@@ -182,7 +182,7 @@
 >
 > 🇺🇸 *`Show me the top five DLP alerts from the past 24 hours.`*
 
-<img width="1231" height="1009" alt="image" src="https://github.com/user-attachments/assets/e7d82a2f-1bc2-4c55-b3c7-cf290e6d0504" />
+<img width="1085" height="819" alt="image" src="https://github.com/user-attachments/assets/b11d3a64-1d93-4b9d-aa80-ecff71b0b5a3" />
 
 <br>
 
@@ -190,7 +190,7 @@
 >
 > 🇺🇸 *`Summarize the DLP alert with ID <12345>.`*
 
-<img width="1230" height="1009" alt="image" src="https://github.com/user-attachments/assets/d6cf6747-2909-44cc-bd28-204a20b72a6f" />
+<img width="1087" height="473" alt="image" src="https://github.com/user-attachments/assets/9a04ec5e-0d05-44f1-946d-f7f9a1a10972" />
 
 <br>
 
@@ -198,7 +198,7 @@
 >
 > 🇺🇸 *`What's the risk profile of the user that's associated with the alert.`*
 
-<img width="1249" height="1012" alt="image" src="https://github.com/user-attachments/assets/fd48578b-a78f-4dd3-bf8e-805f14d04e68" />
+<img width="1081" height="906" alt="image" src="https://github.com/user-attachments/assets/dba6f396-63ab-4606-9ac7-1fb6b1485028" />
 
 <br>
 
@@ -209,7 +209,7 @@
 >
 > 🇺🇸 *`Tell me the sensitivity labels associated with this user.`*
 
-<img width="1233" height="1010" alt="image" src="https://github.com/user-attachments/assets/b2cf2f8b-ddc3-456b-91d9-526ad080e840" />
+<img width="1087" height="524" alt="image" src="https://github.com/user-attachments/assets/0ca5905c-8c76-4ae2-bfd2-01734611635b" />
 
 <br>
 
@@ -217,7 +217,7 @@
 >
 > 🇺🇸 *`Where is data labeled as <label_or_classifier_or_SIT> stored?`*
 
-<img width="1224" height="914" alt="image" src="https://github.com/user-attachments/assets/f1e7e77a-632d-4220-b6bc-0b97ee3af4c7" />
+<img width="1090" height="579" alt="image" src="https://github.com/user-attachments/assets/2fe6d918-0746-4b56-86ca-a044872f1983" />
 
 <br>
 
@@ -225,7 +225,7 @@
 >
 > 🇺🇸 *`Identify instances where <label_or_classifier_or_SIT> data was transferred outside of the organization in the last <duration> days.`*
 
-<img width="1241" height="977" alt="image" src="https://github.com/user-attachments/assets/1c1c8577-dad0-4221-a486-67f3f76b583a" />
+<img width="1091" height="723" alt="image" src="https://github.com/user-attachments/assets/c7820527-dea3-43fa-96c8-1113e16e732c" />
 
 <br>
 
@@ -233,9 +233,9 @@
 >
 > 🇺🇸 *`Who are the top five users with the most <label_or_classifier_or_SIT> data exfiltration in the last <duration> days?`*
 
-<img width="1207" height="1004" alt="image" src="https://github.com/user-attachments/assets/bcbec100-da19-4827-80f1-f83d27036055" />
+<img width="1079" height="476" alt="image" src="https://github.com/user-attachments/assets/1aed6056-b1e2-4ad2-b071-c565b7e503e6" />
 
-**관찰 포인트**: DSPM 프롬프트에서 기간을 지정하지 않으면 기본 10일, 최대 30일까지 조회됩니다. 
+- **관찰 포인트**: DSPM 프롬프트에서 기간을 지정하지 않으면 기본 10일, 최대 30일까지 조회됩니다. 
 
 **결과**: 경고 → 사용자 활동 → 레이블 기준 데이터 흐름까지 하나의 흐름으로 완결했습니다.
 
@@ -259,9 +259,6 @@
 
 > [!TIP]
 > **커스텀 프롬프트북으로 나만의 절차 굳히기**: 위 조사 흐름 중 자주 쓰는 순서를 세션에서 체크해 **Create promptbook**, 각괄호 매개변수(`<IncidentID>`, `<ThreatActor>`, 공백 금지)로 재사용하세요. 단계별 **"Continue on failure"** 토글로 한 단계 실패에도 멈추지 않게 하고, 가시성을 "Anyone in my organization"으로 두면 팀 전체가 같은 절차를 씁니다. 프리뷰 기능인 **"프롬프트에서 시스템 기능 직접 호출"**로 특정 플러그인 스킬(예: 유도된 대응 생성)을 프롬프트북 단계에 끼워 넣을 수도 있습니다. 운영 원칙(플러그인 거버넌스·최소 권한·SCU 관리·사람 감독)은 [08 사용량 모니터링](./08-usage-monitoring.md)·[09 책임 있는 AI](./09-responsible-ai.md)를 참고하세요.
-
-> [!IMPORTANT]
-> **세션 공유의 보안 주의점**: 세션을 공유하면 링크는 **세션 전체**를 참조하며, 받는 사람은 **기반 데이터 접근 권한이 없어도** 정적 화면으로 내용을 볼 수 있습니다. 민감한 조사 세션을 공유할 때는 이 점을 반드시 유의하세요.
 
 참고: [커스텀 프롬프트북 빌드](https://learn.microsoft.com/security-copilot/build-promptbooks) · [포털 탐색·세션·핀 보드](https://learn.microsoft.com/security-copilot/navigating-security-copilot) · [역할 및 인증](https://learn.microsoft.com/security-copilot/authentication)
 
