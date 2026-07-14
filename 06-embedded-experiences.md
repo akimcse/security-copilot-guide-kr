@@ -22,7 +22,7 @@ Security Copilot은 독립형 포털뿐 아니라 다른 Microsoft 보안 제품
 
 *SCU가 프로비저닝 되어 있지 않은 경우*
 
-<img width="2297" height="378" alt="image" src="https://github.com/user-attachments/assets/0e2d5174-6362-4460-8984-1b5c3dbcafb9" />
+<img width="2303" height="375" alt="image" src="https://github.com/user-attachments/assets/5950e0f9-d0b8-4e2c-a0eb-ed511b79b1ec" />
 
 *SCU가 프로비저닝 되어 있는 경우*
 
