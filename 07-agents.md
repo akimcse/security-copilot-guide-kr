@@ -57,13 +57,10 @@ Purview는 경보를 자동으로 분류·우선순위화하는 **분류(Triage)
 
 | 에이전트 | 상태 | 요약 |
 | --- | --- | --- |
-| **Triage Agent in Data Loss Prevention (DLP)** | GA | 민감도·유출·정책 위험을 기준으로 DLP 경보를 평가해 네 가지 범주로 정렬. **일정 자동 실행** 또는 경보 단위 수동 실행. 자연어 **사용자 지정 지침**으로 우선순위 로직 정의 지원(DLP 전용, 문서 콘텐츠만 분석). |
-| **Triage Agent in Insider Risk Management (IRM)** | GA | 사용자·파일·활동 위험을 기준으로 IRM 경보를 평가해 네 가지 범주로 정렬. 일정 자동 또는 경보 단위 수동 실행. |
+| **Triage Agent in Data Loss Prevention (DLP)** | GA | 민감도·유출·정책 위험을 기준으로 DLP 경보를 평가해 네 가지 범주(All, Needs attention, Less Urgent, Not categorized)로 자동 분. 스케줄링 혹은 알림 단위 수동 실행. 자연어 **사용자 지정 지침**으로 우선순위 로직 정의 지원(DLP 전용, 문서 콘텐츠만 분석). |
+| **Triage Agent in Insider Risk Management (IRM)** | GA | 사용자·파일·활동 위험을 기준으로 IRM 경고를 평가해 네 가지 범주(All, Needs attention, Less Urgent, Not categorized)로 자동 분류. 스케줄링 혹은 알림 단위 수동 실행. |
 | **Posture Agent in Data Security Posture Management (DSPM)** | Preview | 키워드·필터 대신 **자연어 검색(LLM)**으로 M365 데이터 자산 전반의 민감 데이터를 발견하고 요약·위험 분석 제공. |
 | **Posture Agent in Data Security Investigations (DSI)** | Preview | 테넌트 전반에서 노출된 자격 증명을 대규모로 탐지 — 자격 증명 스캔 자동화, AI 위험 평가 생성, **칸반(Kanban) 보드**로 검토·개선 작업 추적. |
-
-> [!NOTE]
-> 분류 에이전트는 **에이전트 ID**로 전용 Microsoft Entra Agent ID(권장) 또는 설정자 본인 ID를 사용하며, 경보 대상 기간(신규만·최근 24~72시간·7~30일)은 활성화 시점 기준으로 고정됩니다(rolling 아님).
 
 참고: [Purview 에이전트 개요](https://learn.microsoft.com/purview/copilot-in-purview-agents-overview)
 
@@ -71,12 +68,11 @@ Purview는 경보를 자동으로 분류·우선순위화하는 **분류(Triage)
 
 | 에이전트 | 상태 | 요약 |
 | --- | --- | --- |
-| **Phishing Triage Agent** | GA | LLM 기반 분석으로 사용자가 신고한 피싱 이메일을 자율 분류(triage)·분류(classification). 투명한 근거를 제시하고 분석가 피드백에서 학습. Defender for Office 365 Plan 2 필요. |
-| **Security Alert Triage Agent** | Preview | Phishing Triage Agent를 확장 — 이메일/협업 경보(GA), 클라우드 경보(preview), ID 경보(preview)를 포괄. Defender XDR, Microsoft Threat Intelligence 플러그인 사용. |
-| **Threat Intelligence Briefing Agent** | GA | 위협 인텔리전스를 자율적으로 수집·종합해 일정에 따라 맞춤형 브리핑 제공. Microsoft Threat Intelligence 플러그인 사용, EASM 플러그인은 선택. 설정한 주기 또는 수동 실행. |
-| **Threat Hunting Agent** | Preview | Advanced Hunting에서 대화형 AI 위협 헌팅 수행 — KQL 생성, 결과 해석, 인사이트 도출, 자연어로 전체 헌팅 세션 안내. |
-| **Security Analyst Agent** | GA | Defender XDR, Sentinel Log Analytics, Sentinel Data Lake 데이터에 대해 즉시 사용 가능하거나 맞춤형 분석 수행. 이상 탐지·클러스터링·위험 점수화·예측 지원 — 코드/KQL 불필요. |
-| **Dynamic Threat Detection Agent** | Preview | 경보·이벤트·이상 징후·위협 인텔리전스를 상시 상관 분석해 숨겨진 위협과 미탐(false negative)을 발견하는 백엔드 서비스. MITRE ATT&CK 매핑과 개선 단계를 포함한 동적 경보 생성. |
+| **Security Analyst Agent** | GA | Defender XDR, Sentinel Log Analytics, Sentinel Data Lake 데이터에 대해 즉시 사용 가능한 맞춤형 분석 수행. 이상 탐지·클러스터링·위험 점수화·예측 지원 — 코드/KQL 불필요. |
+| **Threat Intelligence Briefing Agent** | GA | 위협 인텔리전스를 자율적으로 수집·종합해 일정에 따라 맞춤형 브리핑 제공. 설정한 주기 또는 수동 실행. |
+| **Security Alert Triage Agent** | Preview | 이메일/협업 경고(GA), 클라우드 경고(preview), ID 경고(preview)를 포괄하는 대량의 경고에 대해, AI 기반의 동적 추론을 적용해 경고마다 오탐인지 실제 위협인지에 대해 판정.​ |
+| **Threat Hunting Agent** | Preview | Advanced Hunting에서 대화형 AI 위협 헌팅 수행 — KQL 생성, 결과 해석, 인사이트 도출, 자연어로 전체 헌팅 세션을 지원. |
+| **Dynamic Threat Detection Agent** | Preview | 경고·이벤트·이상 징후·위협 인텔리전스를 상시 상관 분석해 숨겨진 위협과 오탐을 발견하는 백엔드 서비스 에이전트. MITRE ATT&CK 매핑과 개선 단계를 포함하여 동적으로 경고 및 권장사항 전달. |
 
 참고: [Defender XDR 에이전트](https://learn.microsoft.com/defender-xdr/security-copilot-agents-defender)
 
