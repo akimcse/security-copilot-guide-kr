@@ -26,6 +26,9 @@ Security Copilot이 다루는 데이터는 두 종류로 구분됩니다.
 | 고정(pinned) 항목의 콘텐츠 | 내부 시스템 동작 |
 | 업로드된 파일 | |
 
+> [!IMPORTANT]
+> 이 페이지에서 다루는 **저장 위치(레지던시)·보존 기간·데이터 공유 규칙은 모두 "고객 데이터"에만 적용**됩니다. 시스템 생성 로그는 서비스 운영·모니터링을 위해 Microsoft가 별도로 처리하며, 프롬프트·응답 같은 고객 데이터와는 다른 정책이 적용됩니다.
+
 ## 2. 데이터 학습 미사용 — 핵심 보장
 
 > **"Data isn't shared with OpenAI or used to train the Azure OpenAI foundational model."**
@@ -42,22 +45,36 @@ Security Copilot이 다루는 데이터는 두 종류로 구분됩니다.
 
 ## 3. 데이터 공유 옵션
 
-소유자가 구성할 수 있는 데이터 공유 옵션은 3종입니다. 모두 **기본적으로 켜져(on) 있으며, 소유자가 언제든 변경**할 수 있습니다.
+소유자가 구성할 수 있는 데이터 공유 옵션은 3종입니다. 모두 **기본적으로 켜져(on) 있으며, 소유자가 언제든 변경**할 수 있습니다. 세 옵션 모두 **설정 → 소유자 설정(Owner settings)** 에서 끕니다.
 
-| 옵션 | 허용 내용 |
-| --- | --- |
-| **인적 검토를 통한 제품 성능 검증을 위한 데이터 수집 허용** | 품질·사용성·기능 격차 측정 및 플러그인/에이전트 개선을 위한 프롬프트·응답의 인적 검토. 공유된 데이터는 Microsoft가 **90일 보존**. |
-| **Microsoft 보안 AI 모델 구축·검증을 위한 데이터 수집 허용** | Azure OpenAI 또는 Microsoft 자체 모델 위에 구축되는 보안 특화 모델 개발에 활용. **OpenAI와의 공유나 파운데이션 모델 학습은 포함하지 않음.** |
-| **Security Copilot의 Microsoft 365 서비스 데이터 액세스 허용** | Microsoft Purview가 처리하는 DLP, IRM, 커뮤니케이션 컴플라이언스, eDiscovery, 정보 보호(Information Protection), DSPM 데이터에 대한 쿼리 활성화. |
+| 옵션 | 허용 내용 | 끄는 위치 |
+| --- | --- | --- |
+| **인적 검토를 통한 제품 성능 검증을 위한 데이터 수집 허용** | 품질·사용성·기능 격차 측정 및 플러그인/에이전트 개선을 위한 프롬프트·응답의 인적 검토. 공유된 데이터는 Microsoft가 **90일 보존**. | 소유자 설정 → **Help improve Copilot** |
+| **Microsoft 보안 AI 모델 구축·검증을 위한 데이터 수집 허용** | Azure OpenAI 또는 Microsoft 자체 모델 위에 구축되는 보안 특화 모델 개발에 활용. **OpenAI와의 공유나 파운데이션 모델 학습은 포함하지 않음.** | 소유자 설정 → **Help improve Copilot** |
+| **Security Copilot의 Microsoft 365 서비스 데이터 액세스 허용** | Microsoft Purview가 처리하는 DLP, IRM, 커뮤니케이션 컴플라이언스, eDiscovery, 정보 보호(Information Protection), DSPM 데이터에 대한 쿼리 활성화. | 소유자 설정 → **M365 서비스 데이터 액세스** 토글 |
+
+> [!NOTE]
+> - **권한:** 변경하려면 **Security Copilot Owner** 역할이 필요합니다(용량 연결 설정은 Global Admin 또는 Capacity Contributor 권한의 Security Admin).
+> - **삭제 기간:** M365 액세스(③)를 꺼도 그때까지 조회된 데이터는 즉시 삭제되지 않고 보존 정책(옵트아웃 시 최대 180일 이내 삭제)에 따라 정리됩니다.
+> - **E5/E7 기본값 차이:** M365 E5/E7 고객은 인적 검토가 필요한 데이터 수집 옵션(①·②)이 기본 **Off**로 프로비저닝돼 더 프라이버시 친화적입니다. M365 데이터 액세스(③)는 두 경우 모두 기본 **On**입니다.
 
 ## 4. 데이터 저장 및 레지던시
 
-- 데이터는 **워크스페이스 생성 시 선택한 geo**에 저장되며 **생성 후 변경 불가**합니다.
-- 저장 가능 geo: **ANZ, EU, UK, US.**
-- 상용 SKU를 사용하는 **GCC 고객**의 데이터는 Azure Public Cloud의 **US geo**에 저장됩니다.
-- **업로드된 파일**은 항상 테넌트의 **홈 geo(home geo)**에 저장됩니다.
-- 데이터 공유에 옵트인한 경우, 고객 데이터(업로드 파일 제외)는 Microsoft 검토 목적으로 선택한 워크스페이스 geo 외부에 저장될 수 있습니다.
-- **프롬프트 평가(prompt evaluation)**는 저장과 별개이며 AU/EU/UK/US 또는 "anywhere"(권장)로 설정할 수 있습니다.
+Security Copilot에서 다루는 지역(region) 값은 성격이 다른 **세 가지**입니다.
+
+| 지역 항목 | 의미 | 수동 온보딩 (비 E5/E7) | 자동 프로비저닝 (E5/E7) |
+| --- | --- | --- | --- |
+| **데이터 저장 위치**<br>(Data storage location) | **Customer Data**(프롬프트·응답 등)가 저장되는 geo | 워크스페이스 **생성 시 직접 선택** | M365 데이터가 저장되는 **홈 테넌트(Microsoft Entra) geo**로 미리 선택 |
+| **프롬프트 평가 위치**<br>(Prompt evaluation location) | 프롬프트가 추론·처리되는 위치 | 온보딩 화면에서 **직접 선택** (**ANZ·EU·UK·US**, 트래픽이 많으면 "전 세계 어디서나 평가") | **데이터 저장 위치 기준으로 자동 결정** — 저장이 **EU면 EU 내 처리**, **EU 외면 전 세계(US/UK/EU/ANZ) 분산 처리** |
+| **용량 리전**<br>(Capacity region) | SCU 컴퓨트 리소스의 실제 **Azure 리전** | 프롬프트 평가 위치에 따라 **자동 결정** (예: Europe → *Europe West*) ← 수동·자동 공통 ||
+
+> [!NOTE]
+> **데이터 저장 위치는 생성 후 변경 불가**합니다. **자동 프로비저닝(E5/E7)** 은 세 지역 값이 **모두 자동 결정**되어 사용자가 따로 고르지 않으며, 프롬프트 평가 위치를 온보딩에서 직접 선택하는 것은 **수동 온보딩(비 E5/E7)** 경우입니다.
+
+- **업로드된 파일**은 **선택한 데이터 저장 geo**에 저장되며, 업로드한 사용자 본인만 접근할 수 있습니다.
+- 데이터 공유에 **옵트인**한 경우, 고객 데이터(**업로드 파일 제외**)는 Microsoft 검토 목적으로 저장 geo **외부에 저장될 수 있습니다**.
+
+참고: [프롬프트 평가 위치](https://learn.microsoft.com/copilot/security/privacy-data-security#location-for-prompt-evaluation) · [데이터 저장 위치](https://learn.microsoft.com/copilot/security/privacy-data-security#customer-data-storage-location) · [자동 프로비저닝(E5/E7)](https://learn.microsoft.com/copilot/security/auto-provisioning-security-copilot)
 
 ## 5. 데이터 보존
 
@@ -65,10 +82,12 @@ Security Copilot이 다루는 데이터는 두 종류로 구분됩니다.
 | --- | --- |
 | 활성 구독(Active subscription) | 구독이 활성인 동안 세션 데이터 보존 |
 | 전체 용량 삭제 | 180일 이내 데이터 삭제 |
-| 세션 365일 초과 비활성 | 365일 후 세션 데이터 삭제 |
+| 세션 180일 초과 비활성 | 180일 후 세션 데이터 삭제 |
 | 고객 삭제 요청 | 요청 후 30일 이내 삭제 |
 | Microsoft에 옵트인 공유된 데이터 | 삭제 전 90일 보존 |
 | 공유 옵트아웃(Opt-out) | 이전에 공유된 모든 데이터 30일 이내 삭제 |
+
+참고: [개인정보 및 데이터 보안 — 데이터 보존 및 삭제](https://learn.microsoft.com/copilot/security/privacy-data-security#data-retention-and-deletion)
 
 ## 6. 보안 안전장치
 
@@ -95,9 +114,9 @@ Security Copilot은 다음 원칙에 부합하도록 구축되었습니다.
 
 ## 참고 링크
 
-- [개인정보 및 데이터 보안](https://learn.microsoft.com/en-us/security-copilot/privacy-data-security)
-- [Security Copilot 책임 있는 AI 개요](https://learn.microsoft.com/en-us/security-copilot/responsible-ai-overview-security-copilot)
-- [Security Copilot 책임 있는 AI FAQ](https://learn.microsoft.com/en-us/security-copilot/rai-faqs-security-copilot)
+- [개인정보 및 데이터 보안](https://learn.microsoft.com/copilot/security/privacy-data-security)
+- [Security Copilot 책임 있는 AI 개요](https://learn.microsoft.com/copilot/security/responsible-ai-overview-security-copilot)
+- [Security Copilot 책임 있는 AI FAQ](https://learn.microsoft.com/copilot/security/rai-faqs-security-copilot)
 
 ### 다음 읽을거리
 
