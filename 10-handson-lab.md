@@ -119,14 +119,16 @@ Microsoft Defender 포털(https://security.microsoft.com)에서 아무 인시던
 
 **무엇을 하나요:** 
 홈 메뉴 → **Agents** → 에이전트 라이브러리를 탐색합니다. 
-**Threat Intelligence Briefing Agent**를 선택 → Set up → ID 할당(새 에이전트 ID 생성 또는 기존 계정 사용) → 에이전트 역할 할당 → 컨텍스트 제공 → 트리거(스케줄) 구성 → Run을 실행합니다.
+**Conditional Access Optimization Agent**를 선택 → Set up → ID 할당(새 에이전트 ID 생성 또는 기존 계정 사용) → 에이전트 역할 할당 → 트리거(24시간 주기 또는 수동) 구성 → Run을 실행합니다.
 
-<img width="2127" height="1111" alt="image" src="https://github.com/user-attachments/assets/2e10c8f2-a46a-4b43-8fc7-d42c13553b72" />
+> [!NOTE]
+> 이 에이전트는 **Microsoft Entra ID P1** 라이선스가 필요합니다. 설정에는 **Security Administrator**, 실행 결과 적용에는 **Conditional Access Administrator** 역할이 필요합니다.
 
 **화면에서 관찰할 점:**
-- 에이전트 출력: 구조화된 보고서(structured report) 형태로 전달되는 위협 인텔리전스 브리핑
+- 에이전트가 조직의 **조건부 액세스(CA) 정책을 Microsoft 모범 사례·제로 트러스트 원칙과 비교**해 보호되지 않은 사용자·앱, 정책 격차를 식별하는 방식
+- 각 권장 사항에 대해 **원클릭으로 새 정책을 생성하거나 기존 정책을 업데이트**하는 흐름(적용 전 관리자 검토 필요)
 
-참고: [에이전트 검색](https://learn.microsoft.com/en-us/security-copilot/discover-agents) · [에이전트 설정·관리](https://learn.microsoft.com/en-us/security-copilot/agents-manage)
+참고: [Conditional Access Optimization Agent](https://learn.microsoft.com/entra/identity/conditional-access/agent-optimization) · [에이전트 설정·관리](https://learn.microsoft.com/security-copilot/agents-manage)
 
 ---
 
@@ -137,7 +139,7 @@ Microsoft Defender 포털(https://security.microsoft.com)에서 아무 인시던
 - [ ] Step 3 — Microsoft Threat Intelligence 플러그인을 확인하고 위협 행위자 프로파일 프롬프트를 실행함
 - [ ] Step 4 — Defender XDR에서 인시던트 요약(사이드카)을 확인하고 See prompts를 사용함
 - [ ] Step 5 — 세션 프롬프트를 매개변수화한 커스텀 프롬프트북을 생성하고 라이브러리에서 실행함
-- [ ] Step 6 (선택) — Threat Intelligence Briefing Agent를 설정하고 구조화된 브리핑을 확인함
+- [ ] Step 6 (선택) — Conditional Access Optimization Agent를 설정하고 CA 정책 최적화 권장 사항을 확인함
 
 ---
 
@@ -152,6 +154,7 @@ Microsoft Defender 포털(https://security.microsoft.com)에서 아무 인시던
 - [커스텀 프롬프트북 빌드(Build promptbooks)](https://learn.microsoft.com/en-us/security-copilot/build-promptbooks)
 - [에이전트 검색(Discover agents)](https://learn.microsoft.com/en-us/security-copilot/discover-agents)
 - [에이전트 설정·관리(Agents manage)](https://learn.microsoft.com/en-us/security-copilot/agents-manage)
+- [Conditional Access Optimization Agent](https://learn.microsoft.com/entra/identity/conditional-access/agent-optimization)
 
 ### 다음 읽을거리
 
