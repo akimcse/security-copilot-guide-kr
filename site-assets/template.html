@@ -15,6 +15,8 @@
   } catch(e){}
 })();
 </script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="./style.css?v={{CSS_VER}}">
 </head>
 <body class="{{BODY_CLASS}}">
@@ -52,8 +54,8 @@ import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.mi
 document.querySelectorAll('.mermaid').forEach(n => { n.dataset.src = n.textContent; });
 function mermaidTheme(){
   return document.documentElement.getAttribute('data-theme') === 'dark'
-    ? { theme:'base', themeVariables:{ primaryColor:'#2a2340', primaryBorderColor:'#a98ce0', primaryTextColor:'#ece8f7', lineColor:'#a98ce0', fontFamily:'Segoe UI' } }
-    : { theme:'base', themeVariables:{ primaryColor:'#f3ecff', primaryBorderColor:'#8661c5', primaryTextColor:'#20123a', lineColor:'#8661c5', fontFamily:'Segoe UI' } };
+    ? { theme:'base', themeVariables:{ primaryColor:'#2a2340', primaryBorderColor:'#a98ce0', primaryTextColor:'#ece8f7', lineColor:'#a98ce0', fontFamily:"'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif" } }
+    : { theme:'base', themeVariables:{ primaryColor:'#f3ecff', primaryBorderColor:'#8661c5', primaryTextColor:'#20123a', lineColor:'#8661c5', fontFamily:"'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif" } };
 }
 mermaid.initialize(Object.assign({ startOnLoad:true, securityLevel:'loose' }, mermaidTheme()));
 
