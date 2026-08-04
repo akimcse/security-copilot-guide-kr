@@ -86,6 +86,10 @@ flowchart LR
 | [**05 · 플러그인**](./05-plugins.md) | Microsoft·비-Microsoft·커스텀 플러그인과 접근 제어 | 7분 |
 | [**06 · 임베디드 경험**](./06-embedded-experiences.md) | Defender XDR·Entra·Intune·Purview·Sentinel 내장 기능 | 5분 |
 | [**07 · 에이전트**](./07-agents.md) | 제품군별 Security Copilot 에이전트 (GA/프리뷰) | 8분 |
+| ↳ [**07a · Entra 에이전트**](./07a-entra-agents.md) | 조건부 액세스 최적화·위험 사용자 조사 자동화 | 7분 |
+| ↳ [**07b · Intune 에이전트**](./07b-intune-agents.md) | 정책 구성·변경 검토·취약점 개선 자동화 | 7분 |
+| ↳ [**07c · Purview 에이전트**](./07c-purview-agents.md) | 경보 분류(DLP·IRM)·데이터 태세(발견·자격 증명) | 8분 |
+| ↳ [**07d · Defender 에이전트**](./07d-defender-agents.md) | 경보 분류·심층 조사·위협 헌팅·위협 인텔 | 8분 |
 
 ### Part 3 · 운영과 거버넌스 — *안전하게 굴리려면*
 

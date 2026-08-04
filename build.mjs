@@ -27,6 +27,10 @@ const NAV = [
     { file: '05-plugins.md', out: '05-plugins.html', label: '05 · 플러그인', time: '7분' },
     { file: '06-embedded-experiences.md', out: '06-embedded-experiences.html', label: '06 · 임베디드 경험', time: '5분' },
     { file: '07-agents.md', out: '07-agents.html', label: '07 · 에이전트', time: '8분' },
+    { file: '07a-entra-agents.md', out: '07a-entra-agents.html', label: 'Entra 에이전트', time: '7분', sub: true },
+    { file: '07b-intune-agents.md', out: '07b-intune-agents.html', label: 'Intune 에이전트', time: '7분', sub: true },
+    { file: '07c-purview-agents.md', out: '07c-purview-agents.html', label: 'Purview 에이전트', time: '8분', sub: true },
+    { file: '07d-defender-agents.md', out: '07d-defender-agents.html', label: 'Defender 에이전트', time: '8분', sub: true },
   ]},
   { part: 'Part 3 · 운영·거버넌스', icon: '🛡️', items: [
     { file: '08-usage-monitoring.md', out: '08-usage-monitoring.html', label: '08 · 사용량 모니터링', time: '5분' },
@@ -184,9 +188,10 @@ function buildSidebar(currentOut) {
   for (const group of NAV) {
     html += `<div class="nav-group"><div class="nav-part"><span class="nav-ico">${group.icon}</span>${group.part}</div><ul>`;
     for (const it of group.items) {
-      const active = it.out === currentOut ? ' class="active"' : '';
+      const active = it.out === currentOut ? ' active' : '';
+      const subcls = it.sub ? ' nav-subitem' : '';
       const t = it.time ? `<span class="nav-time">${it.time}</span>` : '';
-      html += `<li><a href="./${it.out}"${active}>${it.label}${t}</a></li>`;
+      html += `<li><a href="./${it.out}" class="nav-link${active}${subcls}">${it.label}${t}</a></li>`;
     }
     html += `</ul></div>`;
   }

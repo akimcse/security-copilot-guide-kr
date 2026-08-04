@@ -12,6 +12,13 @@
 
 Security Copilot **에이전트(agent)**는 사람의 감독 하에 반자동으로 보안 업무를 수행하는 AI 워커입니다. 다른 모든 기능과 마찬가지로 에이전트도 **SCU(Security Compute Unit)를 소비**합니다.
 
+> [!TIP]
+> **제품군별 심층 페이지** — 각 워크로드에서 에이전트로 **어디까지 자동화**할 수 있는지, 실제 UI 화면과 함께 자세히 보려면:
+> - [07a · Entra 에이전트](./07a-entra-agents.md) — 조건부 액세스 최적화·위험 사용자 조사
+> - [07b · Intune 에이전트](./07b-intune-agents.md) — 정책 구성·변경 검토·취약점 개선
+> - [07c · Purview 에이전트](./07c-purview-agents.md) — 경보 분류(DLP·IRM)·데이터 태세(발견·자격 증명)
+> - [07d · Defender 에이전트](./07d-defender-agents.md) — 경보 분류·심층 조사·위협 헌팅·위협 인텔
+
 ## 1. 에이전트 개요
 
 <img width="2270" height="1162" alt="image" src="https://github.com/user-attachments/assets/86242946-a692-4545-8dc2-22c6896ffd36" />
