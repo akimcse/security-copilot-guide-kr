@@ -36,9 +36,11 @@ const NAV = [
     { file: '08-usage-monitoring.md', out: '08-usage-monitoring.html', label: '08 · 사용량 모니터링', time: '5분' },
     { file: '09-responsible-ai.md', out: '09-responsible-ai.html', label: '09 · 책임 있는 AI', time: '8분' },
   ]},
-  { part: 'Part 4 · 실습·활용·참조', icon: '🧪', items: [
+  { part: 'Part 4 · 실습·활용', icon: '🧪', items: [
     { file: '10-handson-lab.md', out: '10-handson-lab.html', label: '10 · 핸즈온 랩', time: '20분' },
     { file: '11-use-cases.md', out: '11-use-cases.html', label: '11 · 실무 활용', time: '30분+' },
+  ]},
+  { part: 'Part 5 · 참조', icon: '📎', items: [
     { file: '99-troubleshooting.md', out: '99-troubleshooting.html', label: '99 · 부록', time: '참조' },
   ]},
 ];
