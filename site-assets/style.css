@@ -51,7 +51,7 @@ a:hover{text-decoration:underline;}
 #menuBtn{display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--fg);}
 
 /* ---------- layout ---------- */
-.layout{display:flex; align-items:flex-start; max-width:1680px; margin:0 auto;}
+.layout{display:flex; align-items:flex-start; max-width:none; margin:0;}
 .sidebar{
   width:var(--sidebar-w); flex:none; position:sticky; top:var(--topbar-h);
   height:calc(100vh - var(--topbar-h)); overflow-y:auto;
@@ -73,7 +73,7 @@ a:hover{text-decoration:underline;}
 .sidebar li a.nav-subitem.active::before{background:#fff; opacity:.9;}
 
 /* ---------- content ---------- */
-.content{flex:1; min-width:0; max-width:1000px; margin:0; padding:26px 54px 60px;}
+.content{flex:1; min-width:0; max-width:1000px; margin:0 auto; padding:26px 54px 60px;}
 .crumb{display:flex; align-items:center; gap:9px; font-size:13px; color:var(--muted); margin:2px 0 18px;}
 .crumb .sep{opacity:.6;}
 .crumb-part{font-weight:600; color:var(--accent-ink);}
@@ -92,6 +92,9 @@ a:hover{text-decoration:underline;}
 .markdown-body li::marker{color:var(--accent);}
 .markdown-body hr{border:none; border-top:1px solid var(--border); margin:1.9em 0;}
 .markdown-body img{max-width:100%; height:auto; border-radius:10px; border:1px solid var(--border); margin:.6em 0; box-shadow:var(--shadow);}
+.markdown-body video{max-width:100%; height:auto; border-radius:10px; border:1px solid var(--border); margin:.6em 0; box-shadow:var(--shadow); display:block; background:#000;}
+.markdown-body .img-row{display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start; margin:.6em 0;}
+.markdown-body .img-row img{flex:1 1 0; min-width:240px; width:100%; margin:0;}
 .markdown-body blockquote{margin:.8em 0; padding:.3em 1.1em; border-left:4px solid var(--accent); background:var(--accent-weak); border-radius:0 8px 8px 0; color:var(--fg);}
 .markdown-body blockquote p{margin:.35em 0;}
 .markdown-body code{background:var(--code-bg); padding:.14em .42em; border-radius:6px; font-size:.87em; font-family:'Cascadia Code',Consolas,monospace; color:var(--accent-ink);}

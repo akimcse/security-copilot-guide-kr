@@ -87,7 +87,7 @@
 
 **출처:** [Purview 에이전트](https://learn.microsoft.com/en-us/purview/copilot-in-purview-agents)
 
-- Purview Triage Agent의 에이전트 인증은 **90일 후 만료**되며 수동 갱신이 필요함(전용 ID를 사용하는 Entra Agent ID 기반 에이전트와 달리)
+- Purview Data Security Triage Agent의 에이전트 인증은 **90일 후 만료**되며 수동 갱신이 필요함(전용 ID를 사용하는 Entra Agent ID 기반 에이전트와 달리)
 
 ### 세션 공유
 

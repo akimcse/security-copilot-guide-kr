@@ -12,24 +12,19 @@
 
 ID는 오늘날 공격의 최전선입니다. Entra의 Security Copilot 에이전트는 **조건부 액세스 정책 유지·위험 사용자 조사** 같은 고빈도 IAM 업무를 자율·적응형으로 자동화해, 관리자가 전략적 업무에 집중하게 합니다.
 
-![Entra 관리 센터 — Security Copilot 에이전트](./images/entra-agents-home.png)
-*Microsoft Entra 관리 센터에서 바로 접근하는 Security Copilot 에이전트*
-
-> [!IMPORTANT]
-> **전통적 자동화 vs 에이전트** — 규칙 기반 자동화는 고정적이라 새 사용자·앱·조건이 등장하면 사각지대가 생깁니다. Security Copilot 에이전트는 **맥락을 이해하고 변화에 적응하며 지속 학습**하므로, 위협·IT 환경이 진화해도 견고합니다.
-
 ---
 
 ## 1. Conditional Access Optimization Agent — 조건부 액세스 자동 최적화 (GA)
 
 조직이 성장하면 새 사용자·앱이 계속 추가되고, 조건부 액세스(CA) 정책은 금방 뒤처집니다. 이 에이전트는 테넌트를 **상시 스캔**해 정책 공백을 찾아내고, **원클릭 개선안**을 제시합니다.
 
+<video controls preload="metadata" playsinline src="./media/ca-optimization-agent.mp4"></video>
+
+*Conditional Access Optimization Agent 데모 — 정책 공백 탐지부터 원클릭 개선까지*
+
 - **지속적으로 공백 발견:** **24시간 주기**로 새 사용자·앱을 모니터링해, 취약점이 되기 전에 CA 정책과의 불일치를 탐지합니다.
 - **원클릭 개선:** 수동 조사 없이 명확·실행 가능한 권장을 제시하고, 클릭 한 번으로 정책 공백을 닫습니다.
 - **환경 변화에 적응:** 사용자·앱·조건이 바뀌어도 CA 정책을 계속 정렬 상태로 유지 — 주기적 감사 의존을 줄이고 매일 보안을 강화합니다.
-
-![Conditional Access Optimization Agent — 에이전트 요약과 제안](./images/entra-ca-optimization-agent.png)
-*첫 실행 후 대시보드 — 보호된 사용자·앱, 권장 정책 업데이트를 한눈에*
 
 **GA로 강화된 점:**
 
@@ -37,28 +32,28 @@ ID는 오늘날 공격의 최전선입니다. Entra의 Security Copilot 에이�
 - **위험 기반 정책 권장:** 사용자 위험·로그인 위험을 반영해, 기존에 누락됐거나 새로 추가된 사용자까지 **위험 기반 CA 정책**으로 보호합니다.
 - **감사 로깅:** 설치·시작/중지·활성/비활성 등 에이전트 활동을 감사 로그에 기록 — 가시성과 컴플라이언스 보고가 쉬워집니다.
 
-![에이전트 활동 맵](./images/entra-agent-activity-map.png)
-*에이전트가 제안에 이른 과정을 보여 주는 활동 맵 — "왜 이 정책인가"를 설명*
-
 > [!TIP]
 > **왜 좋아하나 (고객 사례)** — "24/7 대기하는 보안 분석가처럼, CA 정책의 공백을 선제적으로 찾아 첫날부터 모든 사용자를 보호한다. 리포트 전용(report-only) 모드와 AI 권장으로 중단 없이 정책을 테스트·개선할 수 있다." *(Microsoft MVP)* — 첫 실행부터 가치를 내며, 수 주가 걸리던 수동 검토를 대체합니다.
 
 ## 2. Identity Risk Management Agent — 위험 사용자 조사 자동화 (Preview)
 
-Entra ID Protection이 표시한 **위험 사용자**를 관리자가 조사·평가·대응하도록 지원하는 에이전트입니다.
+Entra ID Protection의 **위험 사용자(risky users)** 조사를 자동화하는 에이전트입니다. 관리자·보안 분석가가 쏟아지는 경보 속에서 위험을 식별하고, 영향을 이해하고, 조직의 핵심 자산을 보호하도록 결정적 조치를 돕습니다.
 
-- **위험 사용자 심층 분석:** 왜 위험한지, 어떤 활동이 근거인지 자연어로 요약합니다.
-- **영향 평가·보호 조치:** 계정 상태·인증 수단·로그인 이력을 종합해 조치를 제안합니다.
-- **유연한 실행:** **24시간 주기** 실행, 수동 트리거, 연속 모니터링을 지원합니다.
+**동작 방식** — 먼저 테넌트에서 위험 상태가 **"At risk"**인 신규 위험 사용자를 스캔하고, 정의된 **범위(scope) 설정** 안의 사용자를 식별합니다. *(이 초기 스캔 단계는 SCU를 소비하지 않습니다.)* 이어서 새로 발견된 사용자에 대해 다음을 수행합니다 *(이 단계부터 SCU 소비)*:
 
-![위험 사용자 조사 — Copilot 사이드카](./images/entra-risky-users.png)
-*Entra 관리 센터에서 위험 사용자를 선택하면 Copilot이 위험 근거·조치를 제시*
+- **위험 사용자 조사:** 위험한 로그인·위험 탐지를 확인해 무엇이 위험한지 분석합니다.
+- **결과·위험 요약 생성:** 조사 결과를 바탕으로, 제안을 설명하고 핵심 위험 요인을 정의하는 **위험 요약**을 생성합니다.
+- **개선 조치 권장:** 조사에서 수집한 정보로 권장 개선 조치를 제시합니다.
+- **채팅으로 질의응답:** 관리자가 해당 위험 사용자·위험 요약에 대해 에이전트에게 자연어로 질문할 수 있습니다.
+- **사용자 지정 지침을 메모리에 저장:** 채팅으로 준 지침을 에이전트가 **메모리에 저장**해 이후 실행에 반영합니다. *(현재 메모리는 선호하는 개선 권장만 저장하며, 개선을 자동 실행하지는 않습니다.)*
+
+**시작 방법:** Entra 관리 센터 › **ID Protection › Risky users**에서 상단 배너의 **Start agent**로 첫 실행을 시작합니다. *(최초 활성화·조치 실행에는 **Security Administrator** 역할이 필요하며, Security Reader·Global Reader는 조회만 가능합니다.)*
+
+> [!WARNING]
+> **프리뷰 · 알려진 제약** — ① 1회 실행은 최대 **100명**의 위험 사용자를 조사(범위 설정으로 조정), 100명 기준 **10~15분** 소요. ② 실행은 시작 후 중지·일시정지 불가. ③ 현재 **사용자 ID만** 분석하며 워크로드 ID는 미지원. ④ 제안은 **관리자 수동 승인** 필요 — 자동 개선 미지원. ⑤ 에이전트는 로그인 로그·위험 탐지·위험 사용자·감사 로그 등 **Entra 데이터**를 근거로 추론합니다. ⑥ AI 생성 요약·권장은 불완전·부정확할 수 있으니 **적용 전 검토**하세요.
 
 > [!NOTE]
-> 위 에이전트 외에도, Entra에는 **임베디드 Security Copilot(어시스티브)** 기능이 있습니다 — 로그인 로그 문제 해결, 위험 사용자 요약, 앱(워크로드 ID) 위험 조사, 라이프사이클 워크플로 관리, 프롬프트북 기반 심층 분석 등. 관리자가 페이지를 옮겨 다니며 **사이드카 Copilot 채팅**으로 조사를 이어갈 수 있습니다.
-
-![위험한 앱 프롬프트북](./images/entra-risky-apps-promptbook.png)
-*"위험한 앱·고권한·소유자" 프롬프트북 — 반복 조사를 재사용 가능한 워크플로로*
+> 라이선스: **Entra ID P2** 필요. 실행 1회당 평균 **1 SCU 미만** 소비.
 
 ---
 
@@ -69,6 +64,7 @@ Entra ID Protection이 표시한 **위험 사용자**를 관리자가 조사·�
 
 - [Entra 에이전트](https://learn.microsoft.com/entra/security-copilot/entra-agents)
 - [Conditional Access Optimization Agent](https://learn.microsoft.com/entra/identity/conditional-access/agent-optimization)
+- [Identity Risk Management Agent 시작](https://learn.microsoft.com/entra/id-protection/identity-risk-management-agent-get-started)
 - [Entra의 Security Copilot 개요](https://learn.microsoft.com/entra/fundamentals/copilot-security-entra)
 - [에이전트 개요](https://learn.microsoft.com/security-copilot/agents-overview)
 

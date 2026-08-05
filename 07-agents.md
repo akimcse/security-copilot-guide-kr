@@ -60,14 +60,14 @@ Security Copilot **에이전트(agent)**는 사람의 감독 하에 반자동으
 
 ### Microsoft Purview 에이전트
 
-Purview는 경보를 자동으로 분류·우선순위화하는 **분류(Triage) 에이전트**와, 민감 데이터를 탐지·평가하는 **포스처(Posture) 에이전트**를 제공합니다. 모두 SCU를 소비하며 Purview 임베디드 경험에서 제공됩니다.
+Purview는 경보를 자동으로 분류·우선순위화하는 **Data Security Triage Agent**와, 민감 데이터를 탐지·평가하는 **Data Security Posture Agent**를 제공합니다. 모두 SCU를 소비하며 Purview 임베디드 경험에서 제공됩니다.
 
 | 에이전트 | 상태 | 요약 |
 | --- | --- | --- |
-| **Triage Agent in Data Loss Prevention (DLP)** | GA | 민감도·유출·정책 위험을 기준으로 DLP 경보를 평가해 네 가지 범주(All, Needs attention, Less Urgent, Not categorized)로 자동 분. 스케줄링 혹은 알림 단위 수동 실행. 자연어 **사용자 지정 지침**으로 우선순위 로직 정의 지원(DLP 전용, 문서 콘텐츠만 분석). |
-| **Triage Agent in Insider Risk Management (IRM)** | GA | 사용자·파일·활동 위험을 기준으로 IRM 경고를 평가해 네 가지 범주(All, Needs attention, Less Urgent, Not categorized)로 자동 분류. 스케줄링 혹은 알림 단위 수동 실행. |
-| **Posture Agent in Data Security Posture Management (DSPM)** | Preview | 키워드·필터 대신 **자연어 검색(LLM)**으로 M365 데이터 자산 전반의 민감 데이터를 발견하고 요약·위험 분석 제공. |
-| **Posture Agent in Data Security Investigations (DSI)** | Preview | 테넌트 전반에서 노출된 자격 증명을 대규모로 탐지 — 자격 증명 스캔 자동화, AI 위험 평가 생성, **칸반(Kanban) 보드**로 검토·개선 작업 추적. |
+| **Data Security Triage Agent (DLP)** | GA | 민감도·유출·정책 위험을 기준으로 DLP 경보를 평가해 네 가지 범주(All, Needs attention, Less Urgent, Not categorized)로 자동 분. 스케줄링 혹은 알림 단위 수동 실행. 자연어 **사용자 지정 지침**으로 우선순위 로직 정의 지원(DLP 전용, 문서 콘텐츠만 분석). |
+| **Data Security Triage Agent (IRM)** | GA | 사용자·파일·활동 위험을 기준으로 IRM 경고를 평가해 네 가지 범주(All, Needs attention, Less Urgent, Not categorized)로 자동 분류. 스케줄링 혹은 알림 단위 수동 실행. |
+| **Data Security Posture Agent (DSPM · 데이터 발견)** | Preview | 키워드·필터 대신 **자연어 검색(LLM)**으로 M365 데이터 자산 전반의 민감 데이터를 발견하고 요약·위험 분석 제공. |
+| **Data Security Posture Agent (DSI · 자격 증명 스캔)** | Preview | 테넌트 전반에서 노출된 자격 증명을 대규모로 탐지 — 자격 증명 스캔 자동화, AI 위험 평가 생성, **칸반(Kanban) 보드**로 검토·개선 작업 추적. |
 
 참고: [Purview 에이전트 개요](https://learn.microsoft.com/purview/copilot-in-purview-agents-overview)
 

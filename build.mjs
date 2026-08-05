@@ -282,6 +282,7 @@ for (const g of NAV) for (const item of g.items) {
 }
 
 if (existsSync(join(ROOT, 'images'))) cpSync(join(ROOT, 'images'), join(OUT, 'images'), { recursive:true });
+if (existsSync(join(ROOT, 'media'))) cpSync(join(ROOT, 'media'), join(OUT, 'media'), { recursive:true });
 cpSync(join(ROOT, 'site-assets', 'style.css'), join(OUT, 'style.css'));
 writeFileSync(join(OUT, '.nojekyll'), '');
 console.log('done ->', OUT);
