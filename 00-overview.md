@@ -1,4 +1,4 @@
-[🏠 전체 목차](./README.md)　·　**Part 1 · 시작하기**　·　페이지 1 / 12
+[🏠 전체 목차](./README.md)　·　**Part 1 · 시작하기**　·　페이지 1 / 14
 
 # 00 · 개요 — Microsoft Security Copilot이란?
 
@@ -60,7 +60,7 @@ Security Copilot의 내부 처리 파이프라인은 다음과 같습니다.
 ⑤ 응답 반환 — 어떤 단계·플러그인이 사용됐는지 보여주는 "프로세스 로그"와 함께 반환
 ```
 
-**플러그인(Microsoft 및 비-Microsoft)**, **위협 인텔리전스(MDTI 아티클, intel 프로파일, 위협 분석 리포트, CVE 데이터)**, **조직 고유 지식(업로드 파일, 연결된 Microsoft 365 서비스)** 등을 통해 보안에 특화된 답변을 생성합니다. 즉 조직 데이터는 **모델 학습이 아니라 추론 시점의 그라운딩**으로 반영됩니다(→ [Step 9](./09-responsible-ai.md)).
+**플러그인(Microsoft 및 비-Microsoft)**, **위협 인텔리전스(MDTI 아티클, intel 프로파일, 위협 분석 리포트, CVE 데이터)**, **조직 고유 지식(업로드 파일, 연결된 Microsoft 365 서비스)** 등을 통해 보안에 특화된 답변을 생성합니다. 즉 조직 데이터는 **모델 학습이 아니라 추론 시점의 그라운딩**으로 반영됩니다(→ [Step 10](./10-responsible-ai.md)).
 
 참고: [Security Copilot 개요](https://learn.microsoft.com/security-copilot/microsoft-security-copilot)
 
@@ -93,7 +93,7 @@ Security Copilot은 독립적 제3자가 확인한 **ISO 42001 인증**을 획�
 사전 준비(라이선스·역할) ─▶ 첫 프롬프트 ─▶ 프롬프트북 ─▶ 플러그인 ─▶ 임베디드 경험 ─▶ 에이전트 ─▶ 사용량/데이터 거버넌스
 ```
 
-[Step 10: 핸즈온 랩](./10-handson-lab.md)에서 이 흐름을 실제 포털에서 단계별로 실습합니다.
+[Step 11: 핸즈온 랩](./11-handson-lab.md)에서 이 흐름을 실제 포털에서 단계별로 실습합니다.
 
 ---
 

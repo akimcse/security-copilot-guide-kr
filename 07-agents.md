@@ -1,4 +1,4 @@
-[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 8 / 12
+[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 8 / 14
 
 # 07 · Security Copilot 에이전트
 
@@ -101,6 +101,6 @@ Purview는 경보를 자동으로 분류·우선순위화하는 **Data Security 
 
 | ◀ 이전 | ▶ 다음 |
 | :-- | --: |
-| [06 · 임베디드 경험](./06-embedded-experiences.md) | [08 · 사용량 모니터링](./08-usage-monitoring.md) |
+| [06 · 임베디드 경험](./06-embedded-experiences.md) | [08 · API 활용](./08-api-usage.md) |
 
 [🏠 전체 목차로 돌아가기](./README.md)

@@ -1,4 +1,4 @@
-[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 6 / 12
+[🏠 전체 목차](./README.md)　·　**Part 2 · 핵심 기능**　·　페이지 6 / 14
 
 # 05 · 플러그인 (Microsoft · 비-Microsoft · 커스텀)
 

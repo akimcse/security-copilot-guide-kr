@@ -102,6 +102,6 @@ KQL 전문성이 없어도 **평문(자연어)**으로 위협을 헌팅합니다
 
 | ◀ 이전 | ▶ 다음 |
 | :-- | --: |
-| [07c · Purview 에이전트](./07c-purview-agents.md) | [08 · 사용량 모니터링](./08-usage-monitoring.md) |
+| [07c · Purview 에이전트](./07c-purview-agents.md) | [08 · API 활용](./08-api-usage.md) |
 
 [🏠 전체 목차로 돌아가기](./README.md)

@@ -31,14 +31,15 @@ const NAV = [
     { file: '07b-intune-agents.md', out: '07b-intune-agents.html', label: 'Intune 에이전트', time: '7분', sub: true },
     { file: '07c-purview-agents.md', out: '07c-purview-agents.html', label: 'Purview 에이전트', time: '8분', sub: true },
     { file: '07d-defender-agents.md', out: '07d-defender-agents.html', label: 'Defender 에이전트', time: '8분', sub: true },
+    { file: '08-api-usage.md', out: '08-api-usage.html', label: '08 · API 활용', time: '9분' },
   ]},
   { part: 'Part 3 · 운영·거버넌스', icon: '🛡️', items: [
-    { file: '08-usage-monitoring.md', out: '08-usage-monitoring.html', label: '08 · 사용량 모니터링', time: '5분' },
-    { file: '09-responsible-ai.md', out: '09-responsible-ai.html', label: '09 · 책임 있는 AI', time: '8분' },
+    { file: '09-usage-monitoring.md', out: '09-usage-monitoring.html', label: '09 · 사용량 모니터링', time: '5분' },
+    { file: '10-responsible-ai.md', out: '10-responsible-ai.html', label: '10 · 책임 있는 AI', time: '8분' },
   ]},
   { part: 'Part 4 · 실습·활용', icon: '🧪', items: [
-    { file: '10-handson-lab.md', out: '10-handson-lab.html', label: '10 · 핸즈온 랩', time: '20분' },
-    { file: '11-use-cases.md', out: '11-use-cases.html', label: '11 · 실무 활용', time: '30분+' },
+    { file: '11-handson-lab.md', out: '11-handson-lab.html', label: '11 · 핸즈온 랩', time: '20분' },
+    { file: '12-use-cases.md', out: '12-use-cases.html', label: '12 · 실무 활용', time: '30분+' },
   ]},
   { part: 'Part 5 · 참조', icon: '📎', items: [
     { file: '99-troubleshooting.md', out: '99-troubleshooting.html', label: '99 · 부록', time: '참조' },
@@ -285,6 +286,7 @@ for (const g of NAV) for (const item of g.items) {
 
 if (existsSync(join(ROOT, 'images'))) cpSync(join(ROOT, 'images'), join(OUT, 'images'), { recursive:true });
 if (existsSync(join(ROOT, 'media'))) cpSync(join(ROOT, 'media'), join(OUT, 'media'), { recursive:true });
+if (existsSync(join(ROOT, 'assets'))) cpSync(join(ROOT, 'assets'), join(OUT, 'assets'), { recursive:true });
 cpSync(join(ROOT, 'site-assets', 'style.css'), join(OUT, 'style.css'));
 writeFileSync(join(OUT, '.nojekyll'), '');
 console.log('done ->', OUT);
