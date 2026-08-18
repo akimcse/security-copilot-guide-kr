@@ -4,7 +4,7 @@
 
 > [!NOTE]
 > **이 페이지에서 얻는 것**
-> - Security Copilot을 코드/시스템에서 호출해 **자체 대시보드·티켓·워크플로**에 연동하는 방법
+> - Security Copilot을 코드/시스템에서 호출해 **자체 시스템·대시보드·티켓·워크플로**에 연동하는 방법
 > - 접근 방식 비교 — raw REST가 없고 **Logic Apps 커넥터**가 정답인 이유
 > - 실제로 검증한 **구축 레시피**(HTTP 트리거 → Submit prompt → Response)와 요청·응답 원문
 >
@@ -39,11 +39,11 @@ Security Copilot에 프로그래밍 방식으로 접근하는 경로는 여러 �
 
 ## 3. 아키텍처
 
-커넥터 액션은 Logic Apps/Power Platform 런타임 안에서만 실행됩니다. 따라서 커넥터를 **HTTP 트리거로 감싸** 여러분만의 REST 엔드포인트로 노출하고, 대시보드가 그 URL을 호출하게 합니다. **감싼 Logic App이 곧 여러분 전용 API**가 됩니다.
+커넥터 액션은 Logic Apps/Power Platform 런타임 안에서만 실행됩니다. 따라서 커넥터를 **HTTP 트리거로 감싸** 여러분만의 REST 엔드포인트로 노출하고, 외부 시스템이 그 URL을 호출하게 합니다. **감싼 Logic App이 곧 여러분 전용 API**가 됩니다.
 
 ```mermaid
 flowchart LR
-    A["대시보드 / 백엔드"] -->|"POST { promptContent }"| B["Logic App<br/>HTTP 트리거"]
+    A["클라이언트 시스템 / 백엔드"] -->|"POST { promptContent }"| B["Logic App<br/>HTTP 트리거"]
     B --> C["Security Copilot 커넥터<br/>Submit prompt (POST /process-prompt)"]
     C --> D["Security Copilot<br/>평가 (SCU 소비)"]
     D --> C
@@ -55,7 +55,7 @@ flowchart LR
 
 ### 4-1. 워크플로 구성
 
-1. **Consumption Logic App** 생성 → 트리거 **"When a HTTP request is received"** (POST).
+1. **Logic Apps 리소스** 생성 → 트리거 **"When a HTTP request is received"** (POST).
    - 요청 스키마에 `promptContent`(필수), `sessionId`(선택), `plugins`(선택) 정의.
 2. **Security Copilot 커넥터** 액션 **"Submit a Security Copilot prompt"** 추가 → `PromptContent`에 트리거 입력 매핑.
 3. **Response 액션**으로 평가 결과(`EvaluationResultContent` 등)를 JSON으로 반환.
@@ -71,7 +71,7 @@ flowchart LR
 커넥터 연결은 두 가지 인증을 지원합니다.
 
 - **OAuth (Entra 사용자)** — 대화형. 연결을 만든 사용자가 Security Copilot 접근 권한 필요.
-- **Service principal (OauthServicePrincipal)** — 무인 서버-투-서버용. **Client ID / Client Secret / Tenant** 입력. 대시보드처럼 사람이 개입하지 않는 시나리오에 권장.
+- **Service principal (OauthServicePrincipal)** — 무인 서버-투-서버용. **Client ID / Client Secret / Tenant** 입력. 사람이 개입하지 않는 자동화·시스템 연동 시나리오에 권장.
 
 > [!WARNING]
 > **전제조건** — ① 테넌트에 Security Copilot이 프로비저닝되고 **SCU가 할당**돼 있어야 합니다. ② 인증 주체(사용자 또는 **SPN**)가 **Security Copilot 워크스페이스에 Contributor/Owner** 역할(역할 지정 가능 그룹 경유)로 추가돼야 합니다. ③ 그 주체가 조회 대상 보안 제품(Defender 등) 데이터 접근 권한을 가져야 합니다. ④ SPN 옵션은 테넌트별로 동작이 다를 수 있으니 **PoC로 먼저 검증**하세요.
@@ -95,15 +95,15 @@ az deployment group create \
 ```
 배포 후 포털에서 **연결(Securitycopilot-...)** 을 열어 **인증(사용자 OAuth 또는 SPN)** 을 완료하고, Logic App을 저장하세요.
 
-**방법 B — 기존 Logic App에 정의만 붙여넣기**
-1. Consumption **Logic App** 을 만들고 **개발 도구 › 코드 보기** 를 엽니다.
+**방법 B — 기존 Logic Apps 리소스에 정의만 붙여넣기**
+1. **Logic Apps 리소스** 를 만들고 **개발 도구 › 코드 보기** 를 엽니다.
 2. `workflow-definition.json` 내용을 **전체 붙여넣기** 후 저장합니다.
 3. 디자이너로 돌아가 `Submit a Security Copilot prompt` 액션의 **연결을 인증된 연결로 지정**합니다(없으면 새로 만들어 인증).
 
 ![Submit prompt 액션의 연결 지정](./images/api-logicapp-connection.png)
 *"Change connection" 에서 초록 체크(인증 완료)된 Security Copilot 연결을 선택. 미인증(빨간 X) 연결이 선택돼 있으면 프롬프트 호출이 실패합니다.*
 
-4. 저장하면 HTTP 트리거의 **콜백 URL**이 생성됩니다 — 이 URL이 대시보드가 호출할 엔드포인트입니다.
+4. 저장하면 HTTP 트리거의 **콜백 URL**이 생성됩니다 — 이 URL이 외부 시스템에서 호출할 엔드포인트입니다.
 
 > [!TIP]
 > 콜백 URL은 포털의 트리거 카드에서 **"HTTP POST URL"** 로 복사하거나, CLI로 가져올 수 있습니다:
@@ -165,7 +165,7 @@ Content-Type: application/json
 | `skillName` | string | Copilot이 자동 선택한 스킬(예: `GetDefenderIncidents`) |
 | `evaluationState` | string | 평가 상태 — 성공 시 `Completed` |
 | `resultType` | string | 결과 유형 — 성공 시 `Success` |
-| `result` | string | **답변 본문**(여기서는 마크다운). 대시보드에서 렌더링 |
+| `result` | string | **답변 본문**(여기서는 마크다운). 클라이언트에서 렌더링 |
 | `nextPromptSuggestions` | string[] \| null | 후속 프롬프트 제안 |
 
 실패 시(연결 미인증·평가 오류·타임아웃)에는 `Response_Failure` 액션이 다음을 반환합니다.
@@ -183,7 +183,7 @@ Content-Type: application/json
 ### 5-3. 관찰 포인트
 
 - **`skillName`** — Copilot이 프롬프트를 보고 알맞은 스킬(`GetDefenderIncidents`)을 자동 선택해 실제 테넌트 데이터를 조회합니다.
-- **`result`** — 답변 본문(여기서는 마크다운 표). 대시보드에서 그대로 렌더링하거나, "결과를 JSON으로 반환해줘"라고 프롬프트에 지시해 파싱하기 쉽게 받을 수 있습니다.
+- **`result`** — 답변 본문(여기서는 마크다운 표). 호출하는 시스템에서 그대로 렌더링하거나, "결과를 JSON으로 반환해줘"라고 프롬프트에 지시해 파싱하기 쉽게 받을 수 있습니다.
 - **`sessionId`** — 다음 요청 바디에 되돌려 주면 **같은 세션에서 맥락을 이어** 후속 프롬프트를 보낼 수 있습니다.
 
 > [!TIP]
@@ -191,9 +191,9 @@ Content-Type: application/json
 
 ## 6. 운영 시 주의
 
-- **SCU 소비** — 프롬프트 평가마다 SCU가 차감됩니다(호출 방식 무관). 대시보드가 자주 호출하면 비용이 급증하므로, **응답을 저장소(Log Analytics·Storage·DB)에 적재하고 대시보드는 저장본을 읽게** 하세요. 매 새로고침마다 재프롬프트하지 마세요.
+- **SCU 소비** — 프롬프트 평가마다 SCU가 차감됩니다(호출 방식 무관). 호출 빈도가 높으면 비용이 급증하므로, **응답을 저장소(Log Analytics·Storage·DB)에 적재하고 조회 시에는 저장본을 읽게** 하세요. 동일 요청을 매번 재프롬프트하지 마세요.
 - **스로틀링** — 커넥터 **연결당 600 calls / 60초**. 대량 트래픽은 큐잉·캐싱을 설계하세요.
-- **지연** — 평가는 수 초~수십 초 걸릴 수 있어 대시보드는 비동기 처리로 설계합니다.
+- **지연** — 평가는 수 초~수십 초 걸릴 수 있어 호출하는 시스템은 비동기 처리로 설계합니다.
 - **리전 제한** — GCC / GCC High / Azure Government / China / DoD에서는 커넥터가 **지원되지 않습니다**.
 - **엔드포인트 보안** — HTTP 트리거 URL은 SAS 서명이 포함된 시크릿입니다. 노출을 금지하고, 필요 시 앞단에 API Management/인증 게이트웨이를 두세요.
 - **백엔드 직접 호출 금지** — 커넥터가 감싼 `api.securitycopilot.microsoft.com` 백엔드를 직접 호출하는 것은 **비문서·비지원**입니다. 반드시 이 Logic App(커넥터)을 통하세요.
