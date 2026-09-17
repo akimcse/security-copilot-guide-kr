@@ -15,12 +15,6 @@
 | `06-defender-incident-summary.png` | 06 임베디드 경험 | Defender XDR 인시던트 요약 |
 | `06-guided-response.png` | 06 임베디드 경험 | 유도된 대응(Guided Response) |
 | `07-agent-library.png` | 07 에이전트 | 에이전트 라이브러리 |
-| `08-usage-dashboard.png` | 08 사용량 모니터링 | 사용량 모니터링 대시보드 |
-| `10-lab-step1-first-prompt.png` | 10 핸즈온 랩 | 첫 프롬프트 실행 |
-| `10-lab-step2-builtin-promptbook.png` | 10 핸즈온 랩 | 기본 제공 프롬프트북 실행 |
-| `10-lab-step3-plugin.png` | 10 핸즈온 랩 | 플러그인 활성화·사용 |
-| `10-lab-step4-embedded-incident.png` | 10 핸즈온 랩 | Defender XDR 임베디드 인시던트 요약 |
-| `10-lab-step5-custom-promptbook.png` | 10 핸즈온 랩 | 커스텀 프롬프트북 생성 |
-| `10-lab-step6-agent-setup.png` | 10 핸즈온 랩 | 에이전트 검색·설정 |
+| `08-usage-dashboard.png` | 09 사용량 모니터링 | 사용량 모니터링 대시보드 |
 
 > 스크린샷을 아직 준비하지 못한 경우, 문서에서 해당 이미지 프레임은 깨진 이미지로 표시됩니다. 실습 진행에는 지장이 없습니다.

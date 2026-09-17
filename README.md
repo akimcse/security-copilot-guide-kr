@@ -19,8 +19,7 @@
 - **"Security Copilot이 뭔지 빠르게 감 잡고 싶어요"** → [개요 한 장 보기](./00-overview.md) *(약 6분)*
 - **"우리 조직에 도입하려면 뭐가 필요하죠?"** → [사전 준비 · 라이선스 · 권한](./01-prerequisites.md) *(약 9분)*
 - **"어떤 기능이 있는지 훑어보고 싶어요"** → [핵심 기능 — 포털·프롬프트북·플러그인·임베디드·에이전트](./03-standalone-portal.md) *(약 30분)*
-- **"일단 손으로 만져 보고 싶어요"** → [6단계 핸즈온 랩으로 바로 가기](./11-handson-lab.md) *(약 20분)*
-- **"현업에서 어떻게 쓰는지 알고 싶어요"** → [실무 활용 심층 데모 시나리오](./12-use-cases.md) *(약 30분+)*
+- **"직접 실습해 보고 싶어요"** → [핸즈온 랩 1) 위험 조사](./11-handson-lab.md) *(약 30분+)*
 
 > [!TIP]
 > 처음이라면 위에서 아래로 순서대로 읽는 것을 권장합니다. 각 페이지 상단에 **학습 목표·예상 소요 시간·대상 독자**가 표시되어, 필요한 부분만 골라 읽기에도 좋습니다.
@@ -41,7 +40,7 @@ flowchart LR
         C8["09 사용량·SCU"] --> C9["10 책임 있는 AI"]
     end
     subgraph P4["Part 4 · 실습·활용"]
-        D10["11 핸즈온 랩"] --> D11["12 실무 활용"]
+        D11["11 핸즈온 랩 1) 위험 조사"] --> D12["12 핸즈온 랩 2) CA 정책 최적화"]
     end
     subgraph P5["Part 5 · 참조"]
         D99["99 부록"]
@@ -59,12 +58,12 @@ flowchart LR
     click B8 "./08-api-usage.md" "08 API 활용"
     click C8 "./09-usage-monitoring.md" "09 사용량 모니터링"
     click C9 "./10-responsible-ai.md" "10 책임 있는 AI"
-    click D10 "./11-handson-lab.md" "11 핸즈온 랩"
-    click D11 "./12-use-cases.md" "12 실무 활용"
+    click D11 "./11-handson-lab.md" "11 핸즈온 랩 1) 위험 조사"
+    click D12 "./12-ca-agent-lab.md" "12 핸즈온 랩 2) CA 정책 최적화"
     click D99 "./99-troubleshooting.md" "99 부록"
 
     classDef node fill:#eef4ff,stroke:#2f6fd6,color:#123,stroke-width:1px;
-    class A0,A1,A2,B3,B4,B5,B6,B7,B8,C8,C9,D10,D11,D99 node;
+    class A0,A1,A2,B3,B4,B5,B6,B7,B8,C8,C9,D11,D12,D99 node;
 ```
 
 > [!TIP]
@@ -108,8 +107,8 @@ flowchart LR
 
 | 페이지 | 이 페이지의 핵심 | 소요 |
 | :-- | :-- | :--: |
-| [**11 · 핸즈온 랩**](./11-handson-lab.md) | 첫 프롬프트 → 프롬프트북 → 플러그인 → 임베디드 → 커스텀 → 에이전트 **6단계 실습** | 20분 |
-| [**12 · 실무 활용**](./12-use-cases.md) | 보안팀 페르소나로 따라가는 **심층 데모 시나리오 3가지** (Threat·Identity·Data·운영) + 고급 활용 팁 | 30분+ |
+| [**11 · 핸즈온 랩 1) 위험 조사**](./11-handson-lab.md) | 보안팀 페르소나로 따라가는 **심층 데모 시나리오 3가지** (Threat·Identity·Data) + 고급 활용 팁 | 30분+ |
+| [**12 · 핸즈온 랩 2) CA 정책 최적화**](./12-ca-agent-lab.md) | Conditional Access 최적화 에이전트 실행·검토·안전 배포 **엔드투엔드 실습** | 40분+ |
 
 ### Part 5 · 참조 — *막히면 찾아보기*
 

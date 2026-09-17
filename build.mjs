@@ -38,8 +38,8 @@ const NAV = [
     { file: '10-responsible-ai.md', out: '10-responsible-ai.html', label: '10 · 책임 있는 AI', time: '8분' },
   ]},
   { part: 'Part 4 · 실습·활용', icon: '🧪', items: [
-    { file: '11-handson-lab.md', out: '11-handson-lab.html', label: '11 · 핸즈온 랩', time: '20분' },
-    { file: '12-use-cases.md', out: '12-use-cases.html', label: '12 · 실무 활용', time: '30분+' },
+    { file: '11-handson-lab.md', out: '11-handson-lab.html', label: '11 · 핸즈온 랩 1) 위험 조사', time: '30분+' },
+    { file: '12-ca-agent-lab.md', out: '12-ca-agent-lab.html', label: '12 · 핸즈온 랩 2) CA 정책 최적화', time: '40분+' },
   ]},
   { part: 'Part 5 · 참조', icon: '📎', items: [
     { file: '99-troubleshooting.md', out: '99-troubleshooting.html', label: '99 · 부록', time: '참조' },
