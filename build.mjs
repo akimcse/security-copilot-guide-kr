@@ -40,6 +40,7 @@ const NAV = [
   { part: 'Part 4 · 실습·활용', icon: '🧪', items: [
     { file: '11-handson-lab.md', out: '11-handson-lab.html', label: '11 · 핸즈온 랩 1) 위험 조사', time: '30분+' },
     { file: '12-ca-agent-lab.md', out: '12-ca-agent-lab.html', label: '12 · 핸즈온 랩 2) CA 정책 최적화', time: '40분+' },
+    { file: '13-easm-plugin-lab.md', out: '13-easm-plugin-lab.html', label: '13 · 핸즈온 랩 3) EASM 연동', time: '25분+' },
   ]},
   { part: 'Part 5 · 참조', icon: '📎', items: [
     { file: '99-troubleshooting.md', out: '99-troubleshooting.html', label: '99 · 부록', time: '참조' },

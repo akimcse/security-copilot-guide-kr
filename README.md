@@ -40,7 +40,7 @@ flowchart LR
         C8["09 사용량·SCU"] --> C9["10 책임 있는 AI"]
     end
     subgraph P4["Part 4 · 실습·활용"]
-        D11["11 핸즈온 랩 1) 위험 조사"] --> D12["12 핸즈온 랩 2) CA 정책 최적화"]
+        D11["11 핸즈온 랩 1) 위험 조사"] --> D12["12 핸즈온 랩 2) CA 정책 최적화"] --> D13["13 핸즈온 랩 3) EASM 연동"]
     end
     subgraph P5["Part 5 · 참조"]
         D99["99 부록"]
@@ -60,10 +60,11 @@ flowchart LR
     click C9 "./10-responsible-ai.md" "10 책임 있는 AI"
     click D11 "./11-handson-lab.md" "11 핸즈온 랩 1) 위험 조사"
     click D12 "./12-ca-agent-lab.md" "12 핸즈온 랩 2) CA 정책 최적화"
+    click D13 "./13-easm-plugin-lab.md" "13 핸즈온 랩 3) EASM 연동"
     click D99 "./99-troubleshooting.md" "99 부록"
 
     classDef node fill:#eef4ff,stroke:#2f6fd6,color:#123,stroke-width:1px;
-    class A0,A1,A2,B3,B4,B5,B6,B7,B8,C8,C9,D11,D12,D99 node;
+    class A0,A1,A2,B3,B4,B5,B6,B7,B8,C8,C9,D11,D12,D13,D99 node;
 ```
 
 > [!TIP]
@@ -109,6 +110,7 @@ flowchart LR
 | :-- | :-- | :--: |
 | [**11 · 핸즈온 랩 1) 위험 조사**](./11-handson-lab.md) | 보안팀 페르소나로 따라가는 **심층 데모 시나리오 3가지** (Threat·Identity·Data) + 고급 활용 팁 | 30분+ |
 | [**12 · 핸즈온 랩 2) CA 정책 최적화**](./12-ca-agent-lab.md) | Conditional Access 최적화 에이전트 실행·검토·안전 배포 **엔드투엔드 실습** | 40분+ |
+| [**13 · 핸즈온 랩 3) EASM 연동**](./13-easm-plugin-lab.md) | 공식 **Defender EASM 플러그인** 연동(연결·리소스 설정)부터 **8가지 기능별 조사 프롬프트**까지 | 25분+ |
 
 ### Part 5 · 참조 — *막히면 찾아보기*
 
