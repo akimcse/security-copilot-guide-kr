@@ -91,7 +91,8 @@ a:hover{text-decoration:underline;}
 .markdown-body li{margin:.28em 0;}
 .markdown-body li::marker{color:var(--accent);}
 .markdown-body hr{border:none; border-top:1px solid var(--border); margin:1.9em 0;}
-.markdown-body img{max-width:100%; height:auto; border-radius:10px; border:1px solid var(--border); margin:.6em 0; box-shadow:var(--shadow);}
+.markdown-body img{display:block; max-width:100%; height:auto; border-radius:10px; border:1px solid var(--border); margin:.6em 0; box-shadow:var(--shadow);}
+.markdown-body p > img + em{display:block; margin-top:.35em;}
 .markdown-body video{max-width:100%; height:auto; border-radius:10px; border:1px solid var(--border); margin:.6em 0; box-shadow:var(--shadow); display:block; background:#000;}
 .markdown-body .img-row{display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start; margin:.6em 0;}
 .markdown-body .img-row img{flex:1 1 0; min-width:240px; width:100%; margin:0;}
