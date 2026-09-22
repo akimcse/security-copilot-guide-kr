@@ -1,7 +1,7 @@
 {
   "name": "security-copilot-guide-kr",
   "version": "1.0.0",
-  "description": "Static site generator for the Microsoft Security Copilot 실전 가이드 (한국어)",
+  "description": "Static site generator for the Microsoft Security Copilot 활용 가이드 (한국어)",
   "type": "module",
   "scripts": {
     "build": "node build.mjs"

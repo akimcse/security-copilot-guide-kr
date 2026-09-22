@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛡️ Microsoft Security Copilot 실전 가이드
+# Microsoft Security Copilot 활용 가이드
 
 **생성형 AI로 보안 운영을 가속하는 방법을, 개념부터 실습까지 한 번에.**
 

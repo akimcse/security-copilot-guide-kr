@@ -42,6 +42,7 @@ a:hover{text-decoration:underline;}
 .brand{display:flex; align-items:center; gap:10px; font-size:16px; color:var(--fg);}
 .brand:hover{text-decoration:none;}
 .brand-mark{font-size:20px;}
+img.brand-mark{display:block; width:24px; height:24px; border:none; border-radius:0; box-shadow:none; margin:0;}
 .brand-text b{color:var(--accent-ink); font-weight:700;}
 .brand-text{font-weight:600;}
 .topbar .gh{margin-left:auto; font-size:13.5px; color:var(--muted); border:1px solid var(--border); padding:5px 12px; border-radius:20px;}

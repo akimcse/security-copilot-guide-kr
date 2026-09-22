@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
 const OUT = join(ROOT, 'site');
 
-const SITE_TITLE = 'Microsoft Security Copilot 실전 가이드';
+const SITE_TITLE = 'Microsoft Security Copilot 활용 가이드';
 const REPO_URL = 'https://github.com/akimcse/security-copilot-guide-kr';
 
 // 사이드바/순서 메타 (part, 소요시간, 아이콘)
