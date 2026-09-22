@@ -58,8 +58,8 @@ import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.mi
 document.querySelectorAll('.mermaid').forEach(n => { n.dataset.src = n.textContent; });
 function mermaidTheme(){
   return document.documentElement.getAttribute('data-theme') === 'dark'
-    ? { theme:'base', themeVariables:{ primaryColor:'#2a2340', primaryBorderColor:'#a98ce0', primaryTextColor:'#ece8f7', lineColor:'#a98ce0', fontFamily:"'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif" } }
-    : { theme:'base', themeVariables:{ primaryColor:'#f3ecff', primaryBorderColor:'#8661c5', primaryTextColor:'#20123a', lineColor:'#8661c5', fontFamily:"'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif" } };
+    ? { theme:'base', themeVariables:{ primaryColor:'#16263e', primaryBorderColor:'#5aa0e8', primaryTextColor:'#e4ecf7', lineColor:'#5aa0e8', fontFamily:"'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif" } }
+    : { theme:'base', themeVariables:{ primaryColor:'#eef5fc', primaryBorderColor:'#3f8fe0', primaryTextColor:'#173355', lineColor:'#3f8fe0', fontFamily:"'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif" } };
 }
 mermaid.initialize(Object.assign({ startOnLoad:true, securityLevel:'loose' }, mermaidTheme()));
 
