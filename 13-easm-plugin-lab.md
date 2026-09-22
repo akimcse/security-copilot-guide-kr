@@ -6,10 +6,11 @@
 > **이 페이지에서 얻는 것**
 > - Microsoft 공식 **Defender EASM 플러그인**을 Security Copilot에 **직접 연동**하는 전체 절차(연결 → 리소스 설정 → 실행)
 > - 플러그인이 제공하는 **8가지 기능(capability)**을 자연어 프롬프트로 호출하는 법 — 한국어/원문 병기
+> - **Logic Apps로 리포팅 자동화** — 매일 아침 공격면 요약을 디자인된 HTML 메일로 무인 발송(조회·서식 2단계 분리 패턴 포함)
 >
-> ⏱️ 예상 소요 **25분+**　·　🎯 대상: SOC 분석가 · 위협·취약점 관리(TVM) 담당 · IT/보안 관리자
+> ⏱️ 예상 소요 **40분+**　·　🎯 대상: SOC 분석가 · 위협·취약점 관리(TVM) 담당 · IT/보안 관리자
 
-조직의 방화벽 **바깥**에는 우리가 미처 인지하지 못한 자산이 존재합니다 — 잊힌 테스트 서브도메인, 만료된 인증서, 섀도 IT가 띄운 SaaS, 노출된 포트. **Microsoft Defender External Attack Surface Management(EASM)**는 이 외부 노출면을 지속적으로 발견·매핑하고, **Security Copilot 플러그인**을 통해 그 결과를 자연어로 질의할 수 있게 합니다. 이 랩은 **플러그인을 켜고 → 내 EASM 리소스를 연결하고 → 실제 프롬프트로 위험을 조사**하는 과정을 처음부터 끝까지 따라갑니다.
+조직의 방화벽 **바깥**에는 우리가 미처 인지하지 못한 자산이 존재합니다 — 잊힌 테스트 서브도메인, 만료된 인증서, 섀도 IT가 띄운 SaaS, 노출된 포트. **Microsoft Defender External Attack Surface Management(EASM)**는 이 외부 노출면을 지속적으로 발견·매핑하고, **Security Copilot 플러그인**을 통해 그 결과를 자연어로 질의할 수 있게 합니다. 이 랩은 **플러그인을 켜고(1단계) → 실제 프롬프트로 위험을 조사하고(2단계) → Logic Apps로 매일 아침 리포트 메일을 자동 발송(3단계)**하는 과정을 처음부터 끝까지 따라갑니다.
 
 ---
 
@@ -176,6 +177,109 @@ CVSS 심각도(**critical/high/medium/low**)로 영향 자산을 집계합니다
 | 6 | 만료 SSL 인증서 | — | Defender EASM에서 내 만료된 SSL 인증서를 알려 줘. |
 | 7 | SHA-1 인증서 | — | Defender EASM 기준으로 내 자산 중 SSL SHA1을 쓰는 인증서는 몇 개인가요? |
 | 8 | 자연어→쿼리 | 자연어 질문 | 내 공격면에서 80번 포트가 열려 있는 호스트를 찾아 줘. (Defender EASM) |
+
+---
+
+## 3단계 — 리포팅 자동화 (매일 아침 공격면 요약 메일)
+
+2단계까지는 사용자가 직접 프롬프트를 입력해 답을 받았습니다. 3단계에서는 이 과정을 **Azure Logic Apps로 무인 자동화**합니다 — 매일 정해진 시각에 Security Copilot이 EASM 데이터를 조회하고, 그 결과를 **보기 용이한 HTML 리포트**로 변환해 메일로 발송합니다. SOC 담당자가 업무 시작 전에 "당일 외부 공격면 현황"을 자동으로 수신하는 구조입니다.
+
+### 전체 흐름 — 왜 4개 액션인가
+
+![Logic Apps 디자이너 — Recurrence, Submit a Security Copilot prompt, Format report HTML, Send email (V2) 4개 액션이 순서대로 연결된 워크플로](./images/13-la3-designer-flow.png)
+*완성된 워크플로.*
+
+| 순서 | 액션 | 커넥터 | 역할 |
+| :--: | --- | --- | --- |
+| ① | **Recurrence** | Schedule | 매일 09:00(KST) 트리거 |
+| ② | **Submit a Security Copilot prompt** | Microsoft Security Copilot | EASM 데이터 **조회**(숫자·자산 목록) |
+| ③ | **Format report HTML** | Microsoft Security Copilot | ②의 결과를 **보기 용이한 HTML 리포트로 변환** |
+| ④ | **Send email (V2)** | Office 365 Outlook | ③의 HTML을 메일 본문으로 **발송** |
+
+---
+
+### 3-1. Recurrence — 발송 시각 설정
+
+**Logic Apps 리소스를 생성**하고, 첫 트리거로 **Recurrence**(일정)를 추가합니다.
+
+![Recurrence 트리거 설정 — Interval 1, Frequency 일, Time zone (UTC+09:00) 서울, At these hours 9](./images/13-la3-recurrence.png)
+*매일 오전 9시 발송 설정.*
+
+| 필드 | 값 | 커스터마이즈 |
+| --- | --- | --- |
+| **Interval / Frequency** | `1` / `일(Day)` | 주간 리포트는 `1`/`주`, 시간별은 `1`/`시간` |
+| **Time zone** | `(UTC+09:00) 서울` | 반드시 지정 — 미지정 시 UTC 기준이라 9시간 밀립니다 |
+| **At these hours / minutes** | `9` / `0` | 오후 6시 마감 리포트는 `18`/`0` |
+
+---
+
+### 3-2. 조회 액션 — 수신할 정보를 결정하는 단계
+
+**Submit a Security Copilot prompt** 액션을 추가하고 커넥션에 로그인한 뒤, **Prompt Content**에 **조회 전용 프롬프트**를 입력합니다.
+
+![Submit a Security Copilot prompt 액션 — Prompt Content에 8개 항목을 조회하는 한국어 프롬프트가 입력된 화면](./images/13-la3-query-prompt.png)
+*조회 프롬프트. 여기서 요청한 항목이 곧 리포트에 담기는 데이터가 됩니다.*
+
+이 예시에서 사용한 프롬프트:
+
+> 🇰🇷 "Microsoft Defender EASM에서 confirmed 상태의 자산 인벤토리를 조회해 줘. 다음을 한국어로 정리해 줘: 1) 전체 자산 수 2) 최근 30일 신규 발견 자산 수 3) CVE 관련 자산 수 4) 로그인 페이지 포함 자산 수 5) 웹 서버 기본 페이지 노출 자산 수 6) 30일 내 SSL 인증서 만료 예정 수 7) 신규 발견 자산 상위 5개 (자산명, 유형, 구성정보/CVE) 8) CVE 관련 자산 상위 5개 (자산명, 서비스, CVE). 실제 EASM 데이터를 조회해서 수치를 채워줘."
+
+> [!TIP]
+> **원하는 정보로 바꾸는 방법 — 이 프롬프트가 리포트의 설계도입니다.**
+> 리포트에 포함할 항목을 **번호 목록으로 나열**하면 그대로 반영됩니다. 아래와 같이 자유롭게 커스터마이즈할 수 있습니다.
+> - **지표 변경** → 목록 항목을 교체: 예) `열려 있는 포트별 자산 수`, `만료된 도메인 수`, `SHA-1 인증서 수`, `특정 CVE(예: CVE-2024-3400)의 영향 자산`.
+> - **순위 개수 변경** → `상위 5개` → `상위 10개`.
+> - **범위 조정** → `confirmed 상태` → `모든 상태`, 또는 `특정 라벨이 붙은 자산만`.
+>
+> **유의 사항:** (1) 프롬프트에 **"Defender EASM"**과 **"실제 데이터를 조회해서 채워줘"**를 명시해 EASM 스킬로 라우팅되도록 하고, (2) 이 액션에는 **HTML·서식 지시를 포함하지 않습니다.** 서식은 다음 액션이 담당합니다.
+
+---
+
+### 3-3. 서식 변환 액션 — 조회 결과를 리포트로 변환
+
+두 번째 **Submit a Security Copilot prompt** 액션을 추가하고 이름을 **Format report HTML**로 변경합니다. Prompt Content에 **조회 결과를 HTML 템플릿에 채우는** 변환 프롬프트를 입력하되, `<조회결과>` 자리에 **앞 액션의 출력 토큰(`EvaluationResultContent`)**을 삽입합니다.
+
+![Format report HTML 액션 — 변환 규칙 6개와 조회결과 토큰(EvaluationResultContent), HTML 템플릿이 들어간 Prompt Content](./images/13-la3-format-prompt.png)
+*서식 변환 프롬프트. 빨간 박스의 `EvaluationResultContent`가 앞 조회 액션의 결과를 전달받는 토큰입니다.*
+
+이 액션에 사용한 **전체 변환 프롬프트 원문**(지시문 + 다크 테마 HTML 템플릿 전체)은 아래에서 내려받아 **Prompt Content에 그대로 붙여넣을 수 있습니다.** `<조회결과>` 내부의 토큰만 앞 조회 액션의 `EvaluationResultContent`로 지정하면 됩니다.
+
+<a href="./assets/13-format-prompt.txt" download="13-format-prompt.txt">📄 전체 변환 프롬프트 원문 내려받기 (.txt)</a>
+
+> [!TIP]
+> **디자인을 바꾸는 방법 — HTML 템플릿만 수정하면 됩니다.**
+> `<HTML템플릿>`에 넣는 HTML을 교체하면 리포트 외관이 전체적으로 바뀝니다. 이메일 클라이언트(특히 Outlook)는 `<style>` 블록·`class`·`flex` 등을 무시하므로, **모든 스타일을 각 태그에 `style="…"` 인라인으로** 지정하고 **표는 `<table>` + `width` %**로 잡는 것이 안정적입니다. 색상·항목 순서·열 구성만 변경하고 규칙 6개는 유지합니다.
+
+---
+
+### 3-4. 메일 발송 — 결과 연결
+
+마지막으로 **Office 365 Outlook · 메일 보내기(V2)** 액션을 추가합니다.
+
+![Send email (V2) 액션 상세 — 받는 사람, 제목([Microsoft] 공격표면 관제 레포트), 본문에 EvaluationResultContent 토큰이 지정된 화면](./images/13-la3-email-action.png)
+*메일 보내기(V2) 액션. 본문에 앞 서식 액션의 출력 토큰(`EvaluationResultContent`)을 지정합니다.*
+
+| 필드 | 값 |
+| --- | --- |
+| **받는 사람(To)** | 리포트 수신자 메일 주소 |
+| **제목(Subject)** | 예) `[Microsoft] 공격표면 관제 레포트 (자동)` |
+| **본문(Body)** | **Format report HTML** 액션의 출력 토큰 `EvaluationResultContent` |
+
+> [!IMPORTANT]
+> 본문에는 반드시 **③ Format report HTML의 출력**을 지정합니다. ②(조회)의 출력을 직접 연결하면 서식이 적용되지 않은 마크다운이 그대로 발송됩니다. 또한 메일 본문은 **HTML로 해석**되도록 설정합니다.
+
+---
+
+### 완성된 리포트
+
+저장 후 **Run Trigger**로 즉시 실행하거나 다음 09:00 트리거를 기다리면, 조회(②)로 채운 실데이터에 서식(③)으로 입힌 디자인이 함께 적용된 리포트 메일이 수신됩니다.
+
+아래는 값이 채워지기 전의 **리포트 템플릿 구조**입니다 — 실행 시 `…` 자리에 조회한 실제 자산 수와 목록이 채워집니다.
+
+![EASM 리포트 HTML 템플릿 — 다크 테마 헤더, 핵심 지표 요약 표, 신규 발견·CVE·로그인 페이지·기본 페이지 노출·SSL 만료 표가 값 자리(…)를 비워 둔 상태로 렌더링된 화면](./images/13-la3-report-template.png)
+*리포트 템플릿 구조. 각 표의 `…` 자리에 조회 결과가 채워집니다.*
+
+---
 
 ## 참고 링크
 
